@@ -1,0 +1,80 @@
+﻿@model SupplyProject.Models.Armazem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Armazem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logradouro_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logradouro_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numlogradouro_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numlogradouro_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.largura_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.largura_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.altura_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.altura_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profundidade_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profundidade_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_armazem)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

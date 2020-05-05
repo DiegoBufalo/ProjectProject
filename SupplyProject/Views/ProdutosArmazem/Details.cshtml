@@ -1,0 +1,90 @@
+﻿@model SupplyProject.Models.Produto_armazem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produto_armazem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preco_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peso_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peso_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.largura_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.largura_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.altura_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.altura_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profundidade_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profundidade_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade_prodA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade_prodA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Armazem.nome_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.nome_usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProduto_armazem }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

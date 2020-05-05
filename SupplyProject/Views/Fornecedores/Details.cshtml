@@ -1,0 +1,66 @@
+﻿@model SupplyProject.Models.Fornecedor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fornecedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_fornecedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cnpj_fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cnpj_fornecedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logradouro_fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logradouro_fornecedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numlogradouro_fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numlogradouro_fornecedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone_fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_fornecedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_fornecedor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idFornecedor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

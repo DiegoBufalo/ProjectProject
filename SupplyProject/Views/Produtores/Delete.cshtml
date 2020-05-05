@@ -1,0 +1,72 @@
+﻿@model SupplyProject.Models.Produtor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Produtor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logradouro_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logradouro_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numlogradouro_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numlogradouro_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cnpj_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cnpj_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_produtor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

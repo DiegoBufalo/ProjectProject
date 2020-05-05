@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14cdd0c6b6b84439a82e92d74396dcf2" Name="Diagram1">
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Armazem" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Demanda_produtor" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Fornecedor" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Pedido_usuario" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Produto_armazem" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Produto_fornecedor" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Produto_produtor" Width="1.5" PointX="8.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Produtor" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Usuario" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Veiculo" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Pedido_usuario_Armazem" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Armazem" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Veiculo_Armazem" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Demanda_produtor_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_has_Produto_armazem" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_has_Produtor" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_fornecedor_Fornecedor" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_has_Produto_fornecedor_Produto_fornecedor" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Usuario1" ManuallyRouted="false" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_Produtor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,72 @@
+﻿@model SupplyProject.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.senha_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senha_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Armazem.nome_armazem)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

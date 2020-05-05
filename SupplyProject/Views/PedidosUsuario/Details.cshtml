@@ -1,0 +1,74 @@
+﻿@model SupplyProject.Models.Pedido_usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pedido_usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.preco_pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ano_pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ano_pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mes_pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mes_pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dia_pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dia_pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Armazem.nome_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produto_fornecedor.nome_prodF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produto_fornecedor.nome_prodF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.nome_usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPedido }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

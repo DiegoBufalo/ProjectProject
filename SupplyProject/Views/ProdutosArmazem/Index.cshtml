@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SupplyProject.Models.Produto_armazem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preco_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.peso_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.largura_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.altura_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profundidade_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantidade_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preco_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.peso_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.largura_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.altura_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profundidade_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantidade_prodA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idProduto_armazem }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idProduto_armazem }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idProduto_armazem })
+        </td>
+    </tr>
+}
+
+</table>

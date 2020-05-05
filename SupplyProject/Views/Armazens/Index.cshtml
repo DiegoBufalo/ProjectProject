@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SupplyProject.Models.Armazem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_armazem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.logradouro_armazem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numlogradouro_armazem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.largura_armazem)
+        </th>
+        <th>
+            Altura Armazem
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profundidade_armazem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefone_armazem)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.logradouro_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numlogradouro_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.largura_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.altura_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profundidade_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefone_armazem)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idArmazem }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idArmazem }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idArmazem })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,90 @@
+﻿@model SupplyProject.Models.Produto_produtor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produto_produtor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preco_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.peso_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.peso_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.largura_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.largura_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.altura_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.altura_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profundidade_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profundidade_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade_prodP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade_prodP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tempo_producaoP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tempo_producaoP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Produtor.nome_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produtor.nome_produtor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProduto_produtor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SupplyProject.Models.Pedido_usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.preco_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ano_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mes_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto_fornecedor.nome_prodF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.preco_pedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ano_pedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mes_pedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dia_pedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produto_fornecedor.nome_prodF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idPedido }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPedido }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idPedido })
+        </td>
+    </tr>
+}
+
+</table>

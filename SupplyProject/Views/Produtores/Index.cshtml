@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SupplyProject.Models.Produtor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_produtor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.logradouro_produtor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numlogradouro_produtor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cnpj_produtor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefone_produtor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_produtor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_produtor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.logradouro_produtor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numlogradouro_produtor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cnpj_produtor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefone_produtor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_produtor)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idProdutor }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idProdutor }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idProdutor })
+        </td>
+    </tr>
+}
+
+</table>

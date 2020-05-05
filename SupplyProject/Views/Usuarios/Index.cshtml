@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SupplyProject.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senha_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefone_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.senha_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefone_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario })
+        </td>
+    </tr>
+}
+
+</table>

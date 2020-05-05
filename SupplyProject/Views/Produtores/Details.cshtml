@@ -1,0 +1,66 @@
+﻿@model SupplyProject.Models.Produtor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Produtor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logradouro_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logradouro_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numlogradouro_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numlogradouro_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cnpj_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cnpj_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_produtor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email_produtor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email_produtor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProdutor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

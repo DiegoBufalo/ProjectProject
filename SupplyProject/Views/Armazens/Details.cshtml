@@ -1,0 +1,74 @@
+﻿@model SupplyProject.Models.Armazem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Armazem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logradouro_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logradouro_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numlogradouro_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numlogradouro_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.largura_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.largura_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.altura_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.altura_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.profundidade_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.profundidade_armazem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone_armazem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_armazem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idArmazem }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
