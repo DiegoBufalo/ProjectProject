@@ -1,63 +1,103 @@
-﻿@model IEnumerable<SupplyProject.Models.Usuario>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cade meu medico? - @ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")"
+          rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+    <a class="navbar-brand" href="#">
+        Cade meu medico? - Área Administrativa
+    </a>
+</div>
+<div class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+        <li id="menuMedicos">
+        </li>
+    </ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="jumbotron">
+    <div class="container">
+        <h1>Quem é você?</h1>
+        <p>&nbsp;</p>
+        <div id="status"></div>
+        <p>&nbsp;</p>
+        <div>
+            <form id="form-login" name="form-login"
+                  method="get"
+                  action="javascript:function()">
+                <label for="txtLogin">Login</label>&nbsp;
+                <input type="text" id="txtLogin" name="txtLogin" />
+                &nbsp;
+                <label for="txtSenha">Senha</label>&nbsp;
+                <input type="password" id="txtSenha"
+                       name="txtSenha" />&nbsp;
+                <a id="botao-entrar" class="btn btn-primary btn-lg">
+                    Entrar
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+<p style="text-align:center;">
+@*@Html.ActionLink(
+    "Esqueceu sua senha?",
+    "EsqueceuSuaSenha",
+    "Home",
+    null,
+    new { @style = "text-align: center;" })*@
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nome_usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo_usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.senha_usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email_usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefone_usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
-        </th>
-        <th></th>
-    </tr>
+</div>
+<script src="@Url.Content("~/Scripts/jquery-3.4.1.js")"></script>
+<script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+<script>
+    $(document).ready(function () {
+        $("#status").hide();
+        $("#botao-entrar").click(function () {
+            $.ajax({
+                url: "@Url.Action("AutenticacaoDeUsuario", "UsuarioAutenticacao")",
+                data: { Login: $("#txtLogin").val(),
+                    Senha: $("#txtSenha").val()
+                },
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.senha_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefone_usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario })
-        </td>
-    </tr>
-}
-
-</table>
+                dataType: "json",
+                type: "GET",
+                async: true,
+                beforeSend: function () {
+                    $("#status").html("Estamos autenticando o usuário. Só um instante...");
+                    $("#status").show();
+                },
+                success: function (dados) {
+                    if (dados.OK) {
+                        $("#status").html(dados.Mensagem)
+                        setTimeout(function () { window.location.href =
+                            "/Home/Index" }, 5000);
+                        $("#status").show();
+                    }
+                    else {
+                        $("#status").html(dados.Mensagem);
+                        $("#status").show();
+                    }
+                },
+                error: function () {
+                    $("#status").html(dados.Mensagem);
+                    $("#status").show()
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

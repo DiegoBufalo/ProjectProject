@@ -24,7 +24,7 @@ namespace SupplyProject.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Armazem> Armazem { get; set; }
         public virtual DbSet<Demanda_produtor> Demanda_produtor { get; set; }
         public virtual DbSet<Fornecedor> Fornecedor { get; set; }

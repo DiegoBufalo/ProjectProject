@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace SupplyProject.Controllers
 {
-    public class ContaController : Controller
+    public class ContaController : BaseController
     {
         // GET: Conta
         public ActionResult Registrar()

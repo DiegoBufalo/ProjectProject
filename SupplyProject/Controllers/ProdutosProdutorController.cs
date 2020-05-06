@@ -10,7 +10,7 @@ using SupplyProject.Models;
 
 namespace SupplyProject.Controllers
 {
-    public class ProdutosProdutorController : Controller
+    public class ProdutosProdutorController : BaseController
     {
         private SupplyProject_dbEntities db = new SupplyProject_dbEntities();
 

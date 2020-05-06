@@ -10,7 +10,7 @@ using SupplyProject.Models;
 
 namespace SupplyProject.Controllers
 {
-    public class PedidosUsuarioController : Controller
+    public class PedidosUsuarioController : BaseController
     {
         private SupplyProject_dbEntities db = new SupplyProject_dbEntities();
 
