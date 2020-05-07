@@ -21,5 +21,7 @@ namespace SupplyProject.Services
             //Adicionando o cookie no contexto da aplicação
             HttpContext.Current.Response.Cookies.Add(userCookie);
         }
+
+
     }
     }

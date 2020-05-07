@@ -118,11 +118,13 @@ ul ul {
  margin-bottom:0
 }
 dt {
- font-weight:700
+ font-weight:700;
+ color:white
 }
 dd {
  margin-bottom:.5rem;
- margin-left:0
+ margin-left:0;
+ color: white
 }
 blockquote {
  margin:0 0 1rem
@@ -968,7 +970,7 @@ pre code {
  .col-md-2 {
   -ms-flex:0 0 16.666667%;
   flex:0 0 16.666667%;
-  max-width:16.666667%;
+  max-width:100%;
   color: #fff
  }
  .col-md-3 {
@@ -1009,7 +1011,7 @@ pre code {
  .col-md-10 {
   -ms-flex:0 0 83.333333%;
   flex:0 0 83.333333%;
-  max-width:83.333333%
+  max-width:100%
  }
  .col-md-11 {
   -ms-flex:0 0 91.666667%;

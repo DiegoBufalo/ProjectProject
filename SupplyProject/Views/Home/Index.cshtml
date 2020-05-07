@@ -9,7 +9,7 @@
     <div class="slider-area slider-bg ">
         <div class="slider-active dot-style">
             <div class="single-slider d-flex align-items-center slider-height ">
-                <div class="container-fluid">
+                <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-md-9 ">
                             <div class="hero__caption">
@@ -18,51 +18,8 @@
                                 <!-- Slider btn -->
                                 <div class="slider-btns">
                                     <!-- Hero-btn -->
-                                    <a data-animation="fadeInLeft" data-delay="1s" href="#" class="btn radius-btn">Registre-se</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="hero__img d-none d-lg-block f-right">
-                                <img src="~/Content/assets/img/hero/hero_right.png" alt="" data-animation="fadeInRight" data-delay="1s">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slider d-flex align-items-center slider-height ">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-9 ">
-                            <div class="hero__caption">
-                                <h1 data-animation="fadeInLeft" data-delay=".3s">Supply Chain Project </h1>
-                                <p data-animation="fadeInLeft" data-delay=".6s">Conheça nossos seviços para otimizar seus ganhos</p>
-                                <!-- Slider btn -->
-                                <div class="slider-btns">
-                                    <!-- Hero-btn -->
-                                    <a data-animation="fadeInLeft" data-delay="1s" href="#" class="btn radius-btn">Registre-se</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="hero__img d-none d-lg-block f-right">
-                                <img src="~/Content/assets/img/hero/hero_right.png" alt="" data-animation="fadeInRight" data-delay="1.5s">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-slider d-flex align-items-center slider-height ">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-9 ">
-                            <div class="hero__caption">
-                                <h1 data-animation="fadeInLeft" data-delay=".3s">Supply Chain Project </h1>
-                                <p data-animation="fadeInLeft" data-delay=".6s">Conheça nossos seviços para otimizar seus ganhos</p>
-                                <!-- Slider btn -->
-                                <div class="slider-btns">
-                                    <!-- Hero-btn -->
-                                    <a data-animation="fadeInLeft" data-delay="1s" href="#" class="btn radius-btn">Registre-se</a>
+                                    <a data-animation="fadeInLeft" data-delay="1s" class="btn radius-btn" href="@Url.Action("Create","Usuarios")">Registre-se</a>
+
                                 </div>
                             </div>
                         </div>
@@ -93,7 +50,7 @@
     <!-- Slider Area End -->
     <!--Services Area Start -->
     <div class="services-area section-padding30 fix">
-        <div class="container-fluid">
+        <div class="container">
             <!-- Section Tittle -->
             <div class="row">
                 <div class="col-lg-12">
@@ -107,13 +64,13 @@
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="services-wrapper mb-50">
                         <div class="single-services">
-                            <div class="f">
-                                <span class="flaticon-interface"></span>
+                            <div class="services-icon">
+                                <span><img src="~/Content/assets/img/icon/001-warehouse.png"/></span>
                             </div>
                             <div class="services-cap">
-                                <h3><a href="#">Shared Hosting</a></h3>
-                                <p>Hunky dory barney fannaround up the duff no biggie loo cup of tea jolly good ruddy!</p>
-                                <a href="#" class="get-btn"><i class="ti-arrow-right"></i> get started</a>
+                                <h3><a href="#">Armazens</a></h3>
+                                <p>Sistemas de armazenamento acompanhado por gráficos e tabelas, com descricoes detalhada de todos os produtos</p>
+                                <a href="#" class="get-btn"><i class="ti-arrow-right"></i> Saiba Mais</a>
                             </div>
                         </div>
                         <div class="services-shape">
@@ -126,12 +83,12 @@
                     <div class="services-wrapper mb-50">
                         <div class="single-services">
                             <div class="services-icon">
-                                <span class="flaticon-load-carriage"></span>
+                                <span ><img src="~/Content/assets/img/icon/002-truck.png" /></span>
                             </div>
                             <div class="services-cap">
-                                <h3><a href="#">Reseller Hosting</a></h3>
-                                <p>Hunky dory barney fannaround up the duff no biggie loo cup of tea jolly good ruddy!</p>
-                                <a href="#" class="get-btn"><i class="ti-arrow-right"></i> get started</a>
+                                <h3><a href="#">Transporte</a></h3>
+                                <p>Futuro sistema integrado de gestao de entregas para entregas mais estudas e pensadas</p>
+                                <a href="#" class="get-btn"><i class="ti-arrow-right"></i> Saiba Mais</a>
                             </div>
                         </div>
                         <div class="services-shape">
@@ -144,12 +101,12 @@
                     <div class="services-wrapper mb-50">
                         <div class="single-services">
                             <div class="services-icon">
-                                <span class="flaticon-shipping-and-delivery"></span>
+                                <span><img src="~/Content/assets/img/icon/003-choices.png" /></span>
                             </div>
                             <div class="services-cap">
-                                <h3><a href="#">Cloud Hosting</a></h3>
-                                <p>Hunky dory barney fannaround up the duff no biggie loo cup of tea jolly good ruddy!</p>
-                                <a href="#" class="get-btn"><i class="ti-arrow-right"></i> get started</a>
+                                <h3><a href="#">Pedidos e Demandas</a></h3>
+                                <p>Sistema de recebimentos de demandas e envios de pedidos para uma maior comodidade </p>
+                                <a href="#" class="get-btn"><i class="ti-arrow-right"></i> Saiba Mais</a>
                             </div>
                         </div>
                         <div class="services-shape">

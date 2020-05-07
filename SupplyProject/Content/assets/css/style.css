@@ -82,14 +82,15 @@
     background-position: center center
 }
 
-    [data-overlay]::before {
-        position: absolute;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        content: ""
-    }
+
+[data-overlay]::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    content: ""
+}
 
 [data-opacity="1"]::before {
     opacity: 0.1
@@ -131,7 +132,7 @@ body {
     font-family: "Muli",sans-serif;
     font-weight: normal;
     font-style: normal;
-    background-image: url(../img/gallery/section_bg03.jpg)
+    background-image: url(../img/gallery/backgroudPreto.jpg) 
   
 }
 
@@ -141,7 +142,8 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0px;
     font-style: normal;
     font-weight: 500;
-    text-transform: normal
+    text-transform: normal;
+    text-align:center
 }
 
 p {
@@ -150,7 +152,8 @@ p {
     font-size: 16px;
     line-height: 30px;
     margin-bottom: 15px;
-    font-weight: normal
+    font-weight: normal;
+    text-align: center
 }
 
 .bg-img-1 {
@@ -277,6 +280,12 @@ hr {
 .overlay {
     position: relative;
     z-index: 0
+}
+
+.container-fluid.body-content {
+    width: 50%;
+    text-align: center;
+    margin: auto;
 }
 
     .overlay::before {

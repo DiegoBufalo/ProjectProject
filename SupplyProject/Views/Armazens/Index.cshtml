@@ -4,6 +4,10 @@
     ViewBag.Title = "Index";
 }
 
+@{
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
 <h2>Index</h2>
 
 <p>
@@ -36,35 +40,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome_armazem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.logradouro_armazem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numlogradouro_armazem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.largura_armazem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.altura_armazem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.profundidade_armazem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefone_armazem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idArmazem }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idArmazem }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idArmazem })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_armazem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.logradouro_armazem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numlogradouro_armazem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.largura_armazem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.altura_armazem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.profundidade_armazem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefone_armazem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idArmazem }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idArmazem }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idArmazem })
+            </td>
+        </tr>
+    }
 
 </table>

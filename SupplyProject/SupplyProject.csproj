@@ -396,6 +396,7 @@
     <Content Include="Content\assets\img\adapt_icon\1.svg" />
     <Content Include="Content\assets\img\adapt_icon\2.png" />
     <Content Include="Content\assets\img\adapt_icon\3.png" />
+    <Content Include="Content\assets\img\banner\Backgroud.png" />
     <Content Include="Content\assets\img\banner\dog.png" />
     <Content Include="Content\assets\img\banner\img.png" />
     <Content Include="Content\assets\img\blog\author.png" />
@@ -438,6 +439,8 @@
     <Content Include="Content\assets\img\gallery\1.png" />
     <Content Include="Content\assets\img\gallery\2.png" />
     <Content Include="Content\assets\img\gallery\3.png" />
+    <Content Include="Content\assets\img\gallery\backgroud.jpg" />
+    <Content Include="Content\assets\img\gallery\backgroudPreto.jpg" />
     <Content Include="Content\assets\img\gallery\blog1.png" />
     <Content Include="Content\assets\img\gallery\blog2.png" />
     <Content Include="Content\assets\img\gallery\blog3.png" />
@@ -462,6 +465,9 @@
     <Content Include="Content\assets\img\hero\left-botom-shape.png" />
     <Content Include="Content\assets\img\hero\right-top-shape.png" />
     <Content Include="Content\assets\img\hero\top-left-shape.png" />
+    <Content Include="Content\assets\img\icon\001-warehouse.png" />
+    <Content Include="Content\assets\img\icon\002-truck.png" />
+    <Content Include="Content\assets\img\icon\003-choices.png" />
     <Content Include="Content\assets\img\icon\arrow_icon.png" />
     <Content Include="Content\assets\img\icon\footer_arrow.png" />
     <Content Include="Content\assets\img\icon\form_icon.png" />
@@ -737,10 +743,10 @@
     <Content Include="Views\DemandasProdutor\Edit.cshtml" />
     <Content Include="Views\DemandasProdutor\Index.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
+    <Content Include="Views\Shared\_LayoutIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Conta\" />
     <Folder Include="Views\UsuarioAutenticacao\" />
   </ItemGroup>
   <ItemGroup>

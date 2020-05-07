@@ -4,6 +4,10 @@
     ViewBag.Title = "Index";
 }
 
+@{
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
 <h2>Index</h2>
 
 <p>
@@ -41,41 +45,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.preco_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.peso_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.largura_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.altura_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.profundidade_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantidade_prodF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tempo_producaoF)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fornecedor.nome_fornecedor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idProduto_fornecedor }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idProduto_fornecedor }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idProduto_fornecedor })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preco_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.peso_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.largura_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.altura_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.profundidade_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantidade_prodF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tempo_producaoF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fornecedor.nome_fornecedor)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idProduto_fornecedor }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idProduto_fornecedor }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idProduto_fornecedor })
+            </td>
+        </tr>
+    }
 
 </table>

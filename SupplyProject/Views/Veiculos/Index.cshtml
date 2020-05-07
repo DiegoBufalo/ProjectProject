@@ -3,6 +3,9 @@
 @{
     ViewBag.Title = "Index";
 }
+@{
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
 
 <h2>Index</h2>
 
@@ -38,38 +41,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_veiculo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.custo_frete)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidade_peso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidade_altura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidade_largura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.capacidade_profundidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.placa_veiculo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idVeiculo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idVeiculo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idVeiculo })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipo_veiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.custo_frete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacidade_peso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacidade_altura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacidade_largura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacidade_profundidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.placa_veiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idVeiculo }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idVeiculo }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idVeiculo })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -4,6 +4,10 @@
     ViewBag.Title = "Index";
 }
 
+@{
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
 <h2>Index</h2>
 
 <p>
@@ -32,32 +36,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nome_fornecedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cnpj_fornecedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.logradouro_fornecedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numlogradouro_fornecedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefone_fornecedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email_fornecedor)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idFornecedor }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idFornecedor }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idFornecedor })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cnpj_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.logradouro_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numlogradouro_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefone_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_fornecedor)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idFornecedor }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idFornecedor }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idFornecedor })
+            </td>
+        </tr>
+    }
 
 </table>
