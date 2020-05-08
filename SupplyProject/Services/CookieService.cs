@@ -6,7 +6,7 @@ using System.Web;
 namespace SupplyProject.Services
 {
     public class CookieService
-    { 
+    {
         public static void RegistraCookieAutenticacao(long IDUsuario)
         {
             //Criando um objeto cookie

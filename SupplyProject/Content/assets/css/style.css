@@ -24,6 +24,10 @@
     background: #eb566c
 }
 
+.navbar-brand.login {
+    color: white;
+}
+
 .brand-bg {
     background: #f1f4fa
 }

@@ -304,6 +304,7 @@
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\DemandasProdutorController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
+    <Compile Include="Controllers\HomeLogado.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PedidosUsuarioController.cs" />
     <Compile Include="Controllers\ProdutoresController.cs" />
@@ -311,6 +312,7 @@
     <Compile Include="Controllers\ProdutosFornecedorController.cs" />
     <Compile Include="Controllers\ProdutosProdutorController.cs" />
     <Compile Include="Controllers\UsuarioAutenticacaoController.cs" />
+    <Compile Include="Controllers\UsuarioRemoveSessaoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VeiculosController.cs" />
     <Compile Include="Filtros\AutorizacaoDeAcesso.cs" />
@@ -744,10 +746,14 @@
     <Content Include="Views\DemandasProdutor\Index.cshtml" />
     <Content Include="Views\Shared\_Home.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_HomeLogado.cshtml" />
+    <Content Include="Views\HomeLogado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\UsuarioAutenticacao\" />
+    <Folder Include="Views\UsuarioRemoveSessao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
