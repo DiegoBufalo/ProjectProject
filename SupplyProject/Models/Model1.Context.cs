@@ -24,7 +24,7 @@ namespace SupplyProject.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Armazem> Armazem { get; set; }
         public virtual DbSet<Demanda_produtor> Demanda_produtor { get; set; }
         public virtual DbSet<Fornecedor> Fornecedor { get; set; }
@@ -35,5 +35,9 @@ namespace SupplyProject.Models
         public virtual DbSet<Produtor> Produtor { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Veiculo> Veiculo { get; set; }
+        public virtual DbSet<DemandaFinal_produtor> DemandaFinal_produtor { get; set; }
+        public virtual DbSet<StatusDemanda> StatusDemanda { get; set; }
+        public virtual DbSet<PedidoFinal_usuario> PedidoFinal_usuario { get; set; }
+        public virtual DbSet<StatusPedido> StatusPedido { get; set; }
     }
 }

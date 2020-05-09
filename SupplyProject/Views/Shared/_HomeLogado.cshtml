@@ -81,10 +81,17 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="#">Serviços</a>
+                                                <a href="#">Demandas</a>
                                                 <ul class="submenu">
-                                                    <li>@Html.ActionLink("Demandas", "Index", "DemandasProdutor")</li>
-                                                    <li>@Html.ActionLink("Pedidos", "Index", "PedidosUsuario")</li>
+                                                    <li>@Html.ActionLink("Demandas Encerradas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                    <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Pedidos</a>
+                                                <ul class="submenu">
+                                                    <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
+                                                    <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
                                                 </ul>
                                             </li>
                                         </ul>

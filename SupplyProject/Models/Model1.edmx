@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SupplyProject_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SupplyProject_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Armazem">
           <Key>
             <PropertyRef Name="idArmazem" />
@@ -30,6 +30,19 @@
           <Property Name="mes_pedido" Type="int" Nullable="false" />
           <Property Name="dia_pedido" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DemandaFinal_produtor">
+          <Key>
+            <PropertyRef Name="idDemandaFinal" />
+          </Key>
+          <Property Name="idDemandaFinal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Produto_produtor_idProduto_produtor" Type="int" Nullable="false" />
+          <Property Name="Produto_armazem_idProduto_armazem" Type="int" Nullable="false" />
+          <Property Name="Usuario_idUsuario" Type="int" Nullable="false" />
+          <Property Name="status_demanda" Type="int" Nullable="false" />
+          <Property Name="ano_pedido" Type="int" Nullable="false" />
+          <Property Name="mes_pedido" Type="int" Nullable="false" />
+          <Property Name="dia_pedido" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Fornecedor">
           <Key>
             <PropertyRef Name="idFornecedor" />
@@ -50,6 +63,20 @@
           <Property Name="Usuario_idUsuario" Type="int" Nullable="false" />
           <Property Name="Produto_fornecedor_idProduto_fornecedor" Type="int" Nullable="false" />
           <Property Name="Armazem_idArmazem" Type="int" Nullable="false" />
+          <Property Name="preco_pedido" Type="float" Nullable="false" />
+          <Property Name="ano_pedido" Type="int" Nullable="false" />
+          <Property Name="mes_pedido" Type="int" Nullable="false" />
+          <Property Name="dia_pedido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoFinal_usuario">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario_idUsuario" Type="int" Nullable="false" />
+          <Property Name="Produto_fornecedor_idProduto_fornecedor" Type="int" Nullable="false" />
+          <Property Name="Armazem_idArmazem" Type="int" Nullable="false" />
+          <Property Name="statusPedido" Type="int" Nullable="false" />
           <Property Name="preco_pedido" Type="float" Nullable="false" />
           <Property Name="ano_pedido" Type="int" Nullable="false" />
           <Property Name="mes_pedido" Type="int" Nullable="false" />
@@ -112,6 +139,20 @@
           <Property Name="telefone_produtor" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="email_produtor" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
+        <EntityType Name="StatusDemanda">
+          <Key>
+            <PropertyRef Name="idDemandaFinal" />
+          </Key>
+          <Property Name="idDemandaFinal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_status" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusPedido">
+          <Key>
+            <PropertyRef Name="idStatus" />
+          </Key>
+          <Property Name="idStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nome_status" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="idUsuario" />
@@ -150,6 +191,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Demanda_produtor_UsuarioFinal">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="DemandaFinal_produtor" Type="Self.DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="Usuario_idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_Pedido_usuario_Armazem">
           <End Role="Armazem" Type="Self.Armazem" Multiplicity="1" />
           <End Role="Pedido_usuario" Type="Self.Pedido_usuario" Multiplicity="*" />
@@ -158,6 +211,18 @@
               <PropertyRef Name="idArmazem" />
             </Principal>
             <Dependent Role="Pedido_usuario">
+              <PropertyRef Name="Armazem_idArmazem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pedido_usuario_ArmazemF">
+          <End Role="Armazem" Type="Self.Armazem" Multiplicity="1" />
+          <End Role="PedidoFinal_usuario" Type="Self.PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armazem">
+              <PropertyRef Name="idArmazem" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
               <PropertyRef Name="Armazem_idArmazem" />
             </Dependent>
           </ReferentialConstraint>
@@ -216,6 +281,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Produto_has_Pedido">
+          <End Role="Produto_fornecedor" Type="Self.Produto_fornecedor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PedidoFinal_usuario" Type="Self.PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto_fornecedor">
+              <PropertyRef Name="idProduto_fornecedor" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="Produto_fornecedor_idProduto_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_Produto_produtor_has_Produto_armazem">
           <End Role="Produto_armazem" Type="Self.Produto_armazem" Multiplicity="1" />
           <End Role="Demanda_produtor" Type="Self.Demanda_produtor" Multiplicity="*" />
@@ -224,6 +303,18 @@
               <PropertyRef Name="idProduto_armazem" />
             </Principal>
             <Dependent Role="Demanda_produtor">
+              <PropertyRef Name="Produto_armazem_idProduto_armazem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Produto_produtor_has_Produto_armazemFinal">
+          <End Role="Produto_armazem" Type="Self.Produto_armazem" Multiplicity="1" />
+          <End Role="DemandaFinal_produtor" Type="Self.DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto_armazem">
+              <PropertyRef Name="idProduto_armazem" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
               <PropertyRef Name="Produto_armazem_idProduto_armazem" />
             </Dependent>
           </ReferentialConstraint>
@@ -240,6 +331,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Produto_produtor_has_ProdutorFinal">
+          <End Role="Produto_produtor" Type="Self.Produto_produtor" Multiplicity="1" />
+          <End Role="DemandaFinal_produtor" Type="Self.DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto_produtor">
+              <PropertyRef Name="idProduto_produtor" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="Produto_produtor_idProduto_produtor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_Produto_produtor_Produtor">
           <End Role="Produtor" Type="Self.Produtor" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -251,6 +354,30 @@
             </Principal>
             <Dependent Role="Produto_produtor">
               <PropertyRef Name="Produtor_idProdutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_status_abertoEncerrado">
+          <End Role="StatusPedido" Type="Self.StatusPedido" Multiplicity="1" />
+          <End Role="PedidoFinal_usuario" Type="Self.PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPedido">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="statusPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_statusDemanda_AbertaFechada">
+          <End Role="StatusDemanda" Type="Self.StatusDemanda" Multiplicity="1" />
+          <End Role="DemandaFinal_produtor" Type="Self.DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDemanda">
+              <PropertyRef Name="idDemandaFinal" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="status_demanda" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -282,6 +409,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Usuario_Usuario_Pedido">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PedidoFinal_usuario" Type="Self.PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="Usuario_idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_Veiculo_Armazem">
           <End Role="Armazem" Type="Self.Armazem" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -299,21 +440,33 @@
         <EntityContainer Name="SupplyProject_dbModelStoreContainer">
           <EntitySet Name="Armazem" EntityType="Self.Armazem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Demanda_produtor" EntityType="Self.Demanda_produtor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DemandaFinal_produtor" EntityType="Self.DemandaFinal_produtor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pedido_usuario" EntityType="Self.Pedido_usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoFinal_usuario" EntityType="Self.PedidoFinal_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produto_armazem" EntityType="Self.Produto_armazem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produto_fornecedor" EntityType="Self.Produto_fornecedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produto_produtor" EntityType="Self.Produto_produtor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produtor" EntityType="Self.Produtor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusDemanda" EntityType="Self.StatusDemanda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusPedido" EntityType="Self.StatusPedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Veiculo" EntityType="Self.Veiculo" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_Demanda_produtor_Usuario" Association="Self.fk_Demanda_produtor_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Demanda_produtor" EntitySet="Demanda_produtor" />
           </AssociationSet>
+          <AssociationSet Name="fk_Demanda_produtor_UsuarioFinal" Association="Self.fk_Demanda_produtor_UsuarioFinal">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
+          </AssociationSet>
           <AssociationSet Name="fk_Pedido_usuario_Armazem" Association="Self.fk_Pedido_usuario_Armazem">
             <End Role="Armazem" EntitySet="Armazem" />
             <End Role="Pedido_usuario" EntitySet="Pedido_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pedido_usuario_ArmazemF" Association="Self.fk_Pedido_usuario_ArmazemF">
+            <End Role="Armazem" EntitySet="Armazem" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
           </AssociationSet>
           <AssociationSet Name="fk_Produto_armazem_Armazem" Association="Self.fk_Produto_armazem_Armazem">
             <End Role="Armazem" EntitySet="Armazem" />
@@ -331,17 +484,37 @@
             <End Role="Fornecedor" EntitySet="Fornecedor" />
             <End Role="Produto_fornecedor" EntitySet="Produto_fornecedor" />
           </AssociationSet>
+          <AssociationSet Name="fk_Produto_has_Pedido" Association="Self.fk_Produto_has_Pedido">
+            <End Role="Produto_fornecedor" EntitySet="Produto_fornecedor" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
           <AssociationSet Name="fk_Produto_produtor_has_Produto_armazem" Association="Self.fk_Produto_produtor_has_Produto_armazem">
             <End Role="Produto_armazem" EntitySet="Produto_armazem" />
             <End Role="Demanda_produtor" EntitySet="Demanda_produtor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Produto_produtor_has_Produto_armazemFinal" Association="Self.fk_Produto_produtor_has_Produto_armazemFinal">
+            <End Role="Produto_armazem" EntitySet="Produto_armazem" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
           </AssociationSet>
           <AssociationSet Name="fk_Produto_produtor_has_Produtor" Association="Self.fk_Produto_produtor_has_Produtor">
             <End Role="Produto_produtor" EntitySet="Produto_produtor" />
             <End Role="Demanda_produtor" EntitySet="Demanda_produtor" />
           </AssociationSet>
+          <AssociationSet Name="fk_Produto_produtor_has_ProdutorFinal" Association="Self.fk_Produto_produtor_has_ProdutorFinal">
+            <End Role="Produto_produtor" EntitySet="Produto_produtor" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
+          </AssociationSet>
           <AssociationSet Name="fk_Produto_produtor_Produtor" Association="Self.fk_Produto_produtor_Produtor">
             <End Role="Produtor" EntitySet="Produtor" />
             <End Role="Produto_produtor" EntitySet="Produto_produtor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_status_abertoEncerrado" Association="Self.fk_status_abertoEncerrado">
+            <End Role="StatusPedido" EntitySet="StatusPedido" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_statusDemanda_AbertaFechada" Association="Self.fk_statusDemanda_AbertaFechada">
+            <End Role="StatusDemanda" EntitySet="StatusDemanda" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
           </AssociationSet>
           <AssociationSet Name="fk_Usuario_has_Produto_fornecedor_Produto_fornecedor" Association="Self.fk_Usuario_has_Produto_fornecedor_Produto_fornecedor">
             <End Role="Produto_fornecedor" EntitySet="Produto_fornecedor" />
@@ -351,13 +524,16 @@
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Pedido_usuario" EntitySet="Pedido_usuario" />
           </AssociationSet>
+          <AssociationSet Name="fk_Usuario_Usuario_Pedido" Association="Self.fk_Usuario_Usuario_Pedido">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
           <AssociationSet Name="fk_Veiculo_Armazem" Association="Self.fk_Veiculo_Armazem">
             <End Role="Armazem" EntitySet="Armazem" />
             <End Role="Veiculo" EntitySet="Veiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SupplyProject_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -377,6 +553,7 @@
           <NavigationProperty Name="Produto_armazem" Relationship="Self.fk_Produto_armazem_Armazem" FromRole="Armazem" ToRole="Produto_armazem" />
           <NavigationProperty Name="Usuario" Relationship="Self.fk_Produto_armazem_Usuario" FromRole="Armazem" ToRole="Usuario" />
           <NavigationProperty Name="Veiculo" Relationship="Self.fk_Veiculo_Armazem" FromRole="Armazem" ToRole="Veiculo" />
+          <NavigationProperty Name="PedidoFinal_usuario" Relationship="SupplyProject_dbModel.fk_Pedido_usuario_ArmazemF" FromRole="Armazem" ToRole="PedidoFinal_usuario" />
         </EntityType>
         <EntityType Name="Demanda_produtor">
           <Key>
@@ -439,6 +616,7 @@
           <NavigationProperty Name="Armazem" Relationship="Self.fk_Produto_armazem_Armazem" FromRole="Produto_armazem" ToRole="Armazem" />
           <NavigationProperty Name="Demanda_produtor" Relationship="Self.fk_Produto_produtor_has_Produto_armazem" FromRole="Produto_armazem" ToRole="Demanda_produtor" />
           <NavigationProperty Name="Usuario" Relationship="Self.fk_Produto_armazem_Usuario1" FromRole="Produto_armazem" ToRole="Usuario" />
+          <NavigationProperty Name="DemandaFinal_produtor" Relationship="SupplyProject_dbModel.fk_Produto_produtor_has_Produto_armazemFinal" FromRole="Produto_armazem" ToRole="DemandaFinal_produtor" />
         </EntityType>
         <EntityType Name="Produto_fornecedor">
           <Key>
@@ -456,6 +634,7 @@
           <Property Name="Fornecedor_idFornecedor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Fornecedor" Relationship="Self.fk_Produto_fornecedor_Fornecedor" FromRole="Produto_fornecedor" ToRole="Fornecedor" />
           <NavigationProperty Name="Pedido_usuario" Relationship="Self.fk_Usuario_has_Produto_fornecedor_Produto_fornecedor" FromRole="Produto_fornecedor" ToRole="Pedido_usuario" />
+          <NavigationProperty Name="PedidoFinal_usuario" Relationship="SupplyProject_dbModel.fk_Produto_has_Pedido" FromRole="Produto_fornecedor" ToRole="PedidoFinal_usuario" />
         </EntityType>
         <EntityType Name="Produto_produtor">
           <Key>
@@ -473,6 +652,7 @@
           <Property Name="Produtor_idProdutor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Demanda_produtor" Relationship="Self.fk_Produto_produtor_has_Produtor" FromRole="Produto_produtor" ToRole="Demanda_produtor" />
           <NavigationProperty Name="Produtor" Relationship="Self.fk_Produto_produtor_Produtor" FromRole="Produto_produtor" ToRole="Produtor" />
+          <NavigationProperty Name="DemandaFinal_produtor" Relationship="SupplyProject_dbModel.fk_Produto_produtor_has_ProdutorFinal" FromRole="Produto_produtor" ToRole="DemandaFinal_produtor" />
         </EntityType>
         <EntityType Name="Produtor">
           <Key>
@@ -502,6 +682,8 @@
           <NavigationProperty Name="Demanda_produtor" Relationship="Self.fk_Demanda_produtor_Usuario" FromRole="Usuario" ToRole="Demanda_produtor" />
           <NavigationProperty Name="Pedido_usuario" Relationship="Self.fk_Usuario_Usuario" FromRole="Usuario" ToRole="Pedido_usuario" />
           <NavigationProperty Name="Produto_armazem" Relationship="Self.fk_Produto_armazem_Usuario1" FromRole="Usuario" ToRole="Produto_armazem" />
+          <NavigationProperty Name="DemandaFinal_produtor" Relationship="SupplyProject_dbModel.fk_Demanda_produtor_UsuarioFinal" FromRole="Usuario" ToRole="DemandaFinal_produtor" />
+          <NavigationProperty Name="PedidoFinal_usuario" Relationship="SupplyProject_dbModel.fk_Usuario_Usuario_Pedido" FromRole="Usuario" ToRole="PedidoFinal_usuario" />
         </EntityType>
         <EntityType Name="Veiculo">
           <Key>
@@ -735,8 +917,195 @@
             <End Role="Produtor" EntitySet="Produtor" />
             <End Role="Produto_produtor" EntitySet="Produto_produtor" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <EntitySet Name="DemandaFinal_produtor" EntityType="SupplyProject_dbModel.DemandaFinal_produtor" />
+          <EntitySet Name="StatusDemanda" EntityType="SupplyProject_dbModel.StatusDemanda" />
+          <AssociationSet Name="fk_Demanda_produtor_UsuarioFinal" Association="SupplyProject_dbModel.fk_Demanda_produtor_UsuarioFinal">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Produto_produtor_has_Produto_armazemFinal" Association="SupplyProject_dbModel.fk_Produto_produtor_has_Produto_armazemFinal">
+            <End Role="Produto_armazem" EntitySet="Produto_armazem" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Produto_produtor_has_ProdutorFinal" Association="SupplyProject_dbModel.fk_Produto_produtor_has_ProdutorFinal">
+            <End Role="Produto_produtor" EntitySet="Produto_produtor" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
+          </AssociationSet>
+          <AssociationSet Name="fk_statusDemanda_AbertaFechada" Association="SupplyProject_dbModel.fk_statusDemanda_AbertaFechada">
+            <End Role="StatusDemanda" EntitySet="StatusDemanda" />
+            <End Role="DemandaFinal_produtor" EntitySet="DemandaFinal_produtor" />
+          </AssociationSet>
+          <EntitySet Name="PedidoFinal_usuario" EntityType="SupplyProject_dbModel.PedidoFinal_usuario" />
+          <EntitySet Name="StatusPedido" EntityType="SupplyProject_dbModel.StatusPedido" />
+          <AssociationSet Name="fk_Pedido_usuario_ArmazemF" Association="SupplyProject_dbModel.fk_Pedido_usuario_ArmazemF">
+            <End Role="Armazem" EntitySet="Armazem" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Produto_has_Pedido" Association="SupplyProject_dbModel.fk_Produto_has_Pedido">
+            <End Role="Produto_fornecedor" EntitySet="Produto_fornecedor" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_status_abertoEncerrado" Association="SupplyProject_dbModel.fk_status_abertoEncerrado">
+            <End Role="StatusPedido" EntitySet="StatusPedido" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario_Usuario_Pedido" Association="SupplyProject_dbModel.fk_Usuario_Usuario_Pedido">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="PedidoFinal_usuario" EntitySet="PedidoFinal_usuario" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="DemandaFinal_produtor">
+          <Key>
+            <PropertyRef Name="idDemandaFinal" />
+          </Key>
+          <Property Name="idDemandaFinal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Produto_produtor_idProduto_produtor" Type="Int32" Nullable="false" />
+          <Property Name="Produto_armazem_idProduto_armazem" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="status_demanda" Type="Int32" Nullable="false" />
+          <Property Name="ano_pedido" Type="Int32" Nullable="false" />
+          <Property Name="mes_pedido" Type="Int32" Nullable="false" />
+          <Property Name="dia_pedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="SupplyProject_dbModel.fk_Demanda_produtor_UsuarioFinal" FromRole="DemandaFinal_produtor" ToRole="Usuario" />
+          <NavigationProperty Name="Produto_armazem" Relationship="SupplyProject_dbModel.fk_Produto_produtor_has_Produto_armazemFinal" FromRole="DemandaFinal_produtor" ToRole="Produto_armazem" />
+          <NavigationProperty Name="Produto_produtor" Relationship="SupplyProject_dbModel.fk_Produto_produtor_has_ProdutorFinal" FromRole="DemandaFinal_produtor" ToRole="Produto_produtor" />
+          <NavigationProperty Name="StatusDemanda" Relationship="SupplyProject_dbModel.fk_statusDemanda_AbertaFechada" FromRole="DemandaFinal_produtor" ToRole="StatusDemanda" />
+        </EntityType>
+        <EntityType Name="StatusDemanda">
+          <Key>
+            <PropertyRef Name="idDemandaFinal" />
+          </Key>
+          <Property Name="idDemandaFinal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_status" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DemandaFinal_produtor" Relationship="SupplyProject_dbModel.fk_statusDemanda_AbertaFechada" FromRole="StatusDemanda" ToRole="DemandaFinal_produtor" />
+        </EntityType>
+        <Association Name="fk_Demanda_produtor_UsuarioFinal">
+          <End Type="SupplyProject_dbModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="SupplyProject_dbModel.DemandaFinal_produtor" Role="DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="Usuario_idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Produto_produtor_has_Produto_armazemFinal">
+          <End Type="SupplyProject_dbModel.Produto_armazem" Role="Produto_armazem" Multiplicity="1" />
+          <End Type="SupplyProject_dbModel.DemandaFinal_produtor" Role="DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto_armazem">
+              <PropertyRef Name="idProduto_armazem" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="Produto_armazem_idProduto_armazem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Produto_produtor_has_ProdutorFinal">
+          <End Type="SupplyProject_dbModel.Produto_produtor" Role="Produto_produtor" Multiplicity="1" />
+          <End Type="SupplyProject_dbModel.DemandaFinal_produtor" Role="DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto_produtor">
+              <PropertyRef Name="idProduto_produtor" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="Produto_produtor_idProduto_produtor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_statusDemanda_AbertaFechada">
+          <End Type="SupplyProject_dbModel.StatusDemanda" Role="StatusDemanda" Multiplicity="1" />
+          <End Type="SupplyProject_dbModel.DemandaFinal_produtor" Role="DemandaFinal_produtor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusDemanda">
+              <PropertyRef Name="idDemandaFinal" />
+            </Principal>
+            <Dependent Role="DemandaFinal_produtor">
+              <PropertyRef Name="status_demanda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PedidoFinal_usuario">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario_idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Produto_fornecedor_idProduto_fornecedor" Type="Int32" Nullable="false" />
+          <Property Name="Armazem_idArmazem" Type="Int32" Nullable="false" />
+          <Property Name="statusPedido" Type="Int32" Nullable="false" />
+          <Property Name="preco_pedido" Type="Double" Nullable="false" />
+          <Property Name="ano_pedido" Type="Int32" Nullable="false" />
+          <Property Name="mes_pedido" Type="Int32" Nullable="false" />
+          <Property Name="dia_pedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Armazem" Relationship="SupplyProject_dbModel.fk_Pedido_usuario_ArmazemF" FromRole="PedidoFinal_usuario" ToRole="Armazem" />
+          <NavigationProperty Name="Produto_fornecedor" Relationship="SupplyProject_dbModel.fk_Produto_has_Pedido" FromRole="PedidoFinal_usuario" ToRole="Produto_fornecedor" />
+          <NavigationProperty Name="StatusPedido1" Relationship="SupplyProject_dbModel.fk_status_abertoEncerrado" FromRole="PedidoFinal_usuario" ToRole="StatusPedido" />
+          <NavigationProperty Name="Usuario" Relationship="SupplyProject_dbModel.fk_Usuario_Usuario_Pedido" FromRole="PedidoFinal_usuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="StatusPedido">
+          <Key>
+            <PropertyRef Name="idStatus" />
+          </Key>
+          <Property Name="idStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome_status" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PedidoFinal_usuario" Relationship="SupplyProject_dbModel.fk_status_abertoEncerrado" FromRole="StatusPedido" ToRole="PedidoFinal_usuario" />
+        </EntityType>
+        <Association Name="fk_Pedido_usuario_ArmazemF">
+          <End Type="SupplyProject_dbModel.Armazem" Role="Armazem" Multiplicity="1" />
+          <End Type="SupplyProject_dbModel.PedidoFinal_usuario" Role="PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Armazem">
+              <PropertyRef Name="idArmazem" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="Armazem_idArmazem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Produto_has_Pedido">
+          <End Type="SupplyProject_dbModel.Produto_fornecedor" Role="Produto_fornecedor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SupplyProject_dbModel.PedidoFinal_usuario" Role="PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produto_fornecedor">
+              <PropertyRef Name="idProduto_fornecedor" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="Produto_fornecedor_idProduto_fornecedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_status_abertoEncerrado">
+          <End Type="SupplyProject_dbModel.StatusPedido" Role="StatusPedido" Multiplicity="1" />
+          <End Type="SupplyProject_dbModel.PedidoFinal_usuario" Role="PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusPedido">
+              <PropertyRef Name="idStatus" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="statusPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario_Usuario_Pedido">
+          <End Type="SupplyProject_dbModel.Usuario" Role="Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SupplyProject_dbModel.PedidoFinal_usuario" Role="PedidoFinal_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="idUsuario" />
+            </Principal>
+            <Dependent Role="PedidoFinal_usuario">
+              <PropertyRef Name="Usuario_idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -882,6 +1251,51 @@
                 <ScalarProperty Name="capacidade_profundidade" ColumnName="capacidade_profundidade" />
                 <ScalarProperty Name="placa_veiculo" ColumnName="placa_veiculo" />
                 <ScalarProperty Name="Armazem_idArmazem" ColumnName="Armazem_idArmazem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DemandaFinal_produtor">
+            <EntityTypeMapping TypeName="SupplyProject_dbModel.DemandaFinal_produtor">
+              <MappingFragment StoreEntitySet="DemandaFinal_produtor">
+                <ScalarProperty Name="dia_pedido" ColumnName="dia_pedido" />
+                <ScalarProperty Name="mes_pedido" ColumnName="mes_pedido" />
+                <ScalarProperty Name="ano_pedido" ColumnName="ano_pedido" />
+                <ScalarProperty Name="status_demanda" ColumnName="status_demanda" />
+                <ScalarProperty Name="Usuario_idUsuario" ColumnName="Usuario_idUsuario" />
+                <ScalarProperty Name="Produto_armazem_idProduto_armazem" ColumnName="Produto_armazem_idProduto_armazem" />
+                <ScalarProperty Name="Produto_produtor_idProduto_produtor" ColumnName="Produto_produtor_idProduto_produtor" />
+                <ScalarProperty Name="idDemandaFinal" ColumnName="idDemandaFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusDemanda">
+            <EntityTypeMapping TypeName="SupplyProject_dbModel.StatusDemanda">
+              <MappingFragment StoreEntitySet="StatusDemanda">
+                <ScalarProperty Name="nome_status" ColumnName="nome_status" />
+                <ScalarProperty Name="idDemandaFinal" ColumnName="idDemandaFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoFinal_usuario">
+            <EntityTypeMapping TypeName="SupplyProject_dbModel.PedidoFinal_usuario">
+              <MappingFragment StoreEntitySet="PedidoFinal_usuario">
+                <ScalarProperty Name="dia_pedido" ColumnName="dia_pedido" />
+                <ScalarProperty Name="mes_pedido" ColumnName="mes_pedido" />
+                <ScalarProperty Name="ano_pedido" ColumnName="ano_pedido" />
+                <ScalarProperty Name="preco_pedido" ColumnName="preco_pedido" />
+                <ScalarProperty Name="statusPedido" ColumnName="statusPedido" />
+                <ScalarProperty Name="Armazem_idArmazem" ColumnName="Armazem_idArmazem" />
+                <ScalarProperty Name="Produto_fornecedor_idProduto_fornecedor" ColumnName="Produto_fornecedor_idProduto_fornecedor" />
+                <ScalarProperty Name="Usuario_idUsuario" ColumnName="Usuario_idUsuario" />
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusPedido">
+            <EntityTypeMapping TypeName="SupplyProject_dbModel.StatusPedido">
+              <MappingFragment StoreEntitySet="StatusPedido">
+                <ScalarProperty Name="nome_status" ColumnName="nome_status" />
+                <ScalarProperty Name="idStatus" ColumnName="idStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

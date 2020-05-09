@@ -21,6 +21,7 @@ namespace SupplyProject.Models
             this.Produto_armazem = new HashSet<Produto_armazem>();
             this.Usuario = new HashSet<Usuario>();
             this.Veiculo = new HashSet<Veiculo>();
+            this.PedidoFinal_usuario = new HashSet<PedidoFinal_usuario>();
         }
     
         public int idArmazem { get; set; }
@@ -40,5 +41,7 @@ namespace SupplyProject.Models
         public virtual ICollection<Usuario> Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Veiculo> Veiculo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PedidoFinal_usuario> PedidoFinal_usuario { get; set; }
     }
 }

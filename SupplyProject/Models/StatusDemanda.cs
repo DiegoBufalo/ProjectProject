@@ -12,29 +12,17 @@ namespace SupplyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Produto_produtor
+    public partial class StatusDemanda
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Produto_produtor()
+        public StatusDemanda()
         {
-            this.Demanda_produtor = new HashSet<Demanda_produtor>();
             this.DemandaFinal_produtor = new HashSet<DemandaFinal_produtor>();
         }
     
-        public int idProduto_produtor { get; set; }
-        public string nome_prodP { get; set; }
-        public double preco_prodP { get; set; }
-        public double peso_prodP { get; set; }
-        public double largura_prodP { get; set; }
-        public double altura_prodP { get; set; }
-        public double profundidade_prodP { get; set; }
-        public int quantidade_prodP { get; set; }
-        public int tempo_producaoP { get; set; }
-        public int Produtor_idProdutor { get; set; }
+        public int idDemandaFinal { get; set; }
+        public string nome_status { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Demanda_produtor> Demanda_produtor { get; set; }
-        public virtual Produtor Produtor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DemandaFinal_produtor> DemandaFinal_produtor { get; set; }
     }

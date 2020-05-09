@@ -302,15 +302,19 @@
     <Compile Include="Controllers\ArmazensController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
+    <Compile Include="Controllers\DemandaFinalProdutorController.cs" />
     <Compile Include="Controllers\DemandasProdutorController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\HomeLogado.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PedidoFinalUsuarioController.cs" />
     <Compile Include="Controllers\PedidosUsuarioController.cs" />
     <Compile Include="Controllers\ProdutoresController.cs" />
     <Compile Include="Controllers\ProdutosArmazemController.cs" />
     <Compile Include="Controllers\ProdutosFornecedorController.cs" />
     <Compile Include="Controllers\ProdutosProdutorController.cs" />
+    <Compile Include="Controllers\StatusDemandasController.cs" />
+    <Compile Include="Controllers\StatusPedidoesController.cs" />
     <Compile Include="Controllers\UsuarioAutenticacaoController.cs" />
     <Compile Include="Controllers\UsuarioRemoveSessaoController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -320,6 +324,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Armazem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DemandaFinal_produtor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Demanda_produtor.cs">
@@ -343,6 +350,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\PedidoFinal_usuario.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Pedido_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -356,6 +366,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Produto_produtor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusDemanda.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusPedido.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
@@ -749,11 +765,21 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\_HomeLogado.cshtml" />
     <Content Include="Views\HomeLogado\Index.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\Create.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\Delete.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\Details.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\Edit.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\Index.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\IndexEncerrada.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\Create.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\Delete.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\Details.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\Edit.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\Index.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\IndexEncerrado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\UsuarioAutenticacao\" />
-    <Folder Include="Views\UsuarioRemoveSessao\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

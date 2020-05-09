@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SupplyProject.Models.DemandaFinal_produtor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ano_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mes_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto_armazem.nome_prodA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Produto_produtor.nome_prodP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusDemanda.nome_status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ano_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mes_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dia_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_armazem.nome_prodA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produto_produtor.nome_prodP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusDemanda.nome_status)
+            </td>
+            <td>
+                @Html.ActionLink("Concluir", "Edit", new { id = item.idDemandaFinal }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idDemandaFinal }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idDemandaFinal })
+            </td>
+        </tr>
+    }
+
+</table>

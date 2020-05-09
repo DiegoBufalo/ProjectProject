@@ -27,7 +27,19 @@
         <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Usuario1" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_Produtor" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="SupplyProject_dbModel.DemandaFinal_produtor" Width="1.5" PointX="12.25" PointY="16" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.StatusDemanda" Width="1.5" PointX="10" PointY="19.875" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Demanda_produtor_UsuarioFinal" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_has_Produto_armazemFinal" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_has_ProdutorFinal" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_statusDemanda_AbertaFechada" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.PedidoFinal_usuario" Width="1.5" PointX="7.625" PointY="3.75" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.StatusPedido" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Pedido_usuario_ArmazemF" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_has_Pedido" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_status_abertoEncerrado" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_Usuario_Pedido" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
