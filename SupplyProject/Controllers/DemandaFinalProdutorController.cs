@@ -43,6 +43,20 @@ namespace SupplyProject.Controllers
             return View(demandaFinal_produtor);
         }
 
+        public ActionResult DetailsEncerrada(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            DemandaFinal_produtor demandaFinal_produtor = db.DemandaFinal_produtor.Find(id);
+            if (demandaFinal_produtor == null)
+            {
+                return HttpNotFound();
+            }
+            return View(demandaFinal_produtor);
+        }
+
         // GET: DemandaFinalProdutor/Create
         public ActionResult Create()
         {

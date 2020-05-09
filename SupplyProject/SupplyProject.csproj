@@ -777,6 +777,8 @@
     <Content Include="Views\PedidoFinalUsuario\Edit.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\Index.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\IndexEncerrado.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\DetailsEncerrado.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\DetailsEncerrada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -67,9 +67,9 @@
                 @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idPedido }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idPedido }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idPedido })
+              
+                @Html.ActionLink("Detalhar", "DetailsEncerrado", new { id = item.idPedido })
+        
             </td>
         </tr>
     }

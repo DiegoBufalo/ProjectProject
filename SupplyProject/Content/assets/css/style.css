@@ -164,6 +164,16 @@ p {
     background-image: url(../img/slider/slider-img-1.jpg)
 }
 
+.col-md-offset-2.col-md-10.centro {
+    width: 100%;
+}
+
+.nice-select.form-control.centro {
+    width: 100%;
+}
+.nice-select.form-control {
+    width: 100%;
+}
 .bg-img-2 {
     background-image: url(../img/background-img/bg-img-2.jpg)
 }

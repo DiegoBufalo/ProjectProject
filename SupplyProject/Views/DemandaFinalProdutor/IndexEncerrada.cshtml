@@ -61,9 +61,7 @@
                 @Html.DisplayFor(modelItem => item.StatusDemanda.nome_status)
             </td>
             <td>
-                @Html.ActionLink("Concluir", "Edit", new { id = item.idDemandaFinal }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idDemandaFinal }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idDemandaFinal })
+                @Html.ActionLink("Details", "DetailsEncerrada", new { id = item.idDemandaFinal })
             </td>
         </tr>
     }

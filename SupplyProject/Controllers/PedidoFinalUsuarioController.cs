@@ -41,6 +41,20 @@ namespace SupplyProject.Controllers
             return View(pedidoFinal_usuario);
         }
 
+        public ActionResult DetailsEncerrado(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PedidoFinal_usuario pedidoFinal_usuario = db.PedidoFinal_usuario.Find(id);
+            if (pedidoFinal_usuario == null)
+            {
+                return HttpNotFound();
+            }
+            return View(pedidoFinal_usuario);
+        }
+
         // GET: PedidoFinalUsuario/Create
         public ActionResult Create()
         {
