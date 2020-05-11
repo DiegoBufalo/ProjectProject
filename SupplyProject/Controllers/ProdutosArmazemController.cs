@@ -88,8 +88,8 @@ namespace SupplyProject.Controllers
         // POST: ProdutosArmazem/Edit/5
         // Para se proteger de mais ataques, ative as propriedades específicas a que você quer se conectar. Para 
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idProduto_armazem,nome_prodA,preco_prodA,peso_prodA,largura_prodA,altura_prodA,profundidade_prodA,quantidade_prodA,Usuario_idUsuario,Armazem_idArmazem")] Produto_armazem produto_armazem)
         {
             if (ModelState.IsValid)

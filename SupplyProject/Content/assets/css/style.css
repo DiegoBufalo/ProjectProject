@@ -461,10 +461,37 @@ hr {
     }
 }
 
+.container-fluid .iframe{
+    width: 98%;
+    margin: auto
+}
+
 .btn-black {
     background: #0b1416;
     padding: 30px 36px;
     box-shadow: 0px 10px 30px 0px rgba(249,248,249,0.1)
+}
+.double-container {
+    width: 98%;
+    margin: auto;
+}
+
+.double-container-right {
+    width: 50%;
+    float: right;
+}
+.iframe-esquerda {
+    width: 49%;
+    height: 500px
+    
+}
+.iframe-direita {
+    width: 99%;
+    float: right;
+    height: 500px
+}
+.450px{
+    height:450px
 }
 
 .white-btn {

@@ -58,6 +58,16 @@ namespace SupplyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idEnvio,idDemanda,idVeiculo,ano_envio,mes_envio,dia_envio")] EnvioArmarazem envioArmarazem)
         {
+            DemandaFinal_produtor demanda = db.DemandaFinal_produtor.Find(envioArmarazem.idDemanda);
+            int idProduto = demanda.Produto_armazem_idProduto_armazem;
+            Produto_armazem prodArmazem = db.Produto_armazem.Find(idProduto);
+            int qtdDemanda = demanda.quantidade;
+            int qtdEstoque = prodArmazem.quantidade_prodA;
+            prodArmazem.quantidade_prodA = qtdEstoque - qtdDemanda;
+            ProdutosArmazemController prodControl = new ProdutosArmazemController();
+            int idProd = prodArmazem.idProduto_armazem;
+            prodControl.Edit(idProd);
+
             envioArmarazem.statusEnvio = 1;
 
             if (ModelState.IsValid)

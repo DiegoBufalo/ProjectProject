@@ -3,14 +3,37 @@
     ViewBag.Title = "ExibirEstatisticas";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-    <div class="container-fluid">
-        <h2>Estatisticas Avancadas: <br />
-            Espaco ocupado do armazem 
-        </h2>
+<div class="container-fluid">
+    <h2>
+        Estatisticas Avancadas: <br />
+        Segue Abaixo alguns gráficos referentes aos produtos do armazem
+    </h2>
+</div>
+<div class="container-fluid">
+
+    <div class="double-container">
+        <iframe class="iframe-esquerda" src="https://app.powerbi.com/view?r=eyJrIjoiNWQ3ODg4MTMtNWQwYi00OTMwLTg1YmUtNWQ0ZGY3YWIzODNjIiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+        <div class="double-container-right">
+            <iframe class="iframe-direita" src="https://app.powerbi.com/view?r=eyJrIjoiMjQ1ODEzNjktODIxZi00ZmM1LThmY2MtMzRjNzkxNDM2ZTM5IiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
     </div>
-    <div class="container-fluid">
-        <iframe width="1200" height="671" src="https://app.powerbi.com/view?r=eyJrIjoiNWQ3ODg4MTMtNWQwYi00OTMwLTg1YmUtNWQ0ZGY3YWIzODNjIiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+
+    <div class="double-container">
+        <iframe class="iframe-esquerda" src="https://app.powerbi.com/view?r=eyJrIjoiYWFmOTRhZWYtMTc2Mi00YTdhLTkxMzEtOTVkNTYxNWY0MzRmIiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+        <div class="double-container-right">
+            <iframe class="iframe-direita" src="https://app.powerbi.com/view?r=eyJrIjoiNDkzZjAxYTAtMzU1NS00NTBmLWJlZjAtYmFiNmU4MTg3NzcxIiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+        </div>
     </div>
-    
+    <div class="double-container">
+        <iframe class="iframe-esquerda" src="https://app.powerbi.com/view?r=eyJrIjoiNjYxNzZkNmYtNzQ2Yy00ZjgxLWE4NDktZmRiZGQxNDBkMGY1IiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>
+        <div class="double-container-right">
+            @*<iframe class="iframe-direita" src="https://app.powerbi.com/view?r=eyJrIjoiNjYxNzZkNmYtNzQ2Yy00ZjgxLWE4NDktZmRiZGQxNDBkMGY1IiwidCI6ImQ0ZWM1MDg2LTBlY2EtNDQ3Yy04NjE5LTA5ZDY0YzExZTMzZCJ9" frameborder="0" allowFullScreen="true"></iframe>*@
+        </div>
+    </div>
+
+
+</div>
+@Html.ActionLink("Voltar para Lista", "Index")
+
 
 
