@@ -57,41 +57,55 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li>@Html.ActionLink("Home", "Index", "Homelogado")</li>
+                                            <li>@Html.ActionLink("Home", "Index", "HomeLogado")</li>
                                             <li>
-                                                <a href="#">Armazem</a>
+                                                <a href="#">Usuario Comum</a>
                                                 <ul class="submenu">
+                                                    <li><h6>Demandas</h6></li>
+                                                    <li>@Html.ActionLink("Demandas Recebidas", "Index", "DemandaFinalProdutor")</li>
+                                                    <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                    <li><h6>Pedidos</h6></li>
+                                                    <li>@Html.ActionLink("Fazer Pedido", "Create", "PedidoFinalUsuario")</li>
+                                                    <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
+                                                    <li><h6>Entregas do Fornecedor</h6></li>
+                                                    <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioFornecedores")</li>
+                                                    <li>@Html.ActionLink("Entregas Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
+                                                    <li><h6>Entregas do Armazem</h6></li>
+                                                    <li>@Html.ActionLink("Entregar Demanda", "Create", "EnvioArmarazem")</li>
+                                                    <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioArmarazem")</li>
+                                                    <li>@Html.ActionLink("Entregas Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
+                                                    <li><h6>Meus Servicos</h6></li>
+                                                    <li>@Html.ActionLink("Produtos", "Index", "ProdutosArmazem")</li>
                                                     <li>@Html.ActionLink("Armazens", "Index", "Armazens")</li>
-                                                    <li>@Html.ActionLink("ProdutosArmazem", "Index", "ProdutosArmazem")</li>
-                                                    <li>@Html.ActionLink("Veiculos", "Index", "Veiculos")</li>
                                                 </ul>
                                             </li>
                                             <li>
                                                 <a href="#">Fornecedor</a>
                                                 <ul class="submenu">
+                                                    <li><h6>Pedidos</h6></li>
+                                                    <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
+                                                    <li><h6>Entregas</h6></li>
+                                                    <li>@Html.ActionLink("Enviar Pedido", "Create", "EnvioFornecedores")</li>
+                                                    <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioFornecedores")</li>
+                                                    <li>@Html.ActionLink("Entrega Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
+                                                    <li><h6>Meus Servicos</h6></li>
+                                                    <li>@Html.ActionLink("Produtos", "Index", "ProdutosFornecedor")</li>
                                                     <li>@Html.ActionLink("Fornecedores", "Index", "Fornecedores")</li>
-                                                    <li>@Html.ActionLink("Produtos Fornecedor", "Index", "ProdutosFornecedor")</li>
                                                 </ul>
                                             </li>
                                             <li>
                                                 <a href="#">Produtor</a>
                                                 <ul class="submenu">
-                                                    <li>@Html.ActionLink("Produtores", "Index", "Produtores")</li>
-                                                    <li>@Html.ActionLink("Produtos Produtor", "Index", "ProdutosProdutor")</li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">Demandas</a>
-                                                <ul class="submenu">
+                                                    <li><h6>Demandas</h6></li>
+                                                    <li>@Html.ActionLink("Criar Demanda", "Create", "DemandaFinalProdutor")</li>
                                                     <li>@Html.ActionLink("Demandas Encerradas", "IndexEncerrada", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pedidos</a>
-                                                <ul class="submenu">
-                                                    <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
-                                                    <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
+
+                                                    <li><h6>Entregas</h6></li>
+                                                    <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioArmarazem")</li>
+                                                    <li>@Html.ActionLink("Entrega Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
+                                                    <li><h6>Meus Servicos</h6></li>
+                                                    <li>@Html.ActionLink("Produtos", "Index", "ProdutosProdutor")</li>
+                                                    <li>@Html.ActionLink("Produtores", "Index", "Produtores")</li>
                                                 </ul>
                                             </li>
                                         </ul>

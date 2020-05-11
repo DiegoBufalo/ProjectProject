@@ -12,29 +12,17 @@ namespace SupplyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PedidoFinal_usuario
+    public partial class StatusEnvioFornecedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PedidoFinal_usuario()
+        public StatusEnvioFornecedor()
         {
             this.EnvioFornecedor = new HashSet<EnvioFornecedor>();
         }
     
-        public int idPedido { get; set; }
-        public int Usuario_idUsuario { get; set; }
-        public int Produto_fornecedor_idProduto_fornecedor { get; set; }
-        public int Armazem_idArmazem { get; set; }
-        public int statusPedido { get; set; }
-        public double preco_pedido { get; set; }
-        public int ano_pedido { get; set; }
-        public int mes_pedido { get; set; }
-        public int dia_pedido { get; set; }
-        public int quantidade { get; set; }
+        public int idStatusEnvio { get; set; }
+        public string statusEnvio { get; set; }
     
-        public virtual Armazem Armazem { get; set; }
-        public virtual Produto_fornecedor Produto_fornecedor { get; set; }
-        public virtual StatusPedido StatusPedido1 { get; set; }
-        public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EnvioFornecedor> EnvioFornecedor { get; set; }
     }

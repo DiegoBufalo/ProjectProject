@@ -12,19 +12,18 @@ namespace SupplyProject.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Pedido_usuario
+    public partial class EnvioFornecedor
     {
+        public int idEnvio { get; set; }
         public int idPedido { get; set; }
-        public int Usuario_idUsuario { get; set; }
-        public int Produto_fornecedor_idProduto_fornecedor { get; set; }
-        public int Armazem_idArmazem { get; set; }
-        public double preco_pedido { get; set; }
-        public int ano_pedido { get; set; }
-        public int mes_pedido { get; set; }
-        public int dia_pedido { get; set; }
+        public int idVeiculo { get; set; }
+        public int statusEnvio { get; set; }
+        public int ano_envio { get; set; }
+        public int mes_envio { get; set; }
+        public int dia_envio { get; set; }
     
-        public virtual Armazem Armazem { get; set; }
-        public virtual Produto_fornecedor Produto_fornecedor { get; set; }
-        public virtual Usuario Usuario { get; set; }
+        public virtual PedidoFinal_usuario PedidoFinal_usuario { get; set; }
+        public virtual StatusEnvioFornecedor StatusEnvioFornecedor { get; set; }
+        public virtual Veiculo Veiculo { get; set; }
     }
 }

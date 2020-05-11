@@ -303,6 +303,8 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\DemandaFinalProdutorController.cs" />
+    <Compile Include="Controllers\EnvioArmarazemController.cs" />
+    <Compile Include="Controllers\EnvioFornecedoresController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\HomeLogado.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -312,6 +314,8 @@
     <Compile Include="Controllers\ProdutosFornecedorController.cs" />
     <Compile Include="Controllers\ProdutosProdutorController.cs" />
     <Compile Include="Controllers\StatusDemandasController.cs" />
+    <Compile Include="Controllers\StatusEnvioArmazensController.cs" />
+    <Compile Include="Controllers\StatusEnvioFornecedorsController.cs" />
     <Compile Include="Controllers\StatusPedidoesController.cs" />
     <Compile Include="Controllers\UsuarioAutenticacaoController.cs" />
     <Compile Include="Controllers\UsuarioRemoveSessaoController.cs" />
@@ -327,7 +331,10 @@
     <Compile Include="Models\DemandaFinal_produtor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Demanda_produtor.cs">
+    <Compile Include="Models\EnvioArmarazem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EnvioFornecedor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Fornecedor.cs">
@@ -351,9 +358,6 @@
     <Compile Include="Models\PedidoFinal_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Pedido_usuario.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Produtor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -367,6 +371,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusDemanda.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusEnvioArmazem.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusEnvioFornecedor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StatusPedido.cs">
@@ -767,6 +777,20 @@
     <Content Include="Views\PedidoFinalUsuario\IndexEncerrado.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\DetailsEncerrado.cshtml" />
     <Content Include="Views\DemandaFinalProdutor\DetailsEncerrada.cshtml" />
+    <Content Include="Views\Testes\Index.cshtml" />
+    <Content Include="Views\EnvioFornecedores\Create.cshtml" />
+    <Content Include="Views\EnvioFornecedores\Delete.cshtml" />
+    <Content Include="Views\EnvioFornecedores\Details.cshtml" />
+    <Content Include="Views\EnvioFornecedores\Edit.cshtml" />
+    <Content Include="Views\EnvioFornecedores\Index.cshtml" />
+    <Content Include="Views\EnvioFornecedores\IndexConcluida.cshtml" />
+    <Content Include="Views\ProdutosArmazem\ExibirEstatisticas.cshtml" />
+    <Content Include="Views\EnvioArmarazem\Create.cshtml" />
+    <Content Include="Views\EnvioArmarazem\Delete.cshtml" />
+    <Content Include="Views\EnvioArmarazem\Details.cshtml" />
+    <Content Include="Views\EnvioArmarazem\Edit.cshtml" />
+    <Content Include="Views\EnvioArmarazem\Index.cshtml" />
+    <Content Include="Views\EnvioArmarazem\IndexEncerrada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

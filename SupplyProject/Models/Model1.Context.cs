@@ -26,9 +26,7 @@ namespace SupplyProject.Models
         }
     
         public virtual DbSet<Armazem> Armazem { get; set; }
-        public virtual DbSet<Demanda_produtor> Demanda_produtor { get; set; }
         public virtual DbSet<Fornecedor> Fornecedor { get; set; }
-        public virtual DbSet<Pedido_usuario> Pedido_usuario { get; set; }
         public virtual DbSet<Produto_armazem> Produto_armazem { get; set; }
         public virtual DbSet<Produto_fornecedor> Produto_fornecedor { get; set; }
         public virtual DbSet<Produto_produtor> Produto_produtor { get; set; }
@@ -39,5 +37,9 @@ namespace SupplyProject.Models
         public virtual DbSet<StatusDemanda> StatusDemanda { get; set; }
         public virtual DbSet<PedidoFinal_usuario> PedidoFinal_usuario { get; set; }
         public virtual DbSet<StatusPedido> StatusPedido { get; set; }
+        public virtual DbSet<EnvioFornecedor> EnvioFornecedor { get; set; }
+        public virtual DbSet<StatusEnvioFornecedor> StatusEnvioFornecedor { get; set; }
+        public virtual DbSet<EnvioArmarazem> EnvioArmarazem { get; set; }
+        public virtual DbSet<StatusEnvioArmazem> StatusEnvioArmazem { get; set; }
     }
 }

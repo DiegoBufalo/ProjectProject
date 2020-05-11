@@ -35,6 +35,9 @@
 .testimonial-bg {
     background: #f9fafc
 }
+h6 {
+    color: red;
+}
 
 .white-color {
     color: #fff
@@ -140,7 +143,7 @@ body {
   
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5 {
     font-family: "Oswald",sans-serif;
     color: #fff;
     margin-top: 0px;

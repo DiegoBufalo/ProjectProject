@@ -6,25 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="14cdd0c6b6b84439a82e92d74396dcf2" Name="Diagram1">
         <EntityTypeShape EntityType="SupplyProject_dbModel.Armazem" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SupplyProject_dbModel.Demanda_produtor" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Fornecedor" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SupplyProject_dbModel.Pedido_usuario" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Produto_armazem" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Produto_fornecedor" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Produto_produtor" Width="1.5" PointX="8.25" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Produtor" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Usuario" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Veiculo" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
-        <AssociationConnector Association="SupplyProject_dbModel.fk_Pedido_usuario_Armazem" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Armazem" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Veiculo_Armazem" ManuallyRouted="false" />
-        <AssociationConnector Association="SupplyProject_dbModel.fk_Demanda_produtor_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_has_Produto_armazem" ManuallyRouted="false" />
-        <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_has_Produtor" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_fornecedor_Fornecedor" ManuallyRouted="false" />
-        <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_has_Produto_fornecedor_Produto_fornecedor" ManuallyRouted="false" />
-        <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_armazem_Usuario1" ManuallyRouted="false" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_produtor_Produtor" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.DemandaFinal_produtor" Width="1.5" PointX="12.25" PointY="16" />
@@ -39,6 +31,16 @@
         <AssociationConnector Association="SupplyProject_dbModel.fk_Produto_has_Pedido" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_status_abertoEncerrado" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_Usuario_Usuario_Pedido" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.EnvioFornecedor" Width="1.5" PointX="11.5" PointY="9.375" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.StatusEnvioFornecedor" Width="1.5" PointX="9.25" PointY="2" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_pedido" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_Envio_has_status" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_veiculo" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.EnvioArmarazem" Width="1.5" PointX="14.5" PointY="17" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.StatusEnvioArmazem" Width="1.5" PointX="12.25" PointY="20.625" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_demanda" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_armazem" />
+        <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_deStatus" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

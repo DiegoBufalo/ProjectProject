@@ -23,6 +23,9 @@
 .theme-bg {
     background: #eb566c
 }
+h6 {
+    color: red;
+}
 
 .brand-bg {
     background: #f1f4fa
@@ -133,7 +136,7 @@ body {
     font-style: normal
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5 {
     font-family: "Oswald",sans-serif;
     color: #0b1c39;
     margin-top: 0px;

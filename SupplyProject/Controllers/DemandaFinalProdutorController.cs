@@ -6,11 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using SupplyProject.Models;
 
 namespace SupplyProject.Controllers
 {
-    public class DemandaFinalProdutorController : Controller
+    public class DemandaFinalProdutorController : BaseController
     {
         private SupplyProject_dbEntities db = new SupplyProject_dbEntities();
 
@@ -60,8 +61,9 @@ namespace SupplyProject.Controllers
         // GET: DemandaFinalProdutor/Create
         public ActionResult Create()
         {
+            
             ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario");
-            ViewBag.Produto_armazem_idProduto_armazem = new SelectList(db.Produto_armazem, "idProduto_armazem", "nome_prodA");
+            ViewBag.Produto_armazem_idProduto_armazem = new SelectList(db.Produto_armazem, "idProduto_armazem", "nome_prodA","Usuario_idUsuario");
             ViewBag.Produto_produtor_idProduto_produtor = new SelectList(db.Produto_produtor, "idProduto_produtor", "nome_prodP");
             ViewBag.status_demanda = new SelectList(db.StatusDemanda, "idDemandaFinal", "nome_status");
             return View();
@@ -72,8 +74,14 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idDemandaFinal,Produto_produtor_idProduto_produtor,Produto_armazem_idProduto_armazem,Usuario_idUsuario,status_demanda,ano_pedido,mes_pedido,dia_pedido")] DemandaFinal_produtor demandaFinal_produtor)
+        public ActionResult Create([Bind(Include = "idDemandaFinal,Produto_produtor_idProduto_produtor,Produto_armazem_idProduto_armazem,ano_pedido,mes_pedido,dia_pedido,quantidade")] DemandaFinal_produtor demandaFinal_produtor)
         {
+            Produto_armazem prodarm = db.Produto_armazem.Find(demandaFinal_produtor.Produto_armazem_idProduto_armazem);
+            int idUser = prodarm.Usuario_idUsuario;
+            Usuario userResp = db.Usuario.Find(idUser);
+            demandaFinal_produtor.Usuario_idUsuario = userResp.idUsuario;
+            demandaFinal_produtor.status_demanda = 1;
+
             if (ModelState.IsValid)
             {
                 db.DemandaFinal_produtor.Add(demandaFinal_produtor);
@@ -112,7 +120,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idDemandaFinal,Produto_produtor_idProduto_produtor,Produto_armazem_idProduto_armazem,Usuario_idUsuario,status_demanda,ano_pedido,mes_pedido,dia_pedido")] DemandaFinal_produtor demandaFinal_produtor)
+        public ActionResult Edit([Bind(Include = "idDemandaFinal,Produto_produtor_idProduto_produtor,Produto_armazem_idProduto_armazem,Usuario_idUsuario,status_demanda,ano_pedido,mes_pedido,dia_pedido,quantidade")] DemandaFinal_produtor demandaFinal_produtor)
         {
             if (ModelState.IsValid)
             {

@@ -1,0 +1,67 @@
+﻿@model SupplyProject.Models.EnvioArmarazem
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EnvioArmarazem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ano_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ano_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mes_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mes_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dia_envio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dia_envio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DemandaFinal_produtor.idDemandaFinal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DemandaFinal_produtor.idDemandaFinal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Veiculo.tipo_veiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Veiculo.tipo_veiculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusEnvioArmazem.statusEnvio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusEnvioArmazem.statusEnvio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+    @Html.ActionLink("Back to List", "Index")
+</p>

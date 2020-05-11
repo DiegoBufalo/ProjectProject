@@ -21,6 +21,11 @@ namespace SupplyProject.Controllers
             return View(produto_armazem.ToList());
         }
 
+        public ActionResult ExibirEstatisticas()
+        {
+            return View();
+        }
+
         // GET: ProdutosArmazem/Details/5
         public ActionResult Details(int? id)
         {
@@ -97,6 +102,18 @@ namespace SupplyProject.Controllers
             ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario", produto_armazem.Usuario_idUsuario);
             return View(produto_armazem);
         }
+
+       public ActionResult AtulizaArmazem(Produto_armazem produto)
+        {
+            if (ModelState.IsValid)
+            {
+               db.Entry(produto).State = EntityState.Modified;
+               db.SaveChanges();
+            }
+
+           return View("IndexEncerrado", "PedidoFinalUsuario");
+
+       }
 
         // GET: ProdutosArmazem/Delete/5
         public ActionResult Delete(int? id)

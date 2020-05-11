@@ -14,6 +14,13 @@ namespace SupplyProject.Models
     
     public partial class Veiculo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Veiculo()
+        {
+            this.EnvioFornecedor = new HashSet<EnvioFornecedor>();
+            this.EnvioArmarazem = new HashSet<EnvioArmarazem>();
+        }
+    
         public int idVeiculo { get; set; }
         public string tipo_veiculo { get; set; }
         public string custo_frete { get; set; }
@@ -25,5 +32,9 @@ namespace SupplyProject.Models
         public int Armazem_idArmazem { get; set; }
     
         public virtual Armazem Armazem { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnvioFornecedor> EnvioFornecedor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EnvioArmarazem> EnvioArmarazem { get; set; }
     }
 }

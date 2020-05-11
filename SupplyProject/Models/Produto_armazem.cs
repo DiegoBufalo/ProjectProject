@@ -17,7 +17,6 @@ namespace SupplyProject.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Produto_armazem()
         {
-            this.Demanda_produtor = new HashSet<Demanda_produtor>();
             this.DemandaFinal_produtor = new HashSet<DemandaFinal_produtor>();
         }
     
@@ -33,8 +32,6 @@ namespace SupplyProject.Models
         public int Armazem_idArmazem { get; set; }
     
         public virtual Armazem Armazem { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Demanda_produtor> Demanda_produtor { get; set; }
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DemandaFinal_produtor> DemandaFinal_produtor { get; set; }

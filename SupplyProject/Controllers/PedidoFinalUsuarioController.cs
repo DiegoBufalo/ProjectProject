@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -10,14 +12,15 @@ using SupplyProject.Models;
 
 namespace SupplyProject.Controllers
 {
-    public class PedidoFinalUsuarioController : Controller
+    public class PedidoFinalUsuarioController : BaseController
     {
         private SupplyProject_dbEntities db = new SupplyProject_dbEntities();
 
         // GET: PedidoFinalUsuario
         public ActionResult Index()
         {
-            var pedidoFinal_usuario = db.PedidoFinal_usuario.Include(p => p.Armazem).Include(p => p.Produto_fornecedor).Include(p => p.StatusPedido1).Where(p => p.statusPedido ==1).Include(p => p.Usuario);
+            var pedidoFinal_usuario = db.PedidoFinal_usuario.Include(p => p.Armazem).Include(p => p.Produto_fornecedor).Include(p => p.StatusPedido1).Where(p => p.statusPedido ==1).Include(p => p.Usuario).Include(p => p.EnvioFornecedor);
+            
             return View(pedidoFinal_usuario.ToList());
         }
 
@@ -26,6 +29,7 @@ namespace SupplyProject.Controllers
             var pedidoFinal_usuario = db.PedidoFinal_usuario.Include(p => p.Armazem).Include(p => p.Produto_fornecedor).Include(p => p.StatusPedido1).Where(p => p.statusPedido == 2).Include(p => p.Usuario);
             return View(pedidoFinal_usuario.ToList());
         }
+
         // GET: PedidoFinalUsuario/Details/5
         public ActionResult Details(int? id)
         {
@@ -70,8 +74,13 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPedido,Usuario_idUsuario,Produto_fornecedor_idProduto_fornecedor,Armazem_idArmazem,statusPedido,preco_pedido,ano_pedido,mes_pedido,dia_pedido")] PedidoFinal_usuario pedidoFinal_usuario)
+        public ActionResult Create([Bind(Include = "idPedido,Usuario_idUsuario,Produto_fornecedor_idProduto_fornecedor,Armazem_idArmazem,statusPedido,ano_pedido,mes_pedido,dia_pedido,quantidade")] PedidoFinal_usuario pedidoFinal_usuario)
         {
+            Produto_fornecedor produtoFornecedor = db.Produto_fornecedor.Find(pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
+            double precoProduto = produtoFornecedor.preco_prodF;
+            pedidoFinal_usuario.preco_pedido = precoProduto * pedidoFinal_usuario. quantidade;
+
+
             if (ModelState.IsValid)
             {
                 db.PedidoFinal_usuario.Add(pedidoFinal_usuario);
@@ -83,6 +92,7 @@ namespace SupplyProject.Controllers
             ViewBag.Produto_fornecedor_idProduto_fornecedor = new SelectList(db.Produto_fornecedor, "idProduto_fornecedor", "nome_prodF", pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
             ViewBag.statusPedido = new SelectList(db.StatusPedido, "idStatus", "nome_status", pedidoFinal_usuario.statusPedido);
             ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario", pedidoFinal_usuario.Usuario_idUsuario);
+
             return View(pedidoFinal_usuario);
         }
 
@@ -110,14 +120,24 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idPedido,Usuario_idUsuario,Produto_fornecedor_idProduto_fornecedor,Armazem_idArmazem,statusPedido,preco_pedido,ano_pedido,mes_pedido,dia_pedido")] PedidoFinal_usuario pedidoFinal_usuario)
+        public ActionResult Edit(PedidoFinal_usuario pedidoFinal_usuario)
         {
+            //[Bind(Include = "idPedido,Usuario_idUsuario,Produto_fornecedor_idProduto_fornecedor,Armazem_idArmazem,statusPedido,preco_pedido,ano_pedido,mes_pedido,dia_pedido,quantidade")]
             if (ModelState.IsValid)
             {
                 db.Entry(pedidoFinal_usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            int qtdPedido = pedidoFinal_usuario.quantidade;
+            Produto_armazem produtoArmazem = db.Produto_armazem.Find(pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
+            int qtdEstoque = produtoArmazem.quantidade_prodA;
+            produtoArmazem.quantidade_prodA = qtdEstoque + qtdPedido;
+
+            ProdutosArmazemController prod = new ProdutosArmazemController();
+            prod.AtulizaArmazem(produtoArmazem);
+
             ViewBag.Armazem_idArmazem = new SelectList(db.Armazem, "idArmazem", "nome_armazem", pedidoFinal_usuario.Armazem_idArmazem);
             ViewBag.Produto_fornecedor_idProduto_fornecedor = new SelectList(db.Produto_fornecedor, "idProduto_fornecedor", "nome_prodF", pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
             ViewBag.statusPedido = new SelectList(db.StatusPedido, "idStatus", "nome_status", pedidoFinal_usuario.statusPedido);

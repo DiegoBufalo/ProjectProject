@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<SupplyProject.Models.PedidoFinal_usuario>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
@@ -36,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </th>
         <th></th>
     </tr>
 
@@ -66,11 +68,15 @@
             @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
         </td>
         <td>
-            @Html.ActionLink("Concluir", "Edit", new { id=item.idPedido }) |
+            @Html.DisplayFor(modelItem => item.quantidade)
+        </td>
+        <td>
+            @*@Html.ActionLink("Concluir", "Edit", new { id=item.idPedido }) |*@
             @Html.ActionLink("Details", "Details", new { id=item.idPedido }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.idPedido })
         </td>
     </tr>
 }
+    
 
 </table>

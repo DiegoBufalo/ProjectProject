@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SupplyProject.Models.EnvioFornecedor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ano_envio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mes_envio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia_envio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PedidoFinal_usuario.idPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusEnvioFornecedor.statusEnvio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Veiculo.idVeiculo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ano_envio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mes_envio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dia_envio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PedidoFinal_usuario.idPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusEnvioFornecedor.statusEnvio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Veiculo.idVeiculo)
+        </td>
+        <td>
+            @Html.ActionLink("Concluir", "Edit", new { id=item.idEnvio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idEnvio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idEnvio })
+        </td>
+    </tr>
+}
+
+</table>
