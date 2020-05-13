@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Web;
 using System.Web.Mvc;
+using SupplyProject.Models;
 using SupplyProject.Services;
 
 namespace SupplyProject.Filtros
@@ -31,7 +35,18 @@ namespace SupplyProject.Filtros
                         Redirect("/Usuarios/Index?Url=" +
                                  filtroDeContexto.HttpContext.Request.Url?.LocalPath);
                 }
+                //else
+                //{
+                //    filtroDeContexto.
+                //        RequestContext.
+                //        HttpContext.
+                //        Response.
+                //        Redirect("/HomeLogado/Index");
+                //}
+                
             }
+            
         }
+       
     }
 }

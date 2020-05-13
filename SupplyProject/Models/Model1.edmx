@@ -178,7 +178,6 @@
           <Property Name="senha_usuario" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="email_usuario" Type="varchar" MaxLength="70" Nullable="false" />
           <Property Name="telefone_usuario" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Armazem_idArmazem" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Veiculo">
           <Key>
@@ -300,20 +299,6 @@
               <PropertyRef Name="idArmazem" />
             </Principal>
             <Dependent Role="Produto_armazem">
-              <PropertyRef Name="Armazem_idArmazem" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Produto_armazem_Usuario">
-          <End Role="Armazem" Type="Self.Armazem" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Armazem">
-              <PropertyRef Name="idArmazem" />
-            </Principal>
-            <Dependent Role="Usuario">
               <PropertyRef Name="Armazem_idArmazem" />
             </Dependent>
           </ReferentialConstraint>
@@ -501,10 +486,6 @@
             <End Role="Armazem" EntitySet="Armazem" />
             <End Role="Produto_armazem" EntitySet="Produto_armazem" />
           </AssociationSet>
-          <AssociationSet Name="fk_Produto_armazem_Usuario" Association="Self.fk_Produto_armazem_Usuario">
-            <End Role="Armazem" EntitySet="Armazem" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
           <AssociationSet Name="fk_Produto_armazem_Usuario1" Association="Self.fk_Produto_armazem_Usuario1">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Produto_armazem" EntitySet="Produto_armazem" />
@@ -563,7 +544,6 @@
           <Property Name="profundidade_armazem" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefone_armazem" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Produto_armazem" Relationship="Self.fk_Produto_armazem_Armazem" FromRole="Armazem" ToRole="Produto_armazem" />
-          <NavigationProperty Name="Usuario" Relationship="Self.fk_Produto_armazem_Usuario" FromRole="Armazem" ToRole="Usuario" />
           <NavigationProperty Name="Veiculo" Relationship="Self.fk_Veiculo_Armazem" FromRole="Armazem" ToRole="Veiculo" />
           <NavigationProperty Name="PedidoFinal_usuario" Relationship="SupplyProject_dbModel.fk_Pedido_usuario_ArmazemF" FromRole="Armazem" ToRole="PedidoFinal_usuario" />
         </EntityType>
@@ -655,8 +635,6 @@
           <Property Name="senha_usuario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email_usuario" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefone_usuario" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Armazem_idArmazem" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Armazem" Relationship="Self.fk_Produto_armazem_Usuario" FromRole="Usuario" ToRole="Armazem" />
           <NavigationProperty Name="Produto_armazem" Relationship="Self.fk_Produto_armazem_Usuario1" FromRole="Usuario" ToRole="Produto_armazem" />
           <NavigationProperty Name="DemandaFinal_produtor" Relationship="SupplyProject_dbModel.fk_Demanda_produtor_UsuarioFinal" FromRole="Usuario" ToRole="DemandaFinal_produtor" />
           <NavigationProperty Name="PedidoFinal_usuario" Relationship="SupplyProject_dbModel.fk_Usuario_Usuario_Pedido" FromRole="Usuario" ToRole="PedidoFinal_usuario" />
@@ -688,20 +666,6 @@
               <PropertyRef Name="idArmazem" />
             </Principal>
             <Dependent Role="Produto_armazem">
-              <PropertyRef Name="Armazem_idArmazem" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Produto_armazem_Usuario">
-          <End Role="Armazem" Type="Self.Armazem" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Armazem">
-              <PropertyRef Name="idArmazem" />
-            </Principal>
-            <Dependent Role="Usuario">
               <PropertyRef Name="Armazem_idArmazem" />
             </Dependent>
           </ReferentialConstraint>
@@ -772,10 +736,6 @@
           <AssociationSet Name="fk_Produto_armazem_Armazem" Association="Self.fk_Produto_armazem_Armazem">
             <End Role="Armazem" EntitySet="Armazem" />
             <End Role="Produto_armazem" EntitySet="Produto_armazem" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Produto_armazem_Usuario" Association="Self.fk_Produto_armazem_Usuario">
-            <End Role="Armazem" EntitySet="Armazem" />
-            <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <AssociationSet Name="fk_Veiculo_Armazem" Association="Self.fk_Veiculo_Armazem">
             <End Role="Armazem" EntitySet="Armazem" />
@@ -1234,7 +1194,6 @@
                 <ScalarProperty Name="senha_usuario" ColumnName="senha_usuario" />
                 <ScalarProperty Name="email_usuario" ColumnName="email_usuario" />
                 <ScalarProperty Name="telefone_usuario" ColumnName="telefone_usuario" />
-                <ScalarProperty Name="Armazem_idArmazem" ColumnName="Armazem_idArmazem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -28,9 +28,7 @@ namespace SupplyProject.Models
         public string senha_usuario { get; set; }
         public string email_usuario { get; set; }
         public string telefone_usuario { get; set; }
-        public int Armazem_idArmazem { get; set; }
     
-        public virtual Armazem Armazem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produto_armazem> Produto_armazem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

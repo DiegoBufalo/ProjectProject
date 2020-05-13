@@ -57,55 +57,130 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li>@Html.ActionLink("Home", "Index", "HomeLogado")</li>
-                                            <li>
-                                                <a href="#">Usuario Comum</a>
-                                                <ul class="submenu">
-                                                    <li><h6>Demandas</h6></li>
-                                                    <li>@Html.ActionLink("Demandas Recebidas", "Index", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
-                                                    <li><h6>Pedidos</h6></li>
-                                                    <li>@Html.ActionLink("Fazer Pedido", "Create", "PedidoFinalUsuario")</li>
-                                                    <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
-                                                    <li><h6>Entregas do Fornecedor</h6></li>
-                                                    <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioFornecedores")</li>
-                                                    <li>@Html.ActionLink("Entregas Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
-                                                    <li><h6>Entregas do Armazem</h6></li>
-                                                    <li>@Html.ActionLink("Entregar Demanda", "Create", "EnvioArmarazem")</li>
-                                                    <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioArmarazem")</li>
-                                                    <li>@Html.ActionLink("Entregas Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
-                                                    <li><h6>Meus Servicos</h6></li>
-                                                    <li>@Html.ActionLink("Produtos", "Index", "ProdutosArmazem")</li>
-                                                    <li>@Html.ActionLink("Armazens", "Index", "Armazens")</li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">Fornecedor</a>
-                                                <ul class="submenu">
-                                                    <li><h6>Pedidos</h6></li>
-                                                    <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
-                                                    <li><h6>Entregas</h6></li>
-                                                    <li>@Html.ActionLink("Enviar Pedido", "Create", "EnvioFornecedores")</li>
-                                                    <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioFornecedores")</li>
-                                                    <li>@Html.ActionLink("Entrega Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
-                                                    <li><h6>Meus Servicos</h6></li>
-                                                    <li>@Html.ActionLink("Produtos", "Index", "ProdutosFornecedor")</li>
-                                                    <li>@Html.ActionLink("Fornecedores", "Index", "Fornecedores")</li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="#">Produtor</a>
-                                                <ul class="submenu">
-                                                    <li><h6>Demandas</h6></li>
-                                                    <li>@Html.ActionLink("Criar Demanda", "Create", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Encerradas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                            @if(Session["tipoUsuario"].ToString() == "Gerente")
+                                            {
+                                                <li>
+                                                    <a href="#">Usuarios</a>
+                                                    <ul class="submenu">
+                                                        <li>@Html.ActionLink("Usuarios Cadastrados", "Index", "Usuarios")</li>
+                                                        <li>@Html.ActionLink("Cadastrar novo usuario", "Create", "Usuarios")</li>
+                                                    </ul>
+                                                </li>
+                                            }
 
-                                                    <li><h6>Entregas</h6></li>
-                                                    <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioArmarazem")</li>
-                                                    <li>@Html.ActionLink("Entrega Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
-                                                    <li><h6>Meus Servicos</h6></li>
-                                                    <li>@Html.ActionLink("Produtos", "Index", "ProdutosProdutor")</li>
-                                                    <li>@Html.ActionLink("Produtores", "Index", "Produtores")</li>
+                                            @if (Session["tipoUsuario"].ToString() == "Gerente" ||
+                                                 Session["tipoUsuario"].ToString() == "SuppyChain" ||
+                                                 Session["tipoUsuario"].ToString() == "Produtor")
+                                            {
+                                                <li>
+                                                    <a href="#">Demandas</a>
+                                                    <ul class="submenu">
+                                                        @if (Session["tipoUsuario"].ToString() == "Produtor")
+                                                        {
+                                                            <li>@Html.ActionLink("Criar Demanda", "Create", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
+                                                        @if (Session["tipoUsuario"].ToString() == "Gerente" ||
+                                                             Session["tipoUsuario"].ToString() == "SuppyChain")
+                                                        {
+                                                            <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                            @if (Session["tipoUsuario"].ToString() == "Gerente" ||
+                                                 Session["tipoUsuario"].ToString() == "SuppyChain" ||
+                                                 Session["tipoUsuario"].ToString() == "Fornecedor")
+                                            {
+                                                <li>
+                                                    <a href="#">Pedidos</a>
+                                                    <ul class="submenu">
+                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                        {
+                                                            <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
+                                                            <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
+                                                        }
+                                                        @if (Session["tipoUsuario"].ToString() == "SuppyChain" ||
+                                                             Session["tipoUsuario"].ToString() == "Gerente")
+                                                        {
+                                                            <li>@Html.ActionLink("Fazer Pedido", "Create", "PedidoFinalUsuario")</li>
+                                                            <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
+                                                            <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                            <li>
+                                                <a href="#">Entregas</a>
+                                                <ul class="submenu">
+                                                    @if (Session["tipoUsuario"].ToString() == "Gerente" ||
+                                                        Session["tipoUsuario"].ToString() == "SupplyChain")
+                                                    {
+                                                        <li><h6>Entregas do Fornecedor</h6></li>
+                                                        <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioFornecedores")</li>
+                                                        <li>@Html.ActionLink("Entrega Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
+                                                        <li><h6>Entregas para o Armazem</h6></li>
+                                                        <li>@Html.ActionLink("Enviar Demanda", "Create", "EnvioArmarazem")</li>
+                                                        <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioArmarazem")</li>
+                                                        <li>@Html.ActionLink("Entregas Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
+                                                    }
+                                                    @if (Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                    {
+                                                        <li>@Html.ActionLink("Enviar Pedido", "Create", "EnvioFornecedores")</li>
+                                                        <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioFornecedores")</li>
+                                                        <li>@Html.ActionLink("Entrega Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
+                                                    }
+                                                    @if (Session["tipoUsuario"].ToString() == "Produtor")
+                                                    {
+                                                        <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioArmarazem")</li>
+                                                        <li>@Html.ActionLink("Entregas Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Produtos</a>
+                                                <ul class="submenu">
+                                                    @if (Session["tipoUsuario"].ToString() == "Gerente" ||
+                                                        Session["tipoUsuario"].ToString() == "Supply")
+                                                    {
+                                                        <li>@Html.ActionLink("Meus produtos", "Index", "ProdutosArmazem")</li>
+                                                        <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosFornecedor")</li>
+                                                    }
+                                                    @if (Session["tipoUsuario"].ToString() == "Produtor")
+                                                    {
+                                                        <li>@Html.ActionLink("meus Produtos", "Index", "ProdutosProdutor")</li>
+                                                    }
+                                                    @if (Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                    {
+                                                        <li>@Html.ActionLink("Meus produtos", "Index", "ProdutosFornecedor")</li>
+                                                        <li>@Html.ActionLink("Produtos do armazem", "Index", "ProdutosArmazem")</li>
+
+                                                    }
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#">Unidades</a>
+                                                <ul class="submenu">
+                                                    @if (Session["tipoUsuario"].ToString() == "Gerente" ||
+                                                            Session["tipoUsuario"].ToString() == "Supply")
+                                                    {
+                                                        <li>@Html.ActionLink("Meus armazens", "Index", "Armazens")</li>
+                                                        <li>@Html.ActionLink("Produtores", "Index", "Produtores")</li>
+                                                        <li>@Html.ActionLink("Fornecedores", "Index", "Fornecedores")</li>
+                                                    }
+                                                    @if (Session["tipoUsuario"].ToString() == "Produtor")
+                                                    {
+                                                        <li>@Html.ActionLink("Meus produtores", "Index", "Produtores")</li>
+                                                        <li>@Html.ActionLink("Meus armazens", "Index", "Armazens")</li>
+                                                    }
+                                                    @if (Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                    {
+                                                        <li>@Html.ActionLink("Meus fornecedores", "Index", "Fornecedores")</li>
+                                                        <li>@Html.ActionLink("Armazens compradores", "Index", "Armazens")</li>
+
+                                                    }
                                                 </ul>
                                             </li>
                                         </ul>

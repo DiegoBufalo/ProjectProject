@@ -13,7 +13,7 @@ namespace SupplyProject.Controllers
         public ActionResult RemoveSessao()
         {
             Response.Cookies["UserCookieAuthentication"].Expires = DateTime.Now.AddDays(-1);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Usuario");
         }
     }
 }

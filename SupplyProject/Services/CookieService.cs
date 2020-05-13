@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SupplyProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ namespace SupplyProject.Services
 
             //Setando o ID do usuário no cookie
             userCookie.Values["IDUsuario"] = CriptografiaService.Criptografar(IDUsuario.ToString());
-
+            
             //Definindo o prazo de vida do cookie
             userCookie.Expires = DateTime.Now.AddDays(1);
 
