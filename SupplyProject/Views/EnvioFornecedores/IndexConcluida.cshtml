@@ -47,13 +47,13 @@
             </td>
             <td>
                 @*@Html.ActionLink("Concluir Pedido", "Edit","PedidoFinalUsuario", new { id = item.idPedido })|*@
-                @if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
+                @*@if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
                 {
                     if (item.PedidoFinal_usuario.statusPedido == 1)
                     {
                         <a href="@Url.Action("Edit","PedidoFinalUsuario", new { id = item.idPedido })">Concluir Pedido</a>
                     }
-                }
+                }*@
 
                 @Html.ActionLink("Details", "Details", new { id = item.idEnvio })
 

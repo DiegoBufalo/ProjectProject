@@ -108,6 +108,13 @@ namespace SupplyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idEnvio,idDemanda,idVeiculo,statusEnvio,ano_envio,mes_envio,dia_envio")] EnvioArmarazem envioArmarazem)
         {
+            if(envioArmarazem.statusEnvio == 2)
+            {
+                DemandaFinal_produtor demanda = db.DemandaFinal_produtor.Find(envioArmarazem.idDemanda);
+                demanda.status_demanda = 2;
+                DemandaFinalProdutorController demandaController = new DemandaFinalProdutorController();
+                demandaController.Edit(demanda.idDemandaFinal);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(envioArmarazem).State = EntityState.Modified;

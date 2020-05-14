@@ -126,6 +126,8 @@
                                                         <li>@Html.ActionLink("Enviar Demanda", "Create", "EnvioArmarazem")</li>
                                                         <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioArmarazem")</li>
                                                         <li>@Html.ActionLink("Entregas Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
+                                                        <li><h6>Veiculos</h6></li>
+                                                        <li>@Html.ActionLink("Veiculos", "Index", "Veiculos")</li>
                                                     }
                                                     @if (Session["tipoUsuario"].ToString() == "Fornecedor")
                                                     {

@@ -112,17 +112,19 @@ namespace SupplyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idEnvio,idPedido,idVeiculo,statusEnvio,ano_envio,mes_envio,dia_envio")] EnvioFornecedor envioFornecedor)
         {
+            if(envioFornecedor.statusEnvio == 2)
+            {
+                PedidoFinal_usuario pedido = db.PedidoFinal_usuario.Find(envioFornecedor.idPedido);
+                pedido.statusPedido = 2;
+                PedidoFinalUsuarioController pedidoController = new PedidoFinalUsuarioController();
+                pedidoController.Edit(pedido.idPedido);
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(envioFornecedor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            int idPedido = envioFornecedor.idPedido;
-            PedidoFinal_usuario pedido = db.PedidoFinal_usuario.Find(idPedido);
-            pedido.statusPedido = 2;
-            PedidoFinalUsuarioController pedidoConcluido = new PedidoFinalUsuarioController();
-            pedidoConcluido.Edit(pedido);
             
 
             ViewBag.idPedido = new SelectList(db.PedidoFinal_usuario, "idPedido", "idPedido", envioFornecedor.idPedido);

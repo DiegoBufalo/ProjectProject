@@ -46,14 +46,14 @@
                 @Html.DisplayFor(modelItem => item.dia_envio)/@Html.DisplayFor(modelItem => item.mes_envio)/@Html.DisplayFor(modelItem => item.ano_envio)
             </td>
             <td>
-                @if (Session["tipoUsuario"].ToString() == "Produtor")
+                @*@if (Session["tipoUsuario"].ToString() == "Produtor")
                 {
                     if (item.DemandaFinal_produtor.status_demanda == 1)
                     {
                         <a href="@Url.Action("Edit","DemandaFinalProdutor", new { id = item.idDemanda })">Concluir Demanda</a>
                     }
-                }|
-                @Html.ActionLink("Details", "Details", new { id = item.idEnvio }) |
+                }*@
+                | @Html.ActionLink("Details", "Details", new { id = item.idEnvio }) |
             </td>
         </tr>
     }
