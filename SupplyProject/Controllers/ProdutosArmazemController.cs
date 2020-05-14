@@ -69,7 +69,7 @@ namespace SupplyProject.Controllers
         }
 
         // GET: ProdutosArmazem/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Atualizar(int? id)
         {
             if (id == null)
             {

@@ -134,11 +134,15 @@
                                                         <li>@Html.ActionLink("Enviar Pedido", "Create", "EnvioFornecedores")</li>
                                                         <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioFornecedores")</li>
                                                         <li>@Html.ActionLink("Entrega Concluidas", "IndexConcluida", "EnvioFornecedores")</li>
+                                                        <li><h6>Veiculos</h6></li>
+                                                        <li>@Html.ActionLink("Veiculos", "Index", "Veiculos")</li>
                                                     }
                                                     @if (Session["tipoUsuario"].ToString() == "Produtor")
                                                     {
                                                         <li>@Html.ActionLink("Entregas Em transito", "Index", "EnvioArmarazem")</li>
                                                         <li>@Html.ActionLink("Entregas Concluidas", "IndexEncerrada", "EnvioArmarazem")</li>
+                                                        <li><h6>Veiculos</h6></li>
+                                                        <li>@Html.ActionLink("Veiculos", "Index", "Veiculos")</li>
                                                     }
                                                 </ul>
                                             </li>
@@ -149,7 +153,8 @@
                                                         Session["tipoUsuario"].ToString() == "Supply")
                                                     {
                                                         <li>@Html.ActionLink("Meus produtos", "Index", "ProdutosArmazem")</li>
-                                                        <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosFornecedor")</li>
+                                                        <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosProdutor")</li>
+                                                        <li>@Html.ActionLink("Produtos do Fornecedor", "Index", "ProdutosFornecedor")</li>
                                                     }
                                                     @if (Session["tipoUsuario"].ToString() == "Produtor")
                                                     {

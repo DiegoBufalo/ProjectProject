@@ -15,9 +15,9 @@
         @Html.ActionLink("Exibir Gráficos", "ExibirEstatisticas")
     </p>
 
-    <p>
+    @*<p>
         @Html.ActionLink("Inserir novo produto", "Create")
-    </p>
+    </p>*@
 }
 
 <table class="table">
@@ -59,7 +59,10 @@
                 @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
             </td>
             <td>
-
+                @if (Session["tipoUsuario"].ToString() == "Gerente")
+                {
+                    @Html.ActionLink("Atualizar", "Atualizar", new { id = item.idProduto_armazem })
+                }
                 | @Html.ActionLink("Detalhar", "Details", new { id = item.idProduto_armazem }) |
 
             </td>

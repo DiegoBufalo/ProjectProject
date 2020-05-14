@@ -741,7 +741,7 @@
     <Content Include="Views\ProdutosArmazem\Create.cshtml" />
     <Content Include="Views\ProdutosArmazem\Delete.cshtml" />
     <Content Include="Views\ProdutosArmazem\Details.cshtml" />
-    <Content Include="Views\ProdutosArmazem\Edit.cshtml" />
+    <Content Include="Views\ProdutosArmazem\Atualizar.cshtml" />
     <Content Include="Views\ProdutosArmazem\Index.cshtml" />
     <Content Include="Views\ProdutosFornecedor\Create.cshtml" />
     <Content Include="Views\ProdutosFornecedor\Delete.cshtml" />

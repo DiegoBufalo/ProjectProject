@@ -8,10 +8,13 @@
 }
 
 <h2>Frota de Veiculos</h2>
-
+@if (Session["tipoUsuario"].ToString() == "Gerente")
+{
 <p>
     @Html.ActionLink("Inserir novo veiculo", "Create")
 </p>
+}
+
 <table class="table">
     <tr>
         <th>

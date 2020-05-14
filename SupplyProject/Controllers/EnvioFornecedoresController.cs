@@ -69,7 +69,7 @@ namespace SupplyProject.Controllers
             prodArmazem.quantidade_prodA = quantidadeEstoque + quantidadePedido;
             ProdutosArmazemController prodControl = new ProdutosArmazemController();
             int idProduto = prodArmazem.idProduto_armazem;
-            prodControl.Edit(idProduto);
+            prodControl.Atualizar(idProduto);
 
             envioFornecedor.statusEnvio = 1;
             if (ModelState.IsValid)

@@ -9,10 +9,13 @@
 }
 
 <h2>Produtos Produtor</h2>
+@if (Session["tipoUsuario"].ToString() == "Fornecedor")
+{
+    <p>
+        @Html.ActionLink("Inserir novo Produto", "Create")
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Inserir novo Produto", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -20,6 +23,9 @@
         </th>
         <th>
             Nome
+        </th>
+        <th>
+            Preco
         </th>
         <th>
             Fornecedor que produz
@@ -35,6 +41,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.nome_prodF)
+            </td>]
+            <td>
+                @Html.DisplayFor(modelItem => item.preco_prodF)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fornecedor.nome_fornecedor)
@@ -42,10 +51,10 @@
             <td>
                 @if (Session["tipoUsuario"].ToString() == "Fornecedor")
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idProduto_fornecedor })
+                    @Html.ActionLink("Atualizar", "Edit", new { id = item.idProduto_fornecedor })
                 }|
                 @Html.ActionLink("Detalhes", "Details", new { id = item.idProduto_fornecedor }) |
-               
+
             </td>
         </tr>
     }

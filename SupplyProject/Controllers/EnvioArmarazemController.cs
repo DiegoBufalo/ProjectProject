@@ -66,7 +66,7 @@ namespace SupplyProject.Controllers
             prodArmazem.quantidade_prodA = qtdEstoque - qtdDemanda;
             ProdutosArmazemController prodControl = new ProdutosArmazemController();
             int idProd = prodArmazem.idProduto_armazem;
-            prodControl.Edit(idProd);
+            prodControl.Atualizar(idProd);
 
             envioArmarazem.statusEnvio = 1;
 

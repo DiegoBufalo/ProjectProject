@@ -50,6 +50,21 @@ namespace SupplyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idProduto_fornecedor,nome_prodF,preco_prodF,peso_prodF,largura_prodF,altura_prodF,profundidade_prodF,quantidade_prodF,tempo_producaoF,Fornecedor_idFornecedor")] Produto_fornecedor produto_fornecedor)
         {
+            ProdutosArmazemController cloneProd = new ProdutosArmazemController();
+            Produto_armazem prodArmazem = new Produto_armazem();
+            prodArmazem.idProduto_armazem = produto_fornecedor.idProduto_fornecedor;
+            prodArmazem.nome_prodA = produto_fornecedor.nome_prodF;
+            prodArmazem.preco_prodA = produto_fornecedor.preco_prodF;
+            prodArmazem.peso_prodA = produto_fornecedor.peso_prodF;
+            prodArmazem.largura_prodA = produto_fornecedor.largura_prodF;
+            prodArmazem.altura_prodA = produto_fornecedor.altura_prodF;
+            prodArmazem.profundidade_prodA = produto_fornecedor.profundidade_prodF;
+            prodArmazem.quantidade_prodA = 0;
+            prodArmazem.Usuario_idUsuario = 1;
+            prodArmazem.Armazem_idArmazem = 1;
+            cloneProd.Create(prodArmazem);
+
+
             if (ModelState.IsValid)
             {
                 db.Produto_fornecedor.Add(produto_fornecedor);
@@ -84,6 +99,18 @@ namespace SupplyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idProduto_fornecedor,nome_prodF,preco_prodF,peso_prodF,largura_prodF,altura_prodF,profundidade_prodF,quantidade_prodF,tempo_producaoF,Fornecedor_idFornecedor")] Produto_fornecedor produto_fornecedor)
         {
+            ProdutosArmazemController prodArmController = new ProdutosArmazemController();
+            Produto_armazem prodArmazem = db.Produto_armazem.Find(produto_fornecedor.idProduto_fornecedor);
+            
+                prodArmazem.nome_prodA = produto_fornecedor.nome_prodF;
+                prodArmazem.preco_prodA = produto_fornecedor.preco_prodF;
+                prodArmazem.peso_prodA = produto_fornecedor.peso_prodF;
+                prodArmazem.altura_prodA = produto_fornecedor.altura_prodF;
+                prodArmazem.largura_prodA = produto_fornecedor.largura_prodF;
+                prodArmazem.profundidade_prodA = produto_fornecedor.profundidade_prodF;
+                prodArmController.Atualizar(prodArmazem.idProduto_armazem);
+            
+
             if (ModelState.IsValid)
             {
                 db.Entry(produto_fornecedor).State = EntityState.Modified;
