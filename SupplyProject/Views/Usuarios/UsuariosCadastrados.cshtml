@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SupplyProject.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Cargo
+        </th>
+       
+        <th>
+            E-mail
+        </th>
+        <th>
+            Telefone
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_usuario)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.email_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefone_usuario)
+        </td>
+        <td>
+            @Html.ActionLink("Atualizar", "Edit", new { id=item.idUsuario }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.idUsuario })
+        </td>
+    </tr>
+}
+
+</table>

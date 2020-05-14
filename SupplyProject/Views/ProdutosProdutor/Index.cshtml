@@ -8,39 +8,24 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Produto Produtor</h2>
+@if (Session["tipoUsuario"].ToString() == "Produtor")
+{
+    <p>
+        @Html.ActionLink("Inserir novo produto", "Create")
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nome_prodP)
+            Id produto
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.preco_prodP)
+            Nome
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.peso_prodP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.largura_prodP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.altura_prodP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.profundidade_prodP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.quantidade_prodP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tempo_producaoP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Produtor.nome_produtor)
+            Produtor que produz
         </th>
         <th></th>
     </tr>
@@ -49,36 +34,21 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.idProduto_produtor)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.nome_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.preco_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.peso_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.largura_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.altura_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.profundidade_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantidade_prodP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.tempo_producaoP)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Produtor.nome_produtor)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idProduto_produtor }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idProduto_produtor }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idProduto_produtor })
+                @if (Session["tipoUsuario"].ToString() == "Produtor")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idProduto_produtor })
+                }|
+                @Html.ActionLink("Detalhes", "Details", new { id = item.idProduto_produtor }) |
+
             </td>
         </tr>
     }

@@ -4,14 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div class="divMeio">
     <h4>Armazem</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nome_armazem)
+            ID do armazem
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idArmazem)
+        </dd>
+
+        <dt>
+            Nome do armazem
         </dt>
 
         <dd>
@@ -19,56 +26,45 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.logradouro_armazem)
+            Endereco
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.logradouro_armazem)
+            @Html.DisplayFor(model => model.logradouro_armazem), @Html.DisplayFor(model => model.numlogradouro_armazem)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.numlogradouro_armazem)
+            Largura do armazem
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.numlogradouro_armazem)
+            @Html.DisplayFor(model => model.largura_armazem) (Metros)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.largura_armazem)
+            Altura do armazem
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.largura_armazem)
+            @Html.DisplayFor(model => model.altura_armazem) (Metros)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.altura_armazem)
+            Profundidade do armazem
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.altura_armazem)
+            @Html.DisplayFor(model => model.profundidade_armazem) (Metros)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.profundidade_armazem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.profundidade_armazem)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.telefone_armazem)
+            Telefone
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.telefone_armazem)
         </dd>
-        
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idArmazem }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idArmazem })|
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>

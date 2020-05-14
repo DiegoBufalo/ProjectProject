@@ -306,7 +306,7 @@
     <Compile Include="Controllers\EnvioArmarazemController.cs" />
     <Compile Include="Controllers\EnvioFornecedoresController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
-    <Compile Include="Controllers\HomeLogado.cs" />
+    <Compile Include="Controllers\HomeLogadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PedidoFinalUsuarioController.cs" />
     <Compile Include="Controllers\ProdutoresController.cs" />
@@ -777,7 +777,6 @@
     <Content Include="Views\PedidoFinalUsuario\IndexEncerrado.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\DetailsEncerrado.cshtml" />
     <Content Include="Views\DemandaFinalProdutor\DetailsEncerrada.cshtml" />
-    <Content Include="Views\Testes\Index.cshtml" />
     <Content Include="Views\EnvioFornecedores\Create.cshtml" />
     <Content Include="Views\EnvioFornecedores\Delete.cshtml" />
     <Content Include="Views\EnvioFornecedores\Details.cshtml" />
@@ -791,6 +790,7 @@
     <Content Include="Views\EnvioArmarazem\Edit.cshtml" />
     <Content Include="Views\EnvioArmarazem\Index.cshtml" />
     <Content Include="Views\EnvioArmarazem\IndexEncerrada.cshtml" />
+    <Content Include="Views\Usuarios\UsuariosCadastrados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

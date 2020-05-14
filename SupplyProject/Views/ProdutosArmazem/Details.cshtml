@@ -4,22 +4,35 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>Produto_armazem</h4>
+    <h4>Produto do armazem</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nome_prodA)
+            Id Produto
         </dt>
+        <dd>
+            @Html.DisplayFor(model => model.idProduto_armazem)
+        </dd>
 
+        <dt>
+              Produto
+        </dt>
         <dd>
             @Html.DisplayFor(model => model.nome_prodA)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.preco_prodA)
+            Quantidade
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.quantidade_prodA)
+        </dd>
+
+        <dt>
+            Preco
         </dt>
 
         <dd>
@@ -27,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.peso_prodA)
+            Peso
         </dt>
 
         <dd>
@@ -35,15 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.largura_prodA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.largura_prodA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.altura_prodA)
+            Altura (cm)
         </dt>
 
         <dd>
@@ -51,7 +56,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.profundidade_prodA)
+            Largura (cm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.largura_prodA)
+        </dd>
+
+        <dt>
+            Profundidade (cm)
         </dt>
 
         <dd>
@@ -59,25 +72,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.quantidade_prodA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.quantidade_prodA)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+            Armazem onde se encontra
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Armazem.nome_armazem)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+            Usuario responsavel
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Usuario.nome_usuario)
         </dd>
@@ -86,5 +89,5 @@
 </div>
 <p>
   
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </p>

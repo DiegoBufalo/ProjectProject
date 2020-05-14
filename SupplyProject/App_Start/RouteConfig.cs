@@ -18,7 +18,7 @@ namespace SupplyProject
                 routes.MapRoute(
                     name: "Default",
                     url: "{controller}/{action}/{id}",
-                    defaults: new { controller = "Usuarios", action = "Index", id = UrlParameter.Optional }
+                    defaults: new { controller = "HomeLogado", action = "Index", id = UrlParameter.Optional }
                 );
            
             

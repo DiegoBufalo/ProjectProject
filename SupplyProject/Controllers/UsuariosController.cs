@@ -20,6 +20,10 @@ namespace SupplyProject.Controllers
             var usuario = db.Usuario;
             return View(usuario.ToList());
         }
+        public ActionResult UsuariosCadastrados()
+        {
+            return View(db.Usuario.ToList());
+        }
 
         // GET: Usuarios/Details/5
         public ActionResult Details(int? id)
@@ -54,7 +58,7 @@ namespace SupplyProject.Controllers
             {
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UsuariosCadastrados");
             }
 
            

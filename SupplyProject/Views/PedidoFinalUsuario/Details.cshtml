@@ -5,46 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>PedidoFinal_usuario</h4>
+    <h4>Pedido do usuario</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.preco_pedido)
+            Id pedido
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.preco_pedido)
+            @Html.DisplayFor(model => model.idPedido)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ano_pedido)
+            Id, Nome usuario
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ano_pedido)
+            @Html.DisplayFor(model => model.Usuario_idUsuario), @Html.DisplayFor(model => model.Usuario.nome_usuario)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.mes_pedido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mes_pedido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dia_pedido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dia_pedido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+            Armazem destino
         </dt>
 
         <dd>
@@ -52,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Produto_fornecedor.nome_prodF)
+            Item pedido
         </dt>
 
         <dd>
@@ -60,23 +44,38 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StatusPedido1.nome_status)
+            quantidade
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+        <dt>
+            Valor do pedido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_pedido)
+        </dd>
+
+        <dt>
+            Status do pedido
+        </dt>
         <dd>
             @Html.DisplayFor(model => model.StatusPedido1.nome_status)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+            Data de abertura
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Usuario.nome_usuario)
+            @Html.DisplayFor(model => model.dia_pedido)/@Html.DisplayFor(model => model.mes_pedido)/@Html.DisplayFor(model => model.ano_pedido)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>

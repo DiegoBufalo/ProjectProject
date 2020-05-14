@@ -22,8 +22,8 @@ namespace SupplyProject.Filtros
             var action = filtroDeContexto.
                 ActionDescriptor.
                 ActionName;
-            
-            if (controller != "Home" || action != "Login")
+
+            if (controller != "Usuarios" || action != "Index")
             {
                 if (UsuarioService.
                     VerificaSeOUsuarioEstaLogado() == null)
@@ -35,18 +35,11 @@ namespace SupplyProject.Filtros
                         Redirect("/Usuarios/Index?Url=" +
                                  filtroDeContexto.HttpContext.Request.Url?.LocalPath);
                 }
-                //else
-                //{
-                //    filtroDeContexto.
-                //        RequestContext.
-                //        HttpContext.
-                //        Response.
-                //        Redirect("/HomeLogado/Index");
-                //}
-                
+
+
+
             }
-            
+
         }
-       
     }
 }

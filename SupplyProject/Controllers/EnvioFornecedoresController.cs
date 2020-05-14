@@ -49,7 +49,7 @@ namespace SupplyProject.Controllers
         {
             ViewBag.idPedido = new SelectList(db.PedidoFinal_usuario.Where(e => e.statusPedido == 1), "idPedido", "idPedido");
             ViewBag.statusEnvio = new SelectList(db.StatusEnvioFornecedor, "idStatusEnvio", "statusEnvio");
-            ViewBag.idVeiculo = new SelectList(db.Veiculo, "idVeiculo", "tipo_veiculo");
+            ViewBag.idVeiculo = new SelectList(db.Veiculo, "idVeiculo", "placa_veiculo");
             return View();
         }
 
@@ -58,8 +58,9 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idEnvio,idPedido,idVeiculo,statusEnvio,ano_envio,mes_envio,dia_envio")] EnvioFornecedor envioFornecedor)
+        public ActionResult Create([Bind(Include = "idEnvio,idPedido,idVeiculo,ano_envio,mes_envio,dia_envio")] EnvioFornecedor envioFornecedor)
         {
+            
             PedidoFinal_usuario pedidoAtual = db.PedidoFinal_usuario.Find(envioFornecedor.idPedido);
             int quantidadePedido = pedidoAtual.quantidade;
             int produtoPedido = pedidoAtual.Produto_fornecedor_idProduto_fornecedor;
@@ -70,6 +71,7 @@ namespace SupplyProject.Controllers
             int idProduto = prodArmazem.idProduto_armazem;
             prodControl.Edit(idProduto);
 
+            envioFornecedor.statusEnvio = 1;
             if (ModelState.IsValid)
             {
                 db.EnvioFornecedor.Add(envioFornecedor);

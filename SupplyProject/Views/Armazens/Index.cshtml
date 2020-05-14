@@ -8,34 +8,25 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Armazem</h2>
+<h2>Armazens</h2>
+@if (Session["tipoUsuario"].ToString() == "Gerente")
+{
+    <p>
+        @Html.ActionLink("Inserir novo armazem", "Create")
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            as
-            @Html.DisplayNameFor(model => model.nome_armazem)
+            Nome
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.logradouro_armazem)
+            Endereco
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.numlogradouro_armazem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.largura_armazem)
-        </th>
-        <th>
-            Altura Armazem
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.profundidade_armazem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefone_armazem)
+            Telefone
         </th>
         <th></th>
     </tr>
@@ -47,27 +38,18 @@
                 @Html.DisplayFor(modelItem => item.nome_armazem)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.logradouro_armazem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numlogradouro_armazem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.largura_armazem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.altura_armazem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.profundidade_armazem)
+                @Html.DisplayFor(modelItem => item.logradouro_armazem), @Html.DisplayFor(modelItem => item.numlogradouro_armazem)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.telefone_armazem)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idArmazem }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idArmazem }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idArmazem })
+                @Html.ActionLink("Editar", "Edit", new { id = item.idArmazem }) |
+                @Html.ActionLink("Detalhar", "Details", new { id = item.idArmazem }) |
+                @if (Session["tipoUsuario"].ToString() == "Gerente")
+                {
+                    @Html.ActionLink("Excluir armazem", "Delete", new { id = item.idArmazem })
+                }
             </td>
         </tr>
     }

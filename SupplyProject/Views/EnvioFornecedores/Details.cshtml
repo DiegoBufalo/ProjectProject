@@ -5,46 +5,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>EnvioFornecedor</h4>
+    <h4>Envio do Fornecedor</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ano_envio)
+            Id Envio
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ano_envio)
+            @Html.DisplayFor(model => model.idEnvio)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.mes_envio)
+            Id Pedido
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.mes_envio)
+            @Html.DisplayFor(model => model.idPedido)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.dia_envio)
+            Usuario responsavel pelo pedido
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.dia_envio)
+            @Html.DisplayFor(model => model.PedidoFinal_usuario.Usuario.nome_usuario)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PedidoFinal_usuario.idPedido)
+              Placa do veiculo transportador
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PedidoFinal_usuario.idPedido)
+            @Html.DisplayFor(model => model.Veiculo.placa_veiculo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StatusEnvioFornecedor.statusEnvio)
+            Status do Envio
         </dt>
 
         <dd>
@@ -52,16 +52,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Veiculo.tipo_veiculo)
+            Data do envio
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Veiculo.tipo_veiculo)
+            @Html.DisplayFor(model => model.dia_envio)/@Html.DisplayFor(model => model.mes_envio)/@Html.DisplayFor(model => model.ano_envio)
         </dd>
 
     </dl>
 </div>
 <p>
     
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>

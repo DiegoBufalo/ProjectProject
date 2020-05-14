@@ -5,74 +5,53 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Pedidos Encerrados</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.preco_pedido)
+            Id Pedido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ano_pedido)
+            Usuario responsavel
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mes_pedido)
+            Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia_pedido)
+            Valor do pedido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Produto_fornecedor.nome_prodF)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusPedido1.nome_status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+            Data
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.preco_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ano_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mes_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dia_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Produto_fornecedor.nome_prodF)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
-            </td>
-            <td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idPedido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.preco_pedido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dia_pedido)/@Html.DisplayFor(modelItem => item.mes_pedido)/@Html.DisplayFor(modelItem => item.ano_pedido)
+    </td>
+    <td>
 
-                @Html.ActionLink("Detalhar", "DetailsEncerrado", new { id = item.idPedido })
-                
+        @Html.ActionLink("Detalhar", "DetailsEncerrado", new { id = item.idPedido })
 
-            </td>
-        </tr>
+
+    </td>
+</tr>
     }
 
 </table>

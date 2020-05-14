@@ -15,7 +15,7 @@ namespace SupplyProject.Services
                 using (var db = new SupplyProject_dbEntities())
                 {
                     var usuario =
-                        db.Usuario.SingleOrDefault(u => u.idUsuario== IDUsuario);
+                        db.Usuario.SingleOrDefault(u => u.idUsuario == IDUsuario);
                     return usuario;
                 }
             }

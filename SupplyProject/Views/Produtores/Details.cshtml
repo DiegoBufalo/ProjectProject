@@ -4,14 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>Produtor</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nome_produtor)
+            Id Produtor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProdutor)
+        </dd>
+
+        <dt>
+            Nome
         </dt>
 
         <dd>
@@ -19,23 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.logradouro_produtor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.logradouro_produtor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.numlogradouro_produtor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.numlogradouro_produtor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.cnpj_produtor)
+            CNPJ
         </dt>
 
         <dd>
@@ -43,24 +35,35 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.telefone_produtor)
+            Endereco
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.telefone_produtor)
+            @Html.DisplayFor(model => model.logradouro_produtor), @Html.DisplayFor(model => model.logradouro_produtor)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.email_produtor)
+            E-mail
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.email_produtor)
         </dd>
 
+        <dt>
+            Telefone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_produtor)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idProdutor }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Session["tipoUsuario"].ToString() == "Gerente")
+    {
+        @Html.ActionLink("Atualizar", "Edit", new { id = Model.idProdutor })
+    }|
+        @Html.ActionLink("Voltar", "Index")
 </p>

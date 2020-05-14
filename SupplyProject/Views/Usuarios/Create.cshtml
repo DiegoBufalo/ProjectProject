@@ -8,7 +8,7 @@
 }
 
 
-<h2>Create</h2>
+<h2>Criar novo Acesso</h2>
 
 
 @using (Html.BeginForm())
@@ -20,7 +20,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.nome_usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.nome_usuario,"Nome", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.nome_usuario, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nome_usuario, "", new { @class = "text-danger" })
@@ -35,9 +35,9 @@
             </div>
         </div>*@
 
-        <div class="form-group">
-            <label>Nível de Acesso</label>
-        </div>
+    <div class="form-group">
+        <label>Nível de Acesso</label>
+
         <div class="col-md-10">
             <select class="form-control" id="tipo_usuario" name="tipo_usuario">
                 <option>Gerente</option>
@@ -47,9 +47,9 @@
             </select>
             @Html.ValidationMessageFor(model => model.tipo_usuario, "", new { @class = "text-danger" })
         </div>
-
+    </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.senha_usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.senha_usuario,"Senha de acesso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.senha_usuario, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
                 @Html.ValidationMessageFor(model => model.senha_usuario, "", new { @class = "text-danger" })
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.email_usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.email_usuario,"E-mail para acesso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.email_usuario, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.email_usuario, "", new { @class = "text-danger" })
@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.telefone_usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.telefone_usuario,"Telefone", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.telefone_usuario, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.telefone_usuario, "", new { @class = "text-danger" })
@@ -74,14 +74,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "UsuariosCadastrados")
 </div>
 
 @section Scripts {

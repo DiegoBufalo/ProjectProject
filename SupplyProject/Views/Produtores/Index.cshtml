@@ -9,29 +9,29 @@
 
 
 <h2>Index</h2>
+@if (Session["tipoUsuario"].ToString() == "Produtor")
+{
+    <p>
+        @Html.ActionLink("Inserir novo Produtor", "Create")
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.nome_produtor)
+            Id produtor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.logradouro_produtor)
+            Nome
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.numlogradouro_produtor)
+            Endereco
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cnpj_produtor)
+            E-mail
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.telefone_produtor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email_produtor)
+            Telefone
         </th>
         <th></th>
     </tr>
@@ -40,27 +40,26 @@
     {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.idProdutor)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.nome_produtor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.logradouro_produtor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numlogradouro_produtor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cnpj_produtor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.telefone_produtor)
+                @Html.DisplayFor(modelItem => item.logradouro_produtor), @Html.DisplayFor(modelItem => item.numlogradouro_produtor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.email_produtor)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idProdutor }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idProdutor }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idProdutor })
+                @Html.DisplayFor(modelItem => item.telefone_produtor)
+            </td>
+            <td>
+                @if (Session["tipoUsuario"].ToString() == "Produtor")
+                {
+                    @Html.ActionLink("Atualizar", "Edit", new { id = item.idProdutor })
+                }|
+                @Html.ActionLink("Detalhes", "Details", new { id = item.idProdutor }) |
             </td>
         </tr>
     }

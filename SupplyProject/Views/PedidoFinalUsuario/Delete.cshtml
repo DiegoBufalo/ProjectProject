@@ -5,47 +5,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Cancelar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Voce tem certeza que quer cancelar esse pedido?</h3>
 <div>
-    <h4>PedidoFinal_usuario</h4>
+    <h4>Pedido para fornecedor</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.preco_pedido)
+            Id pedido
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.preco_pedido)
+            @Html.DisplayFor(model => model.idPedido)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ano_pedido)
+            Id, Nome usuario
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ano_pedido)
+            @Html.DisplayFor(model => model.Usuario_idUsuario), @Html.DisplayFor(model => model.Usuario.nome_usuario)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.mes_pedido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.mes_pedido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dia_pedido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dia_pedido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+            Armazem destino
         </dt>
 
         <dd>
@@ -53,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Produto_fornecedor.nome_prodF)
+            Item pedido
         </dt>
 
         <dd>
@@ -61,19 +45,34 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StatusPedido1.nome_status)
+           quantidade
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.quantidade)
+        </dd>
+
+        <dt>
+            Valor do pedido
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preco_pedido)
+        </dd>
+
+        <dt>
+            Status do pedido
+        </dt>
         <dd>
             @Html.DisplayFor(model => model.StatusPedido1.nome_status)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
+            Data de abertura
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Usuario.nome_usuario)
+            @Html.DisplayFor(model => model.dia_pedido)/@Html.DisplayFor(model => model.mes_pedido)/@Html.DisplayFor(model => model.ano_pedido)
         </dd>
 
     </dl>
@@ -82,8 +81,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Cancelar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
         </div>
     }
 </div>

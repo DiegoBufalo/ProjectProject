@@ -4,14 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>Usuario</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nome_usuario)
+            Id Usuario
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idUsuario)
+        </dd>
+
+        <dt>
+            Nome
         </dt>
 
         <dd>
@@ -19,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tipo_usuario)
+            Cargo
         </dt>
 
         <dd>
@@ -27,15 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.senha_usuario)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.senha_usuario)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email_usuario)
+            E-mail
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.telefone_usuario)
+             Telefone
         </dt>
 
         <dd>
@@ -55,6 +55,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idUsuario }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Session["tipoUsuario"].ToString() == "Gerente")
+    {
+        @Html.ActionLink("Atualizar", "Edit", new { id = Model.idUsuario })
+    }|
+
+    @Html.ActionLink("Voltar", "UsuariosCadastrados")
 </p>

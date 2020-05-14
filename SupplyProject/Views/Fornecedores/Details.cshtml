@@ -11,7 +11,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nome_fornecedor)
+            Id Fornecedor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idFornecedor)
+        </dd>
+
+        <dt>
+            Nome
         </dt>
 
         <dd>
@@ -19,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cnpj_fornecedor)
+           CNPJ
         </dt>
 
         <dd>
@@ -27,40 +35,31 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.logradouro_fornecedor)
+            Endereco
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.logradouro_fornecedor)
+            @Html.DisplayFor(model => model.logradouro_fornecedor), @Html.DisplayFor(model => model.numlogradouro_fornecedor)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.numlogradouro_fornecedor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.numlogradouro_fornecedor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.telefone_fornecedor)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.telefone_fornecedor)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email_fornecedor)
+            E-mail
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.email_fornecedor)
         </dd>
 
+        <dt>
+            Telefone
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefone_fornecedor)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idFornecedor }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </p>

@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.nome_prodP)
+            Id Produto
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.preco_prodP)
+            Produto
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.peso_prodP)
+            Tempo em dias para producao
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.largura_prodP)
+            Quantidade minima de producao
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.altura_prodP)
+            Preco
         </dt>
 
         <dd>
@@ -51,7 +51,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.profundidade_prodP)
+            Peso
         </dt>
 
         <dd>
@@ -59,7 +59,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.quantidade_prodP)
+            Altura em cm
         </dt>
 
         <dd>
@@ -67,7 +67,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.tempo_producaoP)
+            Largura em cm
         </dt>
 
         <dd>
@@ -75,9 +75,16 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Produtor.nome_produtor)
+            Profundidade em cm
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Produtor.nome_produtor)
+        </dd>
+
+        <dt>
+            Produtor que produz
+        </dt>
         <dd>
             @Html.DisplayFor(model => model.Produtor.nome_produtor)
         </dd>
@@ -85,6 +92,10 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idProduto_produtor }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Session["tipoUsuarios"].ToString() == "Produtor")
+    {
+        @Html.ActionLink("Atualizar", "Edit", new { id = Model.idProduto_produtor })
+    }|
+
+    @Html.ActionLink("Voltar", "Index") |
 </p>

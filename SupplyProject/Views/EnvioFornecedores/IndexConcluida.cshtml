@@ -5,30 +5,24 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Entregas Encerradas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ano_envio)
+            Id Envio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mes_envio)
+            Id Pedido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia_envio)
+            Placa do veiculo transportador
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PedidoFinal_usuario.idPedido)
+            Status Envio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StatusEnvioFornecedor.statusEnvio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Veiculo.tipo_veiculo)
+            Data Envio
         </th>
         <th></th>
     </tr>
@@ -37,32 +31,30 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ano_envio)
+                @Html.DisplayFor(modelItem => item.idEnvio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.mes_envio)
+                @Html.DisplayFor(modelItem => item.idPedido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.dia_envio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PedidoFinal_usuario.idPedido)
+                @Html.DisplayFor(modelItem => item.Veiculo.placa_veiculo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.StatusEnvioFornecedor.statusEnvio)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Veiculo.tipo_veiculo)
+                @Html.DisplayFor(modelItem => item.dia_envio)/@Html.DisplayFor(modelItem => item.mes_envio)/@Html.DisplayFor(modelItem => item.ano_envio)
             </td>
             <td>
                 @*@Html.ActionLink("Concluir Pedido", "Edit","PedidoFinalUsuario", new { id = item.idPedido })|*@
-                @if (item.PedidoFinal_usuario.statusPedido == 1)
+                @if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
                 {
-                    <a href="@Url.Action("Edit","PedidoFinalUsuario", new { id = item.idPedido })">Concluir Pedido</a>
-                    <a href="@Url.Action("Details","EnvioFornecedor", new { id = item.idEnvio })">Detalhes</a>
-
-                    //Html.ActionLink("Details", "Details", new { id = item.idEnvio })
+                    if (item.PedidoFinal_usuario.statusPedido == 1)
+                    {
+                        <a href="@Url.Action("Edit","PedidoFinalUsuario", new { id = item.idPedido })">Concluir Pedido</a>
+                    }
                 }
+
                 @Html.ActionLink("Details", "Details", new { id = item.idEnvio })
 
             </td>

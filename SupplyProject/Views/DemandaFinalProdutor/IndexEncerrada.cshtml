@@ -5,33 +5,21 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Demandas Encerradas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ano_pedido)
+            ID
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mes_pedido)
+            Usuario responsável
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia_pedido)
+            Status
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.nome_usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Produto_armazem.nome_prodA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Produto_produtor.nome_prodP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusDemanda.nome_status)
+           Data
         </th>
         <th></th>
     </tr>
@@ -40,28 +28,20 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ano_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.mes_pedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dia_pedido)
+                @Html.DisplayFor(modelItem => item.idDemandaFinal)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Produto_armazem.nome_prodA)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Produto_produtor.nome_prodP)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.StatusDemanda.nome_status)
             </td>
             <td>
-              
+                @Html.DisplayFor(modelItem => item.dia_pedido)/
+                @Html.DisplayFor(modelItem => item.mes_pedido)/
+                @Html.DisplayFor(modelItem => item.ano_pedido)
+            </td>
+            <td>
                 @Html.ActionLink("Details", "DetailsEncerrada", new { id = item.idDemandaFinal })
             </td>
         </tr>

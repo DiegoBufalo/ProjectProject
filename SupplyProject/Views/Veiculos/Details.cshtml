@@ -11,7 +11,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.tipo_veiculo)
+            Id Veiculo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idVeiculo)
+        </dd>
+
+        <dt>
+            Tipo Veiculo
         </dt>
 
         <dd>
@@ -19,47 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.custo_frete)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.custo_frete)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.capacidade_peso)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.capacidade_peso)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.capacidade_altura)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.capacidade_altura)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.capacidade_largura)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.capacidade_largura)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.capacidade_profundidade)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.capacidade_profundidade)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.placa_veiculo)
+            Placa do veiculo
         </dt>
 
         <dd>
@@ -67,16 +35,58 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+            Armazem onde se encontra
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Armazem.nome_armazem)
         </dd>
 
+        <dt>
+            Custo por Km rodado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custo_frete)
+        </dd>
+
+        <dt>
+            Peso maxima de carga (Metros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidade_peso)
+        </dd>
+
+        <dt>
+            Altura maxima de carga (Metros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidade_altura)
+        </dd>
+
+        <dt>
+            Largura maxima de carga (Metros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidade_largura)
+        </dd>
+        <dt>
+            Profundidade maxima de carga (Metros)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.capacidade_profundidade)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idVeiculo }) |
-    @Html.ActionLink("Back to List", "Index")
+    @if (Session["tipoUsuario"].ToString() == "Gerente")
+    {
+        @Html.ActionLink("Atualizar", "Edit", new { id = Model.idVeiculo })
+    }|
+    
+    @Html.ActionLink("Voltar", "Index") |
 </p>

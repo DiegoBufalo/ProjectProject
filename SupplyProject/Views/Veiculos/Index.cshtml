@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Frota de Veiculos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,28 +15,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.tipo_veiculo)
+            Id veiculo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.custo_frete)
+            Placa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.capacidade_peso)
+            Tipo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.capacidade_altura)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capacidade_largura)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.capacidade_profundidade)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.placa_veiculo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Armazem.nome_armazem)
+            Garagem
         </th>
         <th></th>
     </tr>
@@ -45,33 +33,23 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.tipo_veiculo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.custo_frete)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capacidade_peso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capacidade_altura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capacidade_largura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capacidade_profundidade)
+                @Html.DisplayFor(modelItem => item.idVeiculo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.placa_veiculo)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.tipo_veiculo)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Armazem.nome_armazem)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idVeiculo }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idVeiculo }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idVeiculo })
+                @if (Session["tipoUsuario"].ToString() == "Gerente")
+                {
+                    @Html.ActionLink("Atualizar", "Edit", new { id = item.idVeiculo })
+                }|
+                @Html.ActionLink("Detalhar", "Details", new { id = item.idVeiculo }) |
             </td>
         </tr>
     }

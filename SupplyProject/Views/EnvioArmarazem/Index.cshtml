@@ -5,59 +5,54 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Envios em transito</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ano_envio)
+            Id Envio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mes_envio)
+            Id Demanda
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia_envio)
+            Placa do veiculo transportador
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DemandaFinal_produtor.idDemandaFinal)
+            Status Envio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Veiculo.tipo_veiculo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusEnvioArmazem.statusEnvio)
+            Data Envio
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ano_envio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mes_envio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dia_envio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DemandaFinal_produtor.idDemandaFinal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Veiculo.tipo_veiculo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusEnvioArmazem.statusEnvio)
-        </td>
-        <td>
-            @Html.ActionLink("Concluir Envio", "Edit", new { id=item.idEnvio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idEnvio })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idEnvio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idDemanda)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Veiculo.placa_veiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StatusEnvioArmazem.statusEnvio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dia_envio)/@Html.DisplayFor(modelItem => item.mes_envio)/@Html.DisplayFor(modelItem => item.ano_envio)
+    </td>
+    <td>
+        @if (Session["tipoUsuario"].ToString() == "Produtor")
+        {
+            @Html.ActionLink("Concluir Envio", "Edit", new { id = item.idEnvio })
+        }|
+
+        @Html.ActionLink("Detalhar", "Details", new { id = item.idEnvio }) |
+    </td>
+</tr>
 }
 
 </table>

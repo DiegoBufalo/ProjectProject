@@ -46,7 +46,7 @@ namespace SupplyProject.Controllers
         public ActionResult Create()
         {
             ViewBag.idDemanda = new SelectList(db.DemandaFinal_produtor.Where(e => e.status_demanda == 1), "idDemandaFinal", "idDemandaFinal");
-            ViewBag.idVeiculo = new SelectList(db.Veiculo, "idVeiculo", "tipo_veiculo");
+            ViewBag.idVeiculo = new SelectList(db.Veiculo, "idVeiculo", "placa_veiculo");
             ViewBag.statusEnvio = new SelectList(db.StatusEnvioArmazem, "idStatusEnvio", "statusEnvio");
             return View();
         }

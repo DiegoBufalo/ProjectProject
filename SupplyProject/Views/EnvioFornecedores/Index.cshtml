@@ -5,60 +5,55 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Entregas em transito</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ano_envio)
+            Id Envio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.mes_envio)
+            Id Pedido
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia_envio)
+            Placa do veiculo transportador
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PedidoFinal_usuario.idPedido)
+            Status Envio
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StatusEnvioFornecedor.statusEnvio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Veiculo.idVeiculo)
+            Data Envio
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ano_envio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mes_envio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dia_envio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PedidoFinal_usuario.idPedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusEnvioFornecedor.statusEnvio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Veiculo.idVeiculo)
-        </td>
-        <td>
-            @Html.ActionLink("Concluir", "Edit", new { id=item.idEnvio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idEnvio }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idEnvio })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idEnvio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.idPedido)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Veiculo.placa_veiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StatusEnvioFornecedor.statusEnvio)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.dia_envio)/@Html.DisplayFor(modelItem => item.mes_envio)/@Html.DisplayFor(modelItem => item.ano_envio)
+    </td>
+    <td>
+        @if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
+        {
+            @Html.ActionLink("Concluir", "Edit", new { id = item.idEnvio })
+        }|      
+
+        @Html.ActionLink("Details", "Details", new { id = item.idEnvio }) |
+
+    </td>
+</tr>
 }
 
 </table>

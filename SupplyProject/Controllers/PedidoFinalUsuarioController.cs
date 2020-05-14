@@ -9,6 +9,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SupplyProject.Models;
+using SupplyProject.Services;
 
 namespace SupplyProject.Controllers
 {
@@ -62,10 +63,12 @@ namespace SupplyProject.Controllers
         // GET: PedidoFinalUsuario/Create
         public ActionResult Create()
         {
+            int id = UsuarioService.VerificaSeOUsuarioEstaLogado().idUsuario;
+
             ViewBag.Armazem_idArmazem = new SelectList(db.Armazem, "idArmazem", "nome_armazem");
             ViewBag.Produto_fornecedor_idProduto_fornecedor = new SelectList(db.Produto_fornecedor, "idProduto_fornecedor", "nome_prodF");
             ViewBag.statusPedido = new SelectList(db.StatusPedido, "idStatus", "nome_status");
-            ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario");
+            ViewBag.Usuario_idUsuario = new SelectList(db.Usuario.Where(e => e.idUsuario == id), "idUsuario", "nome_usuario");
             return View();
         }
 
@@ -74,11 +77,17 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPedido,Usuario_idUsuario,Produto_fornecedor_idProduto_fornecedor,Armazem_idArmazem,statusPedido,ano_pedido,mes_pedido,dia_pedido,quantidade")] PedidoFinal_usuario pedidoFinal_usuario)
+        public ActionResult Create([Bind(Include = "idPedido,Usuario_idUsuario,Produto_fornecedor_idProduto_fornecedor,ano_pedido,mes_pedido,dia_pedido,quantidade")] PedidoFinal_usuario pedidoFinal_usuario)
         {
+            int produtoForn = pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor;
+            Produto_armazem produtoArm = db.Produto_armazem.Find(produtoForn);
+            int armazemFinal = produtoArm.Armazem_idArmazem;
+
             Produto_fornecedor produtoFornecedor = db.Produto_fornecedor.Find(pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
             double precoProduto = produtoFornecedor.preco_prodF;
             pedidoFinal_usuario.preco_pedido = precoProduto * pedidoFinal_usuario. quantidade;
+            pedidoFinal_usuario.Armazem_idArmazem = armazemFinal;
+            pedidoFinal_usuario.statusPedido = 1;
 
 
             if (ModelState.IsValid)
