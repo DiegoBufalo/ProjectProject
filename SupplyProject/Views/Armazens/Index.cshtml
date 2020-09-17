@@ -12,7 +12,7 @@
 @if (Session["tipoUsuario"].ToString() == "Gerente")
 {
     <p>
-        @Html.ActionLink("Inserir novo armazem", "Create")
+        @Html.ActionLink("Inserir novo armazem", "Create") | @Html.ActionLink("Ocupação dos Armazens","ExibirEstatisticas")
     </p>
 }
 

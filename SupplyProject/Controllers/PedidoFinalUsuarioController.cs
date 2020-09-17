@@ -30,6 +30,11 @@ namespace SupplyProject.Controllers
             var pedidoFinal_usuario = db.PedidoFinal_usuario.Include(p => p.Armazem).Include(p => p.Produto_fornecedor).Include(p => p.StatusPedido1).Where(p => p.statusPedido == 2).Include(p => p.Usuario);
             return View(pedidoFinal_usuario.ToList());
         }
+        public ActionResult ExibirEstatisticas()
+        {
+            return View();
+        }
+
 
         // GET: PedidoFinalUsuario/Details/5
         public ActionResult Details(int? id)

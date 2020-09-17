@@ -19,12 +19,22 @@
 .black-bg {
     background: #16161a
 }
+.ocupacaoFrame{
+    width:100%
+}
 
 .theme-bg {
     background: #eb566c
 }
 h6 {
     color: red;
+}
+
+
+
+.ocupacaoFrame {
+    width: 100%;
+    height: 800px;
 }
 
 .brand-bg {

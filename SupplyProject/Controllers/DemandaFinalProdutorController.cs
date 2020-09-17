@@ -27,6 +27,11 @@ namespace SupplyProject.Controllers
             return View(demandaFinal_produtor.ToList());
         }
 
+        public ActionResult ExibirEstatisticas()
+        {
+            return View();
+        }
+
 
 
         // GET: DemandaFinalProdutor/Details/5

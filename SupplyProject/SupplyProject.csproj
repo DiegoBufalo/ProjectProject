@@ -398,6 +398,7 @@
     <Content Include="Content\assets\css\bootstrap.min.css" />
     <Content Include="Content\assets\css\flaticon.css" />
     <Content Include="Content\assets\css\fontawesome-all.min.css" />
+    <Content Include="Content\assets\css\iframe.css" />
     <Content Include="Content\assets\css\magnific-popup.css" />
     <Content Include="Content\assets\css\main.css" />
     <Content Include="Content\assets\css\nice-select.css" />
@@ -791,6 +792,9 @@
     <Content Include="Views\EnvioArmarazem\Index.cshtml" />
     <Content Include="Views\EnvioArmarazem\IndexEncerrada.cshtml" />
     <Content Include="Views\Usuarios\UsuariosCadastrados.cshtml" />
+    <Content Include="Views\Armazens\ExibirEstatisticas.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\ExibirEstatisticas.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\ExibirEstatisticas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

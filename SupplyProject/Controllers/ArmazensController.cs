@@ -20,6 +20,11 @@ namespace SupplyProject.Controllers
             return View(db.Armazem.ToList());
         }
 
+        public ActionResult ExibirEstatisticas()
+        {
+            return View();
+        }
+
         // GET: Armazens/Details/5
         public ActionResult Details(int? id)
         {
