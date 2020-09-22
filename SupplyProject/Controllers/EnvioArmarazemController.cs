@@ -70,6 +70,14 @@ namespace SupplyProject.Controllers
 
             envioArmarazem.statusEnvio = 1;
 
+            if (envioArmarazem.statusEnvio == 1)
+            {
+                DemandaFinal_produtor demandaAberta = db.DemandaFinal_produtor.Find(envioArmarazem.idDemanda);
+                demandaAberta.status_demanda = 3;
+                DemandaFinalProdutorController demandaController = new DemandaFinalProdutorController();
+                demandaController.Edit(demandaAberta.idDemandaFinal);
+            }
+
             if (ModelState.IsValid)
             {
                 db.EnvioArmarazem.Add(envioArmarazem);

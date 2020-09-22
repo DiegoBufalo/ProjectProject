@@ -67,11 +67,20 @@ namespace SupplyProject.Controllers
             Produto_armazem prodArmazem = db.Produto_armazem.Find(produtoPedido);
             int quantidadeEstoque = prodArmazem.quantidade_prodA;
             prodArmazem.quantidade_prodA = quantidadeEstoque + quantidadePedido;
+
             ProdutosArmazemController prodControl = new ProdutosArmazemController();
             int idProduto = prodArmazem.idProduto_armazem;
             prodControl.Atualizar(idProduto);
 
             envioFornecedor.statusEnvio = 1;
+
+            if (envioFornecedor.statusEnvio == 1)
+            {
+                PedidoFinal_usuario pedido = db.PedidoFinal_usuario.Find(envioFornecedor.idPedido);
+                pedido.statusPedido = 3;
+                PedidoFinalUsuarioController pedidoController = new PedidoFinalUsuarioController();
+                pedidoController.Edit(pedido.idPedido);
+            }
             if (ModelState.IsValid)
             {
                 db.EnvioFornecedor.Add(envioFornecedor);
