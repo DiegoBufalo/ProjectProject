@@ -795,6 +795,7 @@
     <Content Include="Views\Armazens\ExibirEstatisticas.cshtml" />
     <Content Include="Views\DemandaFinalProdutor\ExibirEstatisticas.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\ExibirEstatisticas.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\IndexSupply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

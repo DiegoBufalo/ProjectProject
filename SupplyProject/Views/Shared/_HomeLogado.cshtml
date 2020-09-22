@@ -87,7 +87,7 @@
                                                         @if (Session["tipoUsuario"].ToString() == "Gerente" ||
                                                              Session["tipoUsuario"].ToString() == "SuppyChain")
                                                         {
-                                                            <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Abertas", "IndexSupply", "DemandaFinalProdutor")</li>
                                                             <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
                                                         }
                                                         @if (Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
@@ -182,6 +182,7 @@
                                                     @if (Session["tipoUsuario"].ToString() == "Gerente" ||
                                                         Session["tipoUsuario"].ToString() == "Supply")
                                                     {
+                                                        <li>@Html.ActionLink("Meus Produtos", "Index", "ProdutoArmazem")</li>
                                                         <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosProdutor")</li>
                                                         <li>@Html.ActionLink("Produtos do Fornecedor", "Index", "ProdutosFornecedor")</li>
                                                     }
@@ -201,8 +202,9 @@
                                                     @if (Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
                                                         Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
                                                     {
-                                                        <li>@Html.ActionLink("Produtos da fabrica", "Index", "ProdutosFornecedor")</li>
+                                                      
                                                         <li>@Html.ActionLink("Produtos do armazem", "Index", "ProdutosArmazem")</li>
+                                                        <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosProdutor")</li>
 
                                                     }
                                                 </ul>

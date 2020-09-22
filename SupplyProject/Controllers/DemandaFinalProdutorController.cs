@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using SupplyProject.Models;
+using SupplyProject.Services;
 
 namespace SupplyProject.Controllers
 {
@@ -18,12 +19,22 @@ namespace SupplyProject.Controllers
         // GET: DemandaFinalProdutor
         public ActionResult Index()
         {
+            
+
             var demandaFinal_produtor = db.DemandaFinal_produtor.Include(d => d.Usuario).Include(d => d.Produto_armazem).Include(d => d.Produto_produtor).Include(d => d.StatusDemanda).Where(d => d.status_demanda == 1) ;
             return View(demandaFinal_produtor.ToList());
         }
         public ActionResult IndexEncerrada()
         {
             var demandaFinal_produtor = db.DemandaFinal_produtor.Include(d => d.Usuario).Include(d => d.Produto_armazem).Include(d => d.Produto_produtor).Include(d => d.StatusDemanda).Where(d => d.status_demanda == 2);
+            return View(demandaFinal_produtor.ToList());
+        }
+
+        public ActionResult IndexSupply()
+        {
+            int id = UsuarioService.VerificaSeOUsuarioEstaLogado().idUsuario;
+
+            var demandaFinal_produtor = db.DemandaFinal_produtor.Include(d => d.Usuario).Where(d => d.Usuario_idUsuario == id).Include(d => d.Produto_armazem).Include(d => d.Produto_produtor).Include(d => d.StatusDemanda).Where(d => d.status_demanda == 1);
             return View(demandaFinal_produtor.ToList());
         }
 
