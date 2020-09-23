@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SupplyProject.Models;
+using SupplyProject.Services;
 
 namespace SupplyProject.Controllers
 {
@@ -80,8 +81,12 @@ namespace SupplyProject.Controllers
             {
                 return HttpNotFound();
             }
+
+     
+
             ViewBag.Armazem_idArmazem = new SelectList(db.Armazem, "idArmazem", "nome_armazem", produto_armazem.Armazem_idArmazem);
-            ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario", produto_armazem.Usuario_idUsuario);
+            ViewBag.Usuario_idUsuario = new SelectList(db.Usuario.Where(d => d.tipo_usuario.Equals("Supply")), "idUsuario", "nome_usuario", produto_armazem.Usuario_idUsuario);
+
             return View(produto_armazem);
         }
 
