@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SupplyProject.Models.PedidoFinal_usuario>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
@@ -26,36 +27,37 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.idPedido)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.preco_pedido)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.dia_pedido)/@Html.DisplayFor(modelItem => item.mes_pedido)/@Html.DisplayFor(modelItem => item.ano_pedido)
-    </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preco_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dia_pedido)/@Html.DisplayFor(modelItem => item.mes_pedido)/@Html.DisplayFor(modelItem => item.ano_pedido)
+            </td>
 
-    <td>
-        @*@Html.ActionLink("Concluir", "Edit", new { id=item.idPedido }) |*@
-        @if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
-        {
-            @Html.ActionLink("Cancelar", "Delete", new { id = item.idPedido })
-        }| 
+            <td>
+                @*@Html.ActionLink("Concluir", "Edit", new { id=item.idPedido }) |*@
+                @if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
+                {
+                    @Html.ActionLink("Cancelar", "Delete", new { id = item.idPedido })
+                }|
 
-        @Html.ActionLink("Detalhar", "Details", new { id = item.idPedido }) |
+                @Html.ActionLink("Detalhar", "Details", new { id = item.idPedido }) |
 
-    </td>
-</tr>
-}
-    
+            </td>
+        </tr>
+    }
+
 
 </table>

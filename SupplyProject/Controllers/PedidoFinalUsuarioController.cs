@@ -35,6 +35,8 @@ namespace SupplyProject.Controllers
             return View();
         }
 
+        
+
 
         // GET: PedidoFinalUsuario/Details/5
         public ActionResult Details(int? id)
@@ -108,6 +110,57 @@ namespace SupplyProject.Controllers
             ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario", pedidoFinal_usuario.Usuario_idUsuario);
 
             return View(pedidoFinal_usuario);
+        }
+
+        // GET: PedidoFinalUsuario/VizualizarNFe/5
+        public ActionResult VizualizarNFe(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PedidoFinal_usuario pedido = db.PedidoFinal_usuario.Find(id);
+            if(pedido == null)
+            {
+                return HttpNotFound();
+            }
+
+             Produto_fornecedor produto = db.Produto_fornecedor.Find(pedido.Produto_fornecedor_idProduto_fornecedor);
+             int fornecedorResp = produto.Fornecedor_idFornecedor;
+             Fornecedor fornecedor = db.Fornecedor.Find(fornecedorResp);
+
+            //VAI SER NA GAMBIARRRA-------------------------------------------
+            ViewBag.Cnpj = fornecedor.cnpj_fornecedor;
+            ViewBag.Nome = fornecedor.nome_fornecedor;
+            ViewBag.Cep = "00000-000";
+            ViewBag.Endereco = fornecedor.logradouro_fornecedor;
+            ViewBag.Num = fornecedor.numlogradouro_fornecedor;
+            ViewBag.Municipio = "Sao Paulo";
+            ViewBag.UF = "SP";
+            //---------------------------------------------------------------
+            //Pedido-----------------------------------------------------------
+            Produto_fornecedor prodforn = db.Produto_fornecedor.Find(pedido.Produto_fornecedor_idProduto_fornecedor);
+
+            ViewBag.idPedido = pedido.idPedido;
+            ViewBag.DataHora = pedido.dia_pedido + "/" + pedido.mes_pedido + "/" + pedido.ano_pedido +" - "+ DateTime.Now.Hour + ":" + DateTime.Now.Minute;
+            ViewBag.Quantidade = pedido.quantidade;
+            ViewBag.Preco = pedido.preco_pedido;
+            ViewBag.Produto = prodforn.nome_prodF;
+            ViewBag.idProduto = prodforn.idProduto_fornecedor;
+            //Usuario----------------------------------------------------------------
+            Usuario usuario = db.Usuario.Find(pedido.Usuario_idUsuario);
+            ViewBag.Email = usuario.email_usuario;
+            //Armazem--------------------------------------------------------------
+            Armazem armazem = db.Armazem.Find(pedido.Armazem_idArmazem);
+            ViewBag.EnderecoArmazem = armazem.logradouro_armazem;
+            ViewBag.NumeroEnd = armazem.numlogradouro_armazem;
+            ViewBag.Nome = armazem.nome_armazem;
+
+            
+
+
+
+            return View();
         }
 
         // GET: PedidoFinalUsuario/Edit/5

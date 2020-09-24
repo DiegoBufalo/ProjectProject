@@ -796,6 +796,7 @@
     <Content Include="Views\DemandaFinalProdutor\ExibirEstatisticas.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\ExibirEstatisticas.cshtml" />
     <Content Include="Views\DemandaFinalProdutor\IndexSupply.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\VizualizarNFe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
