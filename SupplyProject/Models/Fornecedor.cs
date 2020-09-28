@@ -27,6 +27,10 @@ namespace SupplyProject.Models
         public string numlogradouro_fornecedor { get; set; }
         public string telefone_fornecedor { get; set; }
         public string email_fornecedor { get; set; }
+        public string CEP { get; set; }
+        public string Municipio { get; set; }
+        public string UF { get; set; }
+        public string pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produto_fornecedor> Produto_fornecedor { get; set; }

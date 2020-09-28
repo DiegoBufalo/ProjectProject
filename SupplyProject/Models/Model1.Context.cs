@@ -41,5 +41,6 @@ namespace SupplyProject.Models
         public virtual DbSet<StatusEnvioFornecedor> StatusEnvioFornecedor { get; set; }
         public virtual DbSet<EnvioArmarazem> EnvioArmarazem { get; set; }
         public virtual DbSet<StatusEnvioArmazem> StatusEnvioArmazem { get; set; }
+        public virtual DbSet<Notificacoes> Notificacoes { get; set; }
     }
 }

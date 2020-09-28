@@ -132,11 +132,11 @@ namespace SupplyProject.Controllers
             //VAI SER NA GAMBIARRRA-------------------------------------------
             ViewBag.Cnpj = fornecedor.cnpj_fornecedor;
             ViewBag.Nome = fornecedor.nome_fornecedor;
-            ViewBag.Cep = "00000-000";
+            ViewBag.Cep = fornecedor.CEP;
             ViewBag.Endereco = fornecedor.logradouro_fornecedor;
             ViewBag.Num = fornecedor.numlogradouro_fornecedor;
-            ViewBag.Municipio = "Sao Paulo";
-            ViewBag.UF = "SP";
+            ViewBag.Municipio = fornecedor.Municipio;
+            ViewBag.UF = fornecedor.UF;
             //---------------------------------------------------------------
             //Pedido-----------------------------------------------------------
             Produto_fornecedor prodforn = db.Produto_fornecedor.Find(pedido.Produto_fornecedor_idProduto_fornecedor);

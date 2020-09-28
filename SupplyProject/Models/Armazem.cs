@@ -30,6 +30,10 @@ namespace SupplyProject.Models
         public string altura_armazem { get; set; }
         public string profundidade_armazem { get; set; }
         public string telefone_armazem { get; set; }
+        public string CEP { get; set; }
+        public string Municipio { get; set; }
+        public string UF { get; set; }
+        public string pais { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Produto_armazem> Produto_armazem { get; set; }

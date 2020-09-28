@@ -355,6 +355,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Notificacoes.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PedidoFinal_usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

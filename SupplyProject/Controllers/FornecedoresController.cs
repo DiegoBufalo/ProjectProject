@@ -46,7 +46,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idFornecedor,nome_fornecedor,cnpj_fornecedor,logradouro_fornecedor,numlogradouro_fornecedor,telefone_fornecedor,email_fornecedor")] Fornecedor fornecedor)
+        public ActionResult Create([Bind(Include = "idFornecedor,nome_fornecedor,cnpj_fornecedor,logradouro_fornecedor,numlogradouro_fornecedor,telefone_fornecedor,email_fornecedor,CEP,Municipio,UF,pais")] Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idFornecedor,nome_fornecedor,cnpj_fornecedor,logradouro_fornecedor,numlogradouro_fornecedor,telefone_fornecedor,email_fornecedor")] Fornecedor fornecedor)
+        public ActionResult Edit([Bind(Include = "idFornecedor,nome_fornecedor,cnpj_fornecedor,logradouro_fornecedor,numlogradouro_fornecedor,telefone_fornecedor,email_fornecedor,CEP,Municipio,UF,pais")] Fornecedor fornecedor)
         {
             if (ModelState.IsValid)
             {
