@@ -75,43 +75,45 @@
                                                  Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
                                                  Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
                                             {
-                                        <li>
-                                            <a href="#">Demandas</a>
-                                            <ul class="submenu">
-                                                @if (Session["tipoUsuario"].ToString() == "Produtor")
-                                                {
-                                                    <li>@Html.ActionLink("Criar Demanda", "Create", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
-                                                }
-                                                @if (Session["tipoUsuario"].ToString() == "Supply")
-                                                {
-                                                    <li>@Html.ActionLink("Demandas Abertas", "IndexSupply", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
-                                                }
+                                                <li>
+                                                    <a href="#">Demandas</a>
+                                                    <ul class="submenu">
+                                                        @if (Session["tipoUsuario"].ToString() == "Produtor")
+                                                        {
+                                                            <li>@Html.ActionLink("Criar Demanda", "Create", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
+                                                        @if (Session["tipoUsuario"].ToString() == "Supply")
+                                                        {
+                                                            <li>@Html.ActionLink("Demandas Abertas", "IndexSupply", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
 
-                                                @if (Session["tipoUsuario"].ToString() == "Gerente")
-                                                {
-                                                    <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
-                                                }
-                                                @if (Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
-                                                     Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
-                                                {
-                                                    <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
-                                                    <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
-                                                }
-                                            </ul>
-                                        </li>
+                                                        @if (Session["tipoUsuario"].ToString() == "Gerente")
+                                                        {
+                                                            <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
+                                                        @if (Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
+                                                             Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
+                                                        {
+                                                            <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
+                                                    </ul>
+                                                </li>
                                             }
                                             @if (Session["tipoUsuario"].ToString() == "Gerente" ||
                                                  Session["tipoUsuario"].ToString() == "Supply" ||
-                                                 Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                 Session["tipoUsuario"].ToString() == "Fornecedor" ||
+                                                 Session["tipoUsuario"].ToString() == "Conferente-Armazem")
                                             {
                                                 <li>
                                                     <a href="#">Pedidos</a>
                                                     <ul class="submenu">
-                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor" ||
+                                                             Session["tipoUsuario"].ToString() == "Conferente-Armazem")
                                                         {
                                                             <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
                                                             <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
@@ -260,6 +262,7 @@
                                                             <li>@Html.ActionLink("Pedidos", "ExibirEstatisticas", "PedidoFinalUsuario")</li>
                                                             <li>@Html.ActionLink("Demandas", "ExibirEstatisticas", "DemandaFinalProdutor")</li>
                                                             <li>@Html.ActionLink("Produtos Armazem", "ExibirEstatisticas", "ProdutosArmazem")</li>
+                                                            <li>@Html.ActionLink("Distribuição de Pedidos", "ExibirPedidoPorRegiao", "PedidoFinalUsuario")</li>
                                                         }
 
                                                         <li>@Html.ActionLink("Armazém", "ExibirEstatisticas", "Armazens")</li>

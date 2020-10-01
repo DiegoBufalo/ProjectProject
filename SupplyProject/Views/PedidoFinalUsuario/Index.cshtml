@@ -52,8 +52,12 @@
                 {
                     @Html.ActionLink("Cancelar", "Delete", new { id = item.idPedido })
                 }|
+                @Html.ActionLink("Nota Fiscal", "VizualizarNFe", new { id = item.idPedido }) |
+
 
                 @Html.ActionLink("Detalhar", "Details", new { id = item.idPedido }) |
+
+
 
             </td>
         </tr>

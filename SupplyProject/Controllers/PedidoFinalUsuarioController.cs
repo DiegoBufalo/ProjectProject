@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Remotion.Linq.Parsing.ExpressionVisitors.TreeEvaluation;
 using SupplyProject.Models;
 using SupplyProject.Services;
 
@@ -35,7 +36,10 @@ namespace SupplyProject.Controllers
             return View();
         }
 
-        
+        public ActionResult ExibirPedidoPorRegiao()
+        {
+            return View();
+        }
 
 
         // GET: PedidoFinalUsuario/Details/5
@@ -147,6 +151,7 @@ namespace SupplyProject.Controllers
             ViewBag.Preco = pedido.preco_pedido;
             ViewBag.Produto = prodforn.nome_prodF;
             ViewBag.idProduto = prodforn.idProduto_fornecedor;
+            ViewBag.valorUni = prodforn.preco_prodF;
             //Usuario----------------------------------------------------------------
             Usuario usuario = db.Usuario.Find(pedido.Usuario_idUsuario);
             ViewBag.Email = usuario.email_usuario;
@@ -155,8 +160,19 @@ namespace SupplyProject.Controllers
             ViewBag.EnderecoArmazem = armazem.logradouro_armazem;
             ViewBag.NumeroEnd = armazem.numlogradouro_armazem;
             ViewBag.Nome = armazem.nome_armazem;
+            ViewBag.ArmazemCep = armazem.CEP;
+            //IMPOSTOS-------------------------------------------------------------
+            ViewBag.Aliquota = pedido.preco_pedido * 0.06;
+            ViewBag.CSLL = pedido.preco_pedido * 0.035;
+            ViewBag.Cofins = pedido.preco_pedido * 0.1151;
+            ViewBag.PIS = pedido.preco_pedido * 0.0251;
+            ViewBag.IPI = pedido.preco_pedido * 0.075;
+            ViewBag.ICMS = pedido.preco_pedido * 0.32;
 
-            
+            ViewBag.Deducao = ViewBag.Aliquota + ViewBag.CSLL + ViewBag.Cofins + ViewBag.PIS + ViewBag.IPI + ViewBag.ICMS;
+
+
+
 
 
 

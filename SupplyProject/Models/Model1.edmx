@@ -84,6 +84,14 @@
           <Property Name="idUsuario" Type="int" Nullable="false" />
           <Property Name="textoNotificacao" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Notificacoes">
+          <Key>
+            <PropertyRef Name="idNotificacao" />
+          </Key>
+          <Property Name="idNotificacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="textoNotificacao" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="PedidoFinal_usuario">
           <Key>
             <PropertyRef Name="idPedido" />
