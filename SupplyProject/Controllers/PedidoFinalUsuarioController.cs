@@ -36,10 +36,7 @@ namespace SupplyProject.Controllers
             return View();
         }
 
-        public ActionResult ExibirPedidoPorRegiao()
-        {
-            return View();
-        }
+        
 
 
         // GET: PedidoFinalUsuario/Details/5

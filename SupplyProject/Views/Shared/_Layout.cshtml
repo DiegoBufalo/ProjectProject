@@ -105,14 +105,12 @@
                                             }
                                             @if (Session["tipoUsuario"].ToString() == "Gerente" ||
                                                  Session["tipoUsuario"].ToString() == "Supply" ||
-                                                 Session["tipoUsuario"].ToString() == "Fornecedor" ||
-                                                 Session["tipoUsuario"].ToString() == "Conferente-Armazem")
+                                                 Session["tipoUsuario"].ToString() == "Fornecedor")
                                             {
                                                 <li>
                                                     <a href="#">Pedidos</a>
                                                     <ul class="submenu">
-                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor" ||
-                                                             Session["tipoUsuario"].ToString() == "Conferente-Armazem")
+                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor")
                                                         {
                                                             <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
                                                             <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
@@ -261,7 +259,6 @@
                                                             <li>@Html.ActionLink("Pedidos", "ExibirEstatisticas", "PedidoFinalUsuario")</li>
                                                             <li>@Html.ActionLink("Demandas", "ExibirEstatisticas", "DemandaFinalProdutor")</li>
                                                             <li>@Html.ActionLink("Produtos Armazem", "ExibirEstatisticas", "ProdutosArmazem")</li>
-                                                            <li>@Html.ActionLink("Distribuição de Pedidos", "ExibirPedidoPorRegiao", "PedidoFinalUsuario")</li>
                                                         }
 
                                                         <li>@Html.ActionLink("Armazém", "ExibirEstatisticas", "Armazens")</li>
