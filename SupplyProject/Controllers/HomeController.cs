@@ -42,9 +42,9 @@ namespace SupplyProject.Controllers
 
         public JsonResult BuscarNotificacoes(int idUsuario)
         {
-            var notificacoes = db.Notificacoes
-                .Where(t => t.idUsuario == idUsuario)
-                .ToList();
+            var notificacoes = db.Notificacoes.ToList();
+            
+               /* .Where(t => t.idUsuario == idUsuario)*/
 
             Session["notificacoes"] = notificacoes.Count.ToString();
 
