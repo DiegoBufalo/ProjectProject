@@ -36,6 +36,9 @@ namespace SupplyProject.Services
 
             long idUsuario = Convert.ToInt64(CriptografiaService.Descriptografar(usuario.Values["IDUsuario"]));
             var usuarioRetornado = RecuperaUsuarioPorId(idUsuario);
+            
+            HttpContext.Current.Session["idUsuario"] = idUsuario;
+
             return usuarioRetornado;
         }
         public static bool AutenticarUsuario(string Login, string Senha)
@@ -47,14 +50,15 @@ namespace SupplyProject.Services
             {
                 using (var db = new SupplyProject_dbEntities())
                 {
-                    var queryAutenticaUsuarios = db.Usuario.SingleOrDefault(x => x.email_usuario == Login && x.senha_usuario == Senha);
+                    var usuarioAutenticado = db.Usuario.SingleOrDefault(x => x.email_usuario == Login && x.senha_usuario == Senha);
 
-                    if (queryAutenticaUsuarios == null)
+                    if (usuarioAutenticado == null)
                     {
                         return false;
                     }
 
-                    CookieService.RegistraCookieAutenticacao(queryAutenticaUsuarios.idUsuario);
+                    HttpContext.Current.Session["idUsuario"] = usuarioAutenticado.idUsuario;
+                    CookieService.RegistraCookieAutenticacao(usuarioAutenticado.idUsuario);
                     return true;
                 }
             }

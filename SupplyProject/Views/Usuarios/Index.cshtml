@@ -84,7 +84,7 @@
                 },
                 success: function (dados) {
                     if (dados.OK) {
-                        $("#status").html(dados.Mensagem)
+                        $("#status").html(dados.Mensagem);
                         setTimeout(function () { window.location.href =
                             "/HomeLogado/Index" }, 5000);
                         $("#status").show();
@@ -94,7 +94,7 @@
                         $("#status").show();
                     }
                 },
-                error: function () {
+                error: function (dados) {
                     $("#status").html(dados.Mensagem);
                     $("#status").show()
                 }

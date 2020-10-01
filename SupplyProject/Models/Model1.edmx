@@ -68,6 +68,14 @@
           <Property Name="telefone_fornecedor" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="email_fornecedor" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
+        <EntityType Name="Notificacoes">
+          <Key>
+            <PropertyRef Name="idNotificacao" />
+          </Key>
+          <Property Name="idNotificacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="textoNotificacao" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="PedidoFinal_usuario">
           <Key>
             <PropertyRef Name="idPedido" />
@@ -439,6 +447,7 @@
           <EntitySet Name="EnvioArmarazem" EntityType="Self.EnvioArmarazem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnvioFornecedor" EntityType="Self.EnvioFornecedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fornecedor" EntityType="Self.Fornecedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notificacoes" EntityType="Self.Notificacoes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PedidoFinal_usuario" EntityType="Self.PedidoFinal_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produto_armazem" EntityType="Self.Produto_armazem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produto_fornecedor" EntityType="Self.Produto_fornecedor" Schema="dbo" store:Type="Tables" />
@@ -817,6 +826,7 @@
             <End Role="StatusEnvioArmazem" EntitySet="StatusEnvioArmazem" />
             <End Role="EnvioArmarazem" EntitySet="EnvioArmarazem" />
           </AssociationSet>
+          <EntitySet Name="Notificacoes" EntityType="SupplyProject_dbModel.Notificacoes" />
           </EntityContainer>
         <EntityType Name="DemandaFinal_produtor">
           <Key>
@@ -1091,6 +1101,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Notificacoes">
+          <Key>
+            <PropertyRef Name="idNotificacao" />
+          </Key>
+          <Property Name="idNotificacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <Property Name="textoNotificacao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1298,6 +1316,15 @@
               <MappingFragment StoreEntitySet="StatusEnvioArmazem">
                 <ScalarProperty Name="statusEnvio" ColumnName="statusEnvio" />
                 <ScalarProperty Name="idStatusEnvio" ColumnName="idStatusEnvio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notificacoes">
+            <EntityTypeMapping TypeName="SupplyProject_dbModel.Notificacoes">
+              <MappingFragment StoreEntitySet="Notificacoes">
+                <ScalarProperty Name="textoNotificacao" ColumnName="textoNotificacao" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+                <ScalarProperty Name="idNotificacao" ColumnName="idNotificacao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

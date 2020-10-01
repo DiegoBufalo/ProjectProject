@@ -81,6 +81,7 @@ namespace SupplyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idDemandaFinal,Produto_produtor_idProduto_produtor,Produto_armazem_idProduto_armazem,ano_pedido,mes_pedido,dia_pedido,quantidade")] DemandaFinal_produtor demandaFinal_produtor)
         {
+            int.TryParse(Session["idUsuario"].ToString(), out int idUsuario);
             Produto_armazem prodarm = db.Produto_armazem.Find(demandaFinal_produtor.Produto_armazem_idProduto_armazem);
             int idUser = prodarm.Usuario_idUsuario;
             Usuario userResp = db.Usuario.Find(idUser);
@@ -89,8 +90,12 @@ namespace SupplyProject.Controllers
 
             if (ModelState.IsValid)
             {
+                var notificacao = new Notificacoes {idUsuario = idUsuario, textoNotificacao = "Há uma nova demanda!"};
+
+                db.Notificacoes.Add(notificacao);
                 db.DemandaFinal_produtor.Add(demandaFinal_produtor);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
