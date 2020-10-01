@@ -504,6 +504,7 @@
     <Content Include="Content\assets\img\logo\loder.jpg" />
     <Content Include="Content\assets\img\logo\logo.png" />
     <Content Include="Content\assets\img\logo\logo2_footer.png" />
+    <Content Include="Content\assets\img\logo\LOGOsupply.png" />
     <Content Include="Content\assets\img\logo\select-items-icon.jpg" />
     <Content Include="Content\assets\img\logo\testimonial.png" />
     <Content Include="Content\assets\img\our_blog\blog-img1.jpg" />
@@ -797,6 +798,9 @@
     <Content Include="Views\Armazens\ExibirEstatisticas.cshtml" />
     <Content Include="Views\DemandaFinalProdutor\ExibirEstatisticas.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\ExibirEstatisticas.cshtml" />
+    <Content Include="Views\DemandaFinalProdutor\IndexSupply.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\VizualizarNFe.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\ExibirPedidoPorRegiao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

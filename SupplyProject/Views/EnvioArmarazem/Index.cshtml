@@ -45,9 +45,9 @@
         @Html.DisplayFor(modelItem => item.dia_envio)/@Html.DisplayFor(modelItem => item.mes_envio)/@Html.DisplayFor(modelItem => item.ano_envio)
     </td>
     <td>
-        @if (Session["tipoUsuario"].ToString() == "Produtor")
+        @if (Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
         {
-            @Html.ActionLink("Concluir Envio", "Edit", new { id = item.idEnvio })
+            @Html.ActionLink("Concluir ", "Edit", new { id = item.idEnvio })
         }|
 
         @Html.ActionLink("Detalhar", "Details", new { id = item.idEnvio }) |

@@ -1,5 +1,4 @@
-﻿@using Microsoft.Ajax.Utilities
-
+﻿
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -23,29 +22,12 @@
     <link rel="stylesheet" href="~/Content/assets/css/slick.css">
     <link rel="stylesheet" href="~/Content/assets/css/nice-select.css">
     <link rel="stylesheet" href="~/Content/assets/css/styleHome.css">
-    <style type="text/css">
-        .notificacoes {
-            height: 10em;
-            background-color: white;
-            width: 15em;
-            position: absolute;
-            left: 28%;
-            z-index: 1;
-            bottom: 60%;
-            border-radius: 1em;
-            padding: 1em;
-        }
-
-        .apagarNotificacao:hover {
-            cursor: pointer;
-        }
-    </style>
 
 
     <!--Styles.Render("~/Content/css") -->
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body >
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -76,14 +58,6 @@
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-
-
-                                            <li>
-                                                <button type="button" class="btn btn-primary" id="btnNotificacoes">
-                                                    Notificações <span class="badge badge-light">@Session["notificacoes"].ToString()</span>
-                                                </button>
-                                            </li>
-
                                             @if (Session["tipoUsuario"].ToString() == "Gerente")
                                             {
                                                 <li>
@@ -95,9 +69,8 @@
                                                 </li>
                                             }
 
-
                                             @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                 Session["tipoUsuario"].ToString() == "SuppyChain" ||
+                                                 Session["tipoUsuario"].ToString() == "Supply" ||
                                                  Session["tipoUsuario"].ToString() == "Produtor" ||
                                                  Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
                                                  Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
@@ -111,8 +84,13 @@
                                                             <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
                                                             <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
                                                         }
-                                                        @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                             Session["tipoUsuario"].ToString() == "SuppyChain")
+                                                        @if (Session["tipoUsuario"].ToString() == "Supply")
+                                                        {
+                                                            <li>@Html.ActionLink("Demandas Abertas", "IndexSupply", "DemandaFinalProdutor")</li>
+                                                            <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
+                                                        }
+
+                                                        @if (Session["tipoUsuario"].ToString() == "Gerente")
                                                         {
                                                             <li>@Html.ActionLink("Demandas Abertas", "Index", "DemandaFinalProdutor")</li>
                                                             <li>@Html.ActionLink("Demandas Concluidas", "IndexEncerrada", "DemandaFinalProdutor")</li>
@@ -127,18 +105,20 @@
                                                 </li>
                                             }
                                             @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                 Session["tipoUsuario"].ToString() == "SuppyChain" ||
-                                                 Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                 Session["tipoUsuario"].ToString() == "Supply" ||
+                                                 Session["tipoUsuario"].ToString() == "Fornecedor" ||
+                                                 Session["tipoUsuario"].ToString() == "Conferente-Armazem")
                                             {
                                                 <li>
                                                     <a href="#">Pedidos</a>
                                                     <ul class="submenu">
-                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor")
+                                                        @if (Session["tipoUsuario"].ToString() == "Fornecedor" ||
+                                                             Session["tipoUsuario"].ToString() == "Conferente-Armazem")
                                                         {
                                                             <li>@Html.ActionLink("Pedidos Abertos", "Index", "PedidoFinalUsuario")</li>
                                                             <li>@Html.ActionLink("Pedidos Encerrados", "IndexEncerrado", "PedidoFinalUsuario")</li>
                                                         }
-                                                        @if (Session["tipoUsuario"].ToString() == "SuppyChain" ||
+                                                        @if (Session["tipoUsuario"].ToString() == "Supply" ||
                                                              Session["tipoUsuario"].ToString() == "Gerente")
                                                         {
                                                             <li>@Html.ActionLink("Fazer Pedido", "Create", "PedidoFinalUsuario")</li>
@@ -152,7 +132,7 @@
                                                 <a href="#">Entregas</a>
                                                 <ul class="submenu">
                                                     @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                         Session["tipoUsuario"].ToString() == "SupplyChain")
+                                                        Session["tipoUsuario"].ToString() == "Supply")
                                                     {
                                                         <li><h6>Entregas do Fornecedor</h6></li>
                                                         <li>@Html.ActionLink("Entrega Em transito", "Index", "EnvioFornecedores")</li>
@@ -207,8 +187,9 @@
                                                 <a href="#">Produtos</a>
                                                 <ul class="submenu">
                                                     @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                         Session["tipoUsuario"].ToString() == "Supply")
+                                                        Session["tipoUsuario"].ToString() == "Supply")
                                                     {
+                                                        <li>@Html.ActionLink("Meus Produtos", "Index", "ProdutosArmazem")</li>
                                                         <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosProdutor")</li>
                                                         <li>@Html.ActionLink("Produtos do Fornecedor", "Index", "ProdutosFornecedor")</li>
                                                     }
@@ -226,10 +207,11 @@
                                                     }
 
                                                     @if (Session["tipoUsuario"].ToString() == "Conferente-Armazem" ||
-                                                         Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
+                                                        Session["tipoUsuario"].ToString() == "Conferente-Fabrica")
                                                     {
-                                                        <li>@Html.ActionLink("Produtos da fabrica", "Index", "ProdutosFornecedor")</li>
+
                                                         <li>@Html.ActionLink("Produtos do armazem", "Index", "ProdutosArmazem")</li>
+                                                        <li>@Html.ActionLink("Produtos do Produtor", "Index", "ProdutosProdutor")</li>
 
                                                     }
                                                 </ul>
@@ -238,7 +220,7 @@
                                                 <a href="#">Unidades</a>
                                                 <ul class="submenu">
                                                     @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                         Session["tipoUsuario"].ToString() == "Supply")
+                                                            Session["tipoUsuario"].ToString() == "Supply")
                                                     {
                                                         <li>@Html.ActionLink("Meus armazens", "Index", "Armazens")</li>
                                                         <li>@Html.ActionLink("Produtores", "Index", "Produtores")</li>
@@ -268,18 +250,19 @@
                                             </li>
 
                                             @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                 Session["tipoUsuario"].ToString() == "Supply" ||
-                                                 Session["tipoUsuario"].ToString() == "Conferente-Armazem")
+                                                Session["tipoUsuario"].ToString() == "Supply" ||
+                                                Session["tipoUsuario"].ToString() == "Conferente-Armazem")
                                             {
                                                 <li>
                                                     <a href="#">Gráficos</a>
                                                     <ul class="submenu">
                                                         @if (Session["tipoUsuario"].ToString() == "Gerente" ||
-                                                             Session["tipoUsuario"].ToString() == "Supply")
+                                                            Session["tipoUsuario"].ToString() == "Supply")
                                                         {
                                                             <li>@Html.ActionLink("Pedidos", "ExibirEstatisticas", "PedidoFinalUsuario")</li>
                                                             <li>@Html.ActionLink("Demandas", "ExibirEstatisticas", "DemandaFinalProdutor")</li>
                                                             <li>@Html.ActionLink("Produtos Armazem", "ExibirEstatisticas", "ProdutosArmazem")</li>
+                                                            <li>@Html.ActionLink("Distribuição de Pedidos", "ExibirPedidoPorRegiao", "PedidoFinalUsuario")</li>
                                                         }
 
                                                         <li>@Html.ActionLink("Armazém", "ExibirEstatisticas", "Armazens")</li>
@@ -291,7 +274,6 @@
                                     </nav>
                                 </div>
                             </div>
-
                             <div class="col-xl-2 col-lg-3 col-md-3">
                                 <div class="header-right-btn f-right d-none d-lg-block">
                                     <a href="@Url.Action("RemoveSessao","UsuarioRemoveSessao")" class="btn header-btn">
@@ -314,13 +296,6 @@
         <!-- Header End -->
     </header>
 
-    <div class="notificacoes" id="Notification">
-        <p style="top: 1px;" class="apagarNotificacao">X - apagar todas</p>
-        <div id="showNotification">
-        </div>
-    </div>
-
-    <input id="idUsuario" type="hidden" name="name" value="@Session["idUsuario"].ToString()" />
 
     <div class="container-fluid body-content">
         @RenderBody()
@@ -394,51 +369,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-
-    <script>
-        $(document).ready(function () {
-            $('#Notification').toggle();
-            var id = $("#idUsuario").attr("value");
-            var controleModal = 0;
-
-                $('#btnNotificacoes').click(function () {
-                    if (controleModal === 0) {
-                        //$('#Notification').addClass("notificacoes");
-                        $('#Notification').toggle();
-                        controleModal = 1;
-                        buscarNotificacoes(id);
-                    } else {
-                        $('#Notification').toggle();
-                        controleModal = 0;
-                    }
-                });
-
-
-            $('.apagarNotificacao').click(function () {
-                apagarNotificacoes(id);
-                window.location.reload();
-            });
-
-            function buscarNotificacoes(id) {
-                $.getJSON('@Url.Action("BuscarNotificacoes", "Home")', { idUsuario: id }, function (data) {
-                    //Remove os dados que já possui
-
-                    $('#showNotification').html("");
-                    //Popula os options com os valores retornados em JSON
-                    for (var i = 0; i < data.length; i++) {
-                        $('#showNotification').append('<p>' + data[i].textoNotificacao + '</p> ');
-                    }
-                });
-            }
-
-            function apagarNotificacoes(id) {
-                $.getJSON('@Url.Action("ApagarNotificacoes", "Home")', { idUsuario: id }, function (data) {
-                    success: alert("Apagado com sucesso");
-                });
-            }
-        });
-    </script>
-
 
     @RenderSection("scripts", required: false)
 </body>

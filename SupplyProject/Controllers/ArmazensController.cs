@@ -51,7 +51,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idArmazem,nome_armazem,logradouro_armazem,numlogradouro_armazem,largura_armazem,altura_armazem,profundidade_armazem,telefone_armazem")] Armazem armazem)
+        public ActionResult Create([Bind(Include = "idArmazem,nome_armazem,logradouro_armazem,numlogradouro_armazem,largura_armazem,altura_armazem,profundidade_armazem,telefone_armazem,CEP,Municipio,UF,pais")] Armazem armazem)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idArmazem,nome_armazem,logradouro_armazem,numlogradouro_armazem,largura_armazem,altura_armazem,profundidade_armazem,telefone_armazem")] Armazem armazem)
+        public ActionResult Edit([Bind(Include = "idArmazem,nome_armazem,logradouro_armazem,numlogradouro_armazem,largura_armazem,altura_armazem,profundidade_armazem,telefone_armazem,CEP,Municipio,UF,pais")] Armazem armazem)
         {
             if (ModelState.IsValid)
             {

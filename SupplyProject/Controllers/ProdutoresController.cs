@@ -46,7 +46,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idProdutor,nome_produtor,logradouro_produtor,numlogradouro_produtor,cnpj_produtor,telefone_produtor,email_produtor")] Produtor produtor)
+        public ActionResult Create([Bind(Include = "idProdutor,nome_produtor,logradouro_produtor,numlogradouro_produtor,cnpj_produtor,telefone_produtor,email_produtor,CEP,Municipio,UF,pais")] Produtor produtor)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace SupplyProject.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProdutor,nome_produtor,logradouro_produtor,numlogradouro_produtor,cnpj_produtor,telefone_produtor,email_produtor")] Produtor produtor)
+        public ActionResult Edit([Bind(Include = "idProdutor,nome_produtor,logradouro_produtor,numlogradouro_produtor,cnpj_produtor,telefone_produtor,email_produtor,CEP,Municipio,UF,pais")] Produtor produtor)
         {
             if (ModelState.IsValid)
             {
