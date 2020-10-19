@@ -300,6 +300,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArmazensController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CalculaFreteController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\DemandaFinalProdutorController.cs" />
     <Compile Include="Controllers\EnvioArmarazemController.cs" />
@@ -394,6 +395,13 @@
     <Compile Include="Services\CookieService.cs" />
     <Compile Include="Services\CriptografiaService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
+    <Compile Include="Services\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Services\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\assets\css\animate.min.css" />
@@ -708,6 +716,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\modernizr-3.5.0.min.js" />
+    <Content Include="Services\WebForm1.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -803,6 +812,8 @@
     <Content Include="Views\DemandaFinalProdutor\IndexSupply.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\VizualizarNFe.cshtml" />
     <Content Include="Views\PedidoFinalUsuario\ExibirPedidoPorRegiao.cshtml" />
+    <Content Include="Views\CalculaFrete\CalculaDistancia.cshtml" />
+    <Content Include="Views\PedidoFinalUsuario\ConfirmarPedido.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
