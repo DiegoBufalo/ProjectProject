@@ -17,9 +17,7 @@ namespace SupplyProject.Controllers
             //var idUsuario =
             int.TryParse(Session["notificacoes"].ToString(), out int idUsuario);
 
-            var notificacoes = db.Notificacoes
-                .Where(t => t.idUsuario == idUsuario)
-                .ToList();
+            var notificacoes = db.Notificacoes.ToList();
              
             Session["notificacoes"] = notificacoes.Count.ToString();
 
@@ -42,9 +40,7 @@ namespace SupplyProject.Controllers
 
         public JsonResult BuscarNotificacoes(int idUsuario)
         {
-            var notificacoes = db.Notificacoes
-                .Where(t => t.idUsuario == idUsuario)
-                .ToList();
+            var notificacoes = db.Notificacoes.ToList();
 
             Session["notificacoes"] = notificacoes.Count.ToString();
 
@@ -55,7 +51,7 @@ namespace SupplyProject.Controllers
         {
             var usuario = UsuarioService.VerificaSeOUsuarioEstaLogado() ;
 
-            var notificacoeApagar = db.Notificacoes.Where(n => n.idUsuario == idUsuario);
+            var notificacoeApagar = db.Notificacoes;
 
             db.Notificacoes.RemoveRange(notificacoeApagar);
             

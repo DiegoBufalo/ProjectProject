@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 using Remotion.Linq.Parsing.ExpressionVisitors.TreeEvaluation;
 using SupplyProject.Models;
 using SupplyProject.Services;
@@ -21,9 +22,14 @@ namespace SupplyProject.Controllers
         // GET: PedidoFinalUsuario
         public ActionResult Index()
         {
-            var pedidoFinal_usuario = db.PedidoFinal_usuario.Include(p => p.Armazem).Include(p => p.Produto_fornecedor).Include(p => p.StatusPedido1).Where(p => p.statusPedido ==1).Include(p => p.Usuario).Include(p => p.EnvioFornecedor);
-            
+            var pedidoFinal_usuario = db.PedidoFinal_usuario.Include(p => p.Armazem).Include(p => p.Produto_fornecedor).Include(p => p.StatusPedido1).Where(p => p.statusPedido == 1).Include(p => p.Usuario).Include(p => p.EnvioFornecedor);
+
             return View(pedidoFinal_usuario.ToList());
+        }
+
+        public ActionResult ConfirmarPedido()
+        {
+            return View();
         }
 
         public ActionResult IndexEncerrado()
@@ -54,6 +60,40 @@ namespace SupplyProject.Controllers
             {
                 return HttpNotFound();
             }
+
+            //dados fornecedor
+            Produto_fornecedor prodForn= db.Produto_fornecedor.Find(pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
+            Fornecedor fornecedor = db.Fornecedor.Find(prodForn.Fornecedor_idFornecedor);
+            String cepForn = fornecedor.CEP;
+
+            //dados armazem
+            Produto_armazem prodArm = db.Produto_armazem.Find(prodForn.idProduto_fornecedor);
+            Armazem armazem = db.Armazem.Find(prodArm.Armazem_idArmazem);
+            String cepArmazem = armazem.CEP;
+
+            //carrega o xml
+            CalculaFreteController calculaFrete = new CalculaFreteController();
+            XElement xml = calculaFrete.CalculaDistancia(cepForn, cepArmazem);
+            // Formatar a resposta
+            /*
+            String valores = string.Format("Origem: {0} \n Destino: {1} \n Duração da Viagem: {2} \n Distância: {3}",
+                //Pegar endereço de origem
+                xml.Element("origin_address").Value,
+                //Pegar endereço de destino
+                xml.Element("destination_address").Value,
+                //Pegar duração
+                xml.Element("row").Element("element").Element("duration").Element("text").Value,
+                //Pegar distância ente os dois pontos
+                xml.Element("row").Element("element").Element("distance").Element("text").Value
+                );*/
+            String origem = string.Format("Origem: {0}", xml.Element("origin_address").Value);
+            String destino = string.Format("Destino: {0}", xml.Element("destination_address").Value);
+            String distancia = string.Format("Distancia: {0}", xml.Element("row").Element("element").Element("distance").Element("text").Value);
+            String duracao = string.Format("Duração: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
+            String valores = origem + "\n" + destino + "\n" + distancia + "\n" + duracao;
+
+            ViewBag.DadosFrete = valores;
+
             return View(pedidoFinal_usuario);
         }
 
@@ -68,6 +108,46 @@ namespace SupplyProject.Controllers
             {
                 return HttpNotFound();
             }
+
+            EnvioFornecedor envioFornecedor = db.EnvioFornecedor.Where(t => t.idPedido == pedidoFinal_usuario.idPedido).FirstOrDefault();
+
+            //dados fornecedor
+            Produto_fornecedor prodForn = db.Produto_fornecedor.Find(pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
+            Fornecedor fornecedor = db.Fornecedor.Find(prodForn.Fornecedor_idFornecedor);
+            String cepForn = fornecedor.CEP;
+
+            //valor de custo
+            Veiculo veiculo = db.Veiculo.Find(envioFornecedor.idVeiculo);
+            double.TryParse(veiculo.custo_frete, out double custoPKM);
+
+            //dados armazem
+            Produto_armazem prodArm = db.Produto_armazem.Find(prodForn.idProduto_fornecedor);
+            Armazem armazem = db.Armazem.Find(prodArm.Armazem_idArmazem);
+            String cepArmazem = armazem.CEP;
+
+            //carrega o xml
+            CalculaFreteController calculaFrete = new CalculaFreteController();
+            XElement xml = calculaFrete.CalculaDistancia(cepForn, cepArmazem);
+
+            String origem = string.Format("Origem: {0}", xml.Element("origin_address").Value);
+            String destino = string.Format("Destino: {0}", xml.Element("destination_address").Value);
+            String distancia = string.Format("Distancia: {0}", xml.Element("row").Element("element").Element("distance").Element("text").Value);
+            String duracao = string.Format("Duração: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
+
+
+            var element = xml.Element("row").Element("element").Element("distance").Element("text").Value;
+            var result = System.Text.RegularExpressions.Regex.Split(element," ");
+
+            var distance = result[0];
+            double distancaeInt = Convert.ToDouble(distance);
+
+            double Custo = distancaeInt * custoPKM;
+            String custoTotal = "Frete: " + Custo.ToString();
+
+            String valores = origem + "\n" + destino + "\n" + distancia + "\n" + duracao + "\n" + custoTotal;
+
+            ViewBag.DadosFrete = valores;
+
             return View(pedidoFinal_usuario);
         }
 
@@ -107,13 +187,14 @@ namespace SupplyProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.Armazem_idArmazem = new SelectList(db.Armazem, "idArmazem", "nome_armazem", pedidoFinal_usuario.Armazem_idArmazem);
             ViewBag.Produto_fornecedor_idProduto_fornecedor = new SelectList(db.Produto_fornecedor, "idProduto_fornecedor", "nome_prodF", pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
             ViewBag.statusPedido = new SelectList(db.StatusPedido, "idStatus", "nome_status", pedidoFinal_usuario.statusPedido);
             ViewBag.Usuario_idUsuario = new SelectList(db.Usuario, "idUsuario", "nome_usuario", pedidoFinal_usuario.Usuario_idUsuario);
 
             return View(pedidoFinal_usuario);
+            
         }
 
         // GET: PedidoFinalUsuario/VizualizarNFe/5
