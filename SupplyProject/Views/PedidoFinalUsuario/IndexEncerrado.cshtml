@@ -11,54 +11,144 @@
     @Html.ActionLink("Informações sobre pedidos", "ExibirEstatisticas")
 </p>
 <table class="table">
-    <thead>
+    <tr>
+        <th>
+            Id Pedido
+        </th>
+        <th>
+            Usuario responsavel
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Valor do pedido
+        </th>
+        <th>
+            Data
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                Id Pedido
-            </th>
-            <th>
-                Usuario responsavel
-            </th>
-            <th>
-                Status
-            </th>
-            <th>
-                Valor do pedido
-            </th>
-            <th>
-                Data
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.idPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preco_pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dia_pedido)/@Html.DisplayFor(modelItem => item.mes_pedido)/@Html.DisplayFor(modelItem => item.ano_pedido)
+            </td>
+            <td>
+
+                @Html.ActionLink("Nota Fiscal", "VizualizarNFe", new { id = item.idPedido }) |
+
+                @Html.ActionLink("Detalhar", "DetailsEncerrado", new { id = item.idPedido })
+                |
+                @if (item.Avaliar != 1)
+                {
+                    <p data-toggle="modal" data-target="#exampleModal_@item.idPedido">Avaliar</p>
+
+                    <!-- Button trigger modal -->
+                    @*<button type="button" class="btn btn-primary">
+                        Launch demo modal
+                    </button>*@
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal_@item.idPedido" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: black;" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Example multiple select</label>
+                                        <select multiple class="form-control" id="formAvaliacao_@item.idPedido">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                                        <textarea class="form-control" id="formTexto_@item.idPedido" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <button id="@item.idPedido" type="button" class="enviarNotificao btn btn-primary">Salvar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idPedido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Usuario.nome_usuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.preco_pedido)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dia_pedido)/@Html.DisplayFor(modelItem => item.mes_pedido)/@Html.DisplayFor(modelItem => item.ano_pedido)
-                </td>
-                <td>
+    }
 
-                    @Html.ActionLink("Nota Fiscal", "VizualizarNFe", new { id = item.idPedido }) |
-
-                    @Html.ActionLink("Detalhar", "DetailsEncerrado", new { id = item.idPedido })
-
-
-                </td>
-            </tr>
-        }
-    </tbody>
 </table>
+
+<script src="~/Content/Doc/js/jquery-1.11.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //var urlApagarNotificacao = $("#urlApagarNotificacao").val();
+        $(".enviarNotificao").click(function() {
+
+            var id = this.id;
+
+            var avaliacaoNota = $("#formAvaliacao_" + id).val();
+            var avaliacaoTexto = $("#formTexto_" + id).val();
+            
+            debugger;
+
+            var data = {
+                Id: id,
+                Nota: avaliacaoNota,
+                Texto: avaliacaoTexto
+            };
+
+            enviarAvaliacao(data);
+        });
+
+        function enviarAvaliacao(data) {
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(data),
+                url: "@Url.Action("SalvarAvaliacao", "PedidoFinalUsuario")",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response > 0) {
+                        alert("salvo com sucesso");    
+                    }else{
+                        alert("Falha ao salvar a avaliação");    
+                    }
+                    
+                    window.location.reload();
+                },
+                failure: function (response) {
+                    alert("Erro no servidor, consulte o suporte.");
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        }
+    });
+</script>

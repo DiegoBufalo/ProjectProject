@@ -89,7 +89,7 @@ namespace SupplyProject.Controllers
             String origem = string.Format("Origem: {0}", xml.Element("origin_address").Value);
             String destino = string.Format("Destino: {0}", xml.Element("destination_address").Value);
             String distancia = string.Format("Distancia: {0}", xml.Element("row").Element("element").Element("distance").Element("text").Value);
-            String duracao = string.Format("Duração: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
+            String duracao = string.Format("Duração Estimada da viajem: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
             String valores = origem + "\n" + destino + "\n" + distancia + "\n" + duracao;
 
             ViewBag.DadosFrete = valores;
@@ -132,7 +132,7 @@ namespace SupplyProject.Controllers
             String origem = string.Format("Origem: {0}", xml.Element("origin_address").Value);
             String destino = string.Format("Destino: {0}", xml.Element("destination_address").Value);
             String distancia = string.Format("Distancia: {0}", xml.Element("row").Element("element").Element("distance").Element("text").Value);
-            String duracao = string.Format("Duração: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
+            String duracao = string.Format("Duração Estimada da viajem: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
 
 
             var element = xml.Element("row").Element("element").Element("distance").Element("text").Value;
@@ -342,6 +342,33 @@ namespace SupplyProject.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult SalvarAvaliacao(AvaliacaoDto avaliacaoDto)
+        {
+            var result = 1;
+
+            try
+            {
+                int.TryParse(avaliacaoDto.Id, out int idAvalicao);
+                int.TryParse(avaliacaoDto.Nota, out int notaResult);
+                int.TryParse(avaliacaoDto.Id, out int idResult);
+
+                var avaliacao = new Avaliacao {idAvaliacao = idAvalicao, nota = notaResult, texto = avaliacaoDto.Texto};
+
+                var pedido = db.PedidoFinal_usuario.Find(idResult);
+                pedido.Avaliar = 1;
+
+                db.Avaliacao.Add(avaliacao);
+
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                result = 0;
+            }
+            
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
