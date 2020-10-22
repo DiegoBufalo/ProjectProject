@@ -326,6 +326,10 @@
     <Compile Include="Models\Armazem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Avaliacao.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AvaliacaoDto.cs" />
     <Compile Include="Models\DemandaFinal_produtor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

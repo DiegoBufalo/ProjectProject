@@ -30,6 +30,7 @@ namespace SupplyProject.Models
         public int mes_pedido { get; set; }
         public int dia_pedido { get; set; }
         public int quantidade { get; set; }
+        public Nullable<int> Avaliar { get; set; }
     
         public virtual Armazem Armazem { get; set; }
         public virtual Produto_fornecedor Produto_fornecedor { get; set; }

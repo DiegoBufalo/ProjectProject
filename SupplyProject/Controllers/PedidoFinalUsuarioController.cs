@@ -343,5 +343,32 @@ namespace SupplyProject.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult SalvarAvaliacao(AvaliacaoDto avaliacaoDto)
+        {
+            var result = 1;
+
+            try
+            {
+                int.TryParse(avaliacaoDto.Id, out int idAvalicao);
+                int.TryParse(avaliacaoDto.Nota, out int notaResult);
+                int.TryParse(avaliacaoDto.Id, out int idResult);
+
+                var avaliacao = new Avaliacao {idAvaliacao = idAvalicao, nota = notaResult, texto = avaliacaoDto.Texto};
+
+                var pedido = db.PedidoFinal_usuario.Find(idResult);
+                pedido.Avaliar = 1;
+
+                db.Avaliacao.Add(avaliacao);
+
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                result = 0;
+            }
+            
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }
