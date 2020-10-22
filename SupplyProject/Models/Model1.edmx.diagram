@@ -41,6 +41,7 @@
         <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_armazem" />
         <AssociationConnector Association="SupplyProject_dbModel.fk_envio_has_deStatus" />
         <EntityTypeShape EntityType="SupplyProject_dbModel.Notificacoes" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SupplyProject_dbModel.Avaliacao" Width="1.5" PointX="3.375" PointY="7.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

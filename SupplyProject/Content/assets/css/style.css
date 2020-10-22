@@ -7145,8 +7145,9 @@ b, sup, sub, u, del {
 
 .table {
     border: solid 2px #fff;
-    width: 100%;
+    width: 90%;
     text-align: center;
+    margin: auto;
 }
 
 tr {
