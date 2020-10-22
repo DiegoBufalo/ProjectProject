@@ -502,32 +502,15 @@
                         </tr>
 
                         <tr>
-                            <td class="campo_titulo" style="width: 50%; padding-left: 5px; vertical-align: top;">
-
-                                <table class="table" align="left" width="25%">
-                                    <thead>
-                                        <tr>
-                                            <td class="campo_titulo" style="width: 50%; padding-left: 5px;">Cod. Produto</td>
-                                            <td class="campo_titulo" style="width: 100%; padding-left: 5px;">Produto</td>
-                                            <td class="campo_titulo" style="width: 50%; padding-left: 5px;"> Quantidade</td>
-                                            <td class="campo_titulo" style="width: 50%; padding-left: 5px;"> Valor Unitário</td>
-                                        </tr>
-                                        <tbody>
-                                            <tr>
-                                                <td class="campo_titulo" style="width: 50%; padding-left: 5px;">
-                                                    <span id="emit_nu_cnpj_cpf" class="campo_valor">@ViewBag.idProduto</span>  
-                                                </td >
-                                                <td>
-                                                    <span id="emit_nu_cnpj_cpf" class="campo_valor">@ViewBag.Produto</span>  
-                                                </td>
-                                                <td class="campo_titulo" style="width: 50%; padding-left: 5px;">
-                                                    <span id="emit_nu_cnpj_cpf" class="campo_valor">@ViewBag.Quantidade</span>  
-                                                </td>
-                                                <td class="campo_titulo" style="width: 50%; padding-left: 5px;">
-                                                    <span id="emit_nu_cnpj_cpf" class="campo_valor">@ViewBag.valorUni,00</span>  
-                                                </td>
-                                            </tr>
-                                </table>
+                            <td class="campo_titulo" style="width: 50%; padding-left: 5px;">
+                                Cod. Produto: <span class="campo_valor" id="dest_receiver_name">@ViewBag.idProduto </span>
+                                <br />
+                                Produto: <span class="campo_valor" id="dest_nu_cnpj_cpf">@ViewBag.Produto</span>
+                                <br />
+                                Quantidade: <span id="dest_ds_address" class="campo_valor">@ViewBag.Quantidade</span>
+                                <br />
+                                Valor Uni.: <span id="dest_nu_cep" class="campo_valor">@ViewBag.valorUni,00</span>
+                                <br />
                             </td>
                         </tr>
                     </table>

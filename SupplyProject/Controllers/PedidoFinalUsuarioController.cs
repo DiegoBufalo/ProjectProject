@@ -89,7 +89,7 @@ namespace SupplyProject.Controllers
             String origem = string.Format("Origem: {0}", xml.Element("origin_address").Value);
             String destino = string.Format("Destino: {0}", xml.Element("destination_address").Value);
             String distancia = string.Format("Distancia: {0}", xml.Element("row").Element("element").Element("distance").Element("text").Value);
-            String duracao = string.Format("Duração: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
+            String duracao = string.Format("Duração Estimada da viajem: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
             String valores = origem + "\n" + destino + "\n" + distancia + "\n" + duracao;
 
             ViewBag.DadosFrete = valores;
@@ -132,7 +132,7 @@ namespace SupplyProject.Controllers
             String origem = string.Format("Origem: {0}", xml.Element("origin_address").Value);
             String destino = string.Format("Destino: {0}", xml.Element("destination_address").Value);
             String distancia = string.Format("Distancia: {0}", xml.Element("row").Element("element").Element("distance").Element("text").Value);
-            String duracao = string.Format("Duração: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
+            String duracao = string.Format("Duração Estimada da viajem: {0}", xml.Element("row").Element("element").Element("duration").Element("text").Value);
 
 
             var element = xml.Element("row").Element("element").Element("distance").Element("text").Value;
