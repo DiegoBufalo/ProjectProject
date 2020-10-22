@@ -140,7 +140,7 @@ body {
     font-family: "Muli",sans-serif;
     font-weight: normal;
     font-style: normal;
-    background-image: url(../img/gallery/backgroudPreto.jpg) 
+    background: #020330 !important;  
   
 }
 
@@ -403,7 +403,7 @@ hr {
     }
 
 .btn {
-    background: #eb566c;
+    background: #04b4df;
     border-radius: 30px;
     -moz-user-select: none;
     text-transform: uppercase;
@@ -7133,4 +7133,22 @@ b, sup, sub, u, del {
 
 .switch-wrap {
     margin-bottom: 10px
+}
+
+.table thead th{
+    border: none;
+}
+
+.table td, .table th{
+    border: none;
+}
+
+.table {
+    border: solid 2px #fff;
+    width: 100%;
+    text-align: center;
+}
+
+tr {
+    border: solid 1px #fff;
 }

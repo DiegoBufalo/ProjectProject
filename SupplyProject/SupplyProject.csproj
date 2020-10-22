@@ -403,7 +403,6 @@
     <Content Include="Content\assets\css\main.css" />
     <Content Include="Content\assets\css\nice-select.css" />
     <Content Include="Content\assets\css\owl.carousel.min.css" />
-    <Content Include="Content\assets\css\responsive.css" />
     <Content Include="Content\assets\css\slick.css" />
     <Content Include="Content\assets\css\slicknav.css" />
     <Content Include="Content\assets\css\styleHome.css" />

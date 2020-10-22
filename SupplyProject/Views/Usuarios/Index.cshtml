@@ -19,7 +19,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand login" href="#">
-                    Supply Chain Project - Área Logistica
+                    Supply Chain Project
                 </a>
             </div>
             <div class="collapse navbar-collapse">
@@ -32,11 +32,8 @@
     </div>
     <div class="container">
         <div class="jumbotron">
-            <div class="container">
-                <h1>Quem é você?</h1>
-                <p>&nbsp;</p>
+                <h1>ACESSO DE USUARIOS</h1>
                 <div id="status"></div>
-                <p>&nbsp;</p>
                 <div>
                     <form id="form-login" name="form-login"
                           method="get"
@@ -52,19 +49,12 @@
                         </a>
                     </form>
                 </div>
-            </div>
         </div>
-        <p style="text-align:center;">
-            @*@Html.ActionLink(
-                "Esqueceu sua senha?",
-                "EsqueceuSuaSenha",
-                "Home",
-                null,
-                new { @style = "text-align: center;" })*@
-        </p>
     </div>
+
     <script src="@Url.Content("~/Scripts/jquery-3.4.1.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+
     <script>
     $(document).ready(function () {
         $("#status").hide();
@@ -102,5 +92,6 @@
         });
     });
     </script>
+
 </body>
 </html>
