@@ -115,6 +115,7 @@ namespace SupplyProject.Controllers
             Produto_fornecedor prodForn = db.Produto_fornecedor.Find(pedidoFinal_usuario.Produto_fornecedor_idProduto_fornecedor);
             Fornecedor fornecedor = db.Fornecedor.Find(prodForn.Fornecedor_idFornecedor);
             String cepForn = fornecedor.CEP;
+            ViewBag.Fornecedor = fornecedor.nome_fornecedor;
 
             //valor de custo
             Veiculo veiculo = db.Veiculo.Find(envioFornecedor.idVeiculo);

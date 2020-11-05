@@ -33,49 +33,55 @@
         <th>
             Telefone
         </th>
-        <th>
-            Nota do Fornecedor
-        </th>
         <th></th>
     </tr>
 
 
     @foreach (var item in Model)
     {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.idFornecedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nome_fornecedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.logradouro_fornecedor), @Html.DisplayFor(modelItem => item.numlogradouro_fornecedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.email_fornecedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.telefone_fornecedor)
-                </td>
-                <td>
-                    @foreach(var item2 in ViewBag.Notas)
-                    {
-                        @item2
-                        break;
-                    }
-                </td>
-                <td>
-                    @if (Session["tipoUsuario"].ToString() == "Gerente")
-                    {
-                        @Html.ActionLink("Atualizar", "Edit", new { id = item.idFornecedor })
-                    }|
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idFornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.logradouro_fornecedor), @Html.DisplayFor(modelItem => item.numlogradouro_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email_fornecedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefone_fornecedor)
+            </td>
+            <td>
+                @if (Session["tipoUsuario"].ToString() == "Gerente")
+                {
+                    @Html.ActionLink("Atualizar", "Edit", new { id = item.idFornecedor })
+                }|
 
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.idFornecedor }) |
-                    @Html.ActionLink("Avaliações", "Avaliacoes", new { id = item.idFornecedor })
-                </td>
-            </tr>
-        }
- 
+                @Html.ActionLink("Detalhes", "Details", new { id = item.idFornecedor }) |
+                @Html.ActionLink("Avaliações", "Avaliacoes", new { id = item.idFornecedor })
+            </td>
+        </tr>
+    }
+</table>
 
+<table class="table">
+    <tr>
+        <th>
+            Avaliação
+        </th>
+
+    </tr>
+    @foreach (var item2 in ViewBag.Notas)
+    {
+
+        <tr>
+            <td>
+                @item2
+            </td>
+        </tr>
+    }
 </table>
