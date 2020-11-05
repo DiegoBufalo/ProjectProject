@@ -29,6 +29,8 @@
           <Property Name="idAvaliacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nota" Type="int" Nullable="false" />
           <Property Name="texto" Type="text" Nullable="false" />
+          <Property Name="refPedido" Type="int" />
+          <Property Name="refFornecedor" Type="int" />
         </EntityType>
         <EntityType Name="DemandaFinal_produtor">
           <Key>
@@ -1152,6 +1154,8 @@
           <Property Name="idAvaliacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nota" Type="Int32" Nullable="false" />
           <Property Name="texto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="refPedido" Type="Int32" />
+          <Property Name="refFornecedor" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1388,6 +1392,8 @@
           <EntitySetMapping Name="Avaliacao">
             <EntityTypeMapping TypeName="SupplyProject_dbModel.Avaliacao">
               <MappingFragment StoreEntitySet="Avaliacao">
+                <ScalarProperty Name="refFornecedor" ColumnName="refFornecedor" />
+                <ScalarProperty Name="refPedido" ColumnName="refPedido" />
                 <ScalarProperty Name="texto" ColumnName="texto" />
                 <ScalarProperty Name="nota" ColumnName="nota" />
                 <ScalarProperty Name="idAvaliacao" ColumnName="idAvaliacao" />

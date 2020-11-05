@@ -17,7 +17,45 @@ namespace SupplyProject.Controllers
         // GET: Fornecedores
         public ActionResult Index()
         {
-            return View(db.Fornecedor.ToList());
+
+            var avaliacao = new List<NotasDto>();
+             avaliacao = db.Avaliacao
+                .GroupBy(p => p.refFornecedor)
+                .Select(g => new NotasDto
+                    {
+                        Average = g.Average(e => e.nota)
+                    }).ToList();
+
+            List<double> notas1 = new List<double>();
+
+            foreach (var notas in avaliacao)
+            {
+                
+                notas1.Add(notas.Average);
+            }
+
+
+
+            ViewBag.Notas = notas1;
+            var fornecedor = db.Fornecedor.ToList();
+            return View(fornecedor);
+        }
+
+        public ActionResult Avaliacoes(int? id)
+        {
+            if(id== null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Fornecedor fornecedor = db.Fornecedor.Find(id);
+            if(fornecedor == null)
+            {
+                return HttpNotFound();
+            }
+
+            var avaliacao = db.Avaliacao.ToList().Where(e => e.refFornecedor == id);
+
+            return View(avaliacao);
         }
 
         // GET: Fornecedores/Details/5

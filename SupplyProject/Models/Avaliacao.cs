@@ -17,5 +17,7 @@ namespace SupplyProject.Models
         public int idAvaliacao { get; set; }
         public int nota { get; set; }
         public string texto { get; set; }
+        public Nullable<int> refPedido { get; set; }
+        public Nullable<int> refFornecedor { get; set; }
     }
 }

@@ -68,14 +68,14 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" style="color: black;" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" style="color: black;" id="exampleModalLabel" color="black">Formulario de Avaliação</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect2">Example multiple select</label>
+                                        <label for="exampleFormControlSelect2" style="color: black;">Nota da Entrega</label>
                                         <select multiple class="form-control" id="formAvaliacao_@item.idPedido">
                                             <option>1</option>
                                             <option>2</option>
@@ -85,7 +85,7 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                                        <label for="exampleFormControlTextarea1" style="color: black;">Avaliação da Entrega</label>
                                         <textarea class="form-control" id="formTexto_@item.idPedido" rows="3"></textarea>
                                     </div>
                                 </div>
@@ -104,6 +104,11 @@
 
 </table>
 
+<style>
+
+
+</style>
+
 <script src="~/Content/Doc/js/jquery-1.11.0.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -112,7 +117,7 @@
 
             var id = this.id;
 
-            var avaliacaoNota = $("#formAvaliacao_" + id).val();
+            var avaliacaoNota = $("#formAvaliacao_" + id).val().toString();
             var avaliacaoTexto = $("#formTexto_" + id).val();
             
             debugger;

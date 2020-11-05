@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SupplyProject.Models.Avaliacao>
+
+
+@{
+    ViewBag.Title = "Avaliacoes";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+<h2>Avaliacoes</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Id Avaliação
+        </th>
+        <th>
+            Ref. Pedido
+        </th>
+        <th>
+            Nota do Pedido
+        </th>
+        <th>
+            Descrição do Processo
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idAvaliacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.refPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.texto)
+            </td>
+        </tr>
+    }
+
+</table>
+

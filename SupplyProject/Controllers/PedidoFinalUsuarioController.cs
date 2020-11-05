@@ -354,9 +354,14 @@ namespace SupplyProject.Controllers
                 int.TryParse(avaliacaoDto.Nota, out int notaResult);
                 int.TryParse(avaliacaoDto.Id, out int idResult);
 
-                var avaliacao = new Avaliacao {idAvaliacao = idAvalicao, nota = notaResult, texto = avaliacaoDto.Texto};
 
                 var pedido = db.PedidoFinal_usuario.Find(idResult);
+                var produto = db.Produto_fornecedor.Find(pedido.Produto_fornecedor_idProduto_fornecedor);
+                var fornecedor = db.Fornecedor.Find(produto.Fornecedor_idFornecedor);
+
+
+                var avaliacao = new Avaliacao {idAvaliacao = idAvalicao, nota = notaResult, texto = avaliacaoDto.Texto, refPedido = idResult, refFornecedor = fornecedor.idFornecedor};
+
                 pedido.Avaliar = 1;
 
                 db.Avaliacao.Add(avaliacao);
