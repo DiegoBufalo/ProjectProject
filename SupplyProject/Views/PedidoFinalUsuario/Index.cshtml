@@ -39,8 +39,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StatusPedido1.nome_status)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.preco_pedido)
+                @string.Format("{0:C}", item.preco_pedido)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.dia_pedido)/@Html.DisplayFor(modelItem => item.mes_pedido)/@Html.DisplayFor(modelItem => item.ano_pedido)
@@ -51,13 +52,12 @@
                 @if (Session["tipoUsuario"].ToString() == "Gerente" || Session["tipoUsuario"].ToString() == "SupplyChain")
                 {
                     @Html.ActionLink("Cancelar", "Delete", new { id = item.idPedido })
-                }|
-                @Html.ActionLink("Nota Fiscal", "VizualizarNFe", new { id = item.idPedido }) |
+                } |
+                 @Html.ActionLink("Nota Fiscal", "VizualizarNFe", new { id = item.idPedido }) |
 
 
                 @Html.ActionLink("Detalhar", "Details", new { id = item.idPedido }) |
-                |
-             
+
 
             </td>
         </tr>

@@ -45,7 +45,7 @@
             <td>
                 @if (Session["tipoUsuario"].ToString() == "Produtor")
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.idProduto_produtor })
+                    @Html.ActionLink("Atualizar", "Edit", new { id = item.idProduto_produtor })
                 }|
                 @Html.ActionLink("Detalhes", "Details", new { id = item.idProduto_produtor }) |
 

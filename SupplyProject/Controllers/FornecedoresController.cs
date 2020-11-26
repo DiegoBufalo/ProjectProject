@@ -19,18 +19,18 @@ namespace SupplyProject.Controllers
         {
 
             var avaliacao = new List<NotasDto>();
-             avaliacao = db.Avaliacao
-                .GroupBy(p => p.refFornecedor)
-                .Select(g => new NotasDto
-                    {
-                        Average = g.Average(e => e.nota)
-                    }).ToList();
+            avaliacao = db.Avaliacao
+               .GroupBy(p => p.refFornecedor)
+               .Select(g => new NotasDto
+               {
+                   Average = g.Average(e => e.nota)
+               }).ToList();
 
             List<double> notas1 = new List<double>();
 
             foreach (var notas in avaliacao)
             {
-                
+
                 notas1.Add(notas.Average);
             }
 

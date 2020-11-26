@@ -7148,6 +7148,25 @@ b, sup, sub, u, del {
     width: 90%;
     text-align: center;
     margin: auto;
+
+}
+
+.fornecedor {
+    border: solid 2px #fff;
+    width: 85%;
+    text-align: center;
+    margin: auto;
+    float: left;
+    margin-top: 14px;
+}
+
+.avaliacao {
+    border: solid 2px #fff;
+    width: 15%;
+    text-align: center;
+    margin: auto;
+    float: right;
+    margin-top: 14px;
 }
 
 tr {

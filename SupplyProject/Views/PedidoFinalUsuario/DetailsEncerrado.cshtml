@@ -55,8 +55,11 @@
             Valor do pedido
         </dt>
 
+        @{
+            var preco = Model.preco_pedido;
+        }
         <dd>
-            @Html.DisplayFor(model => model.preco_pedido)
+            @string.Format("{0:C}", preco)
         </dd>
 
         <dt>

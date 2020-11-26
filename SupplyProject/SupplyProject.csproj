@@ -413,6 +413,7 @@
     <Content Include="Content\assets\css\flaticon.css" />
     <Content Include="Content\assets\css\fontawesome-all.min.css" />
     <Content Include="Content\assets\css\iframe.css" />
+    <Content Include="Content\assets\css\inspector-stylesheet.css" />
     <Content Include="Content\assets\css\magnific-popup.css" />
     <Content Include="Content\assets\css\main.css" />
     <Content Include="Content\assets\css\nice-select.css" />

@@ -11,81 +11,112 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal divMeio">
-        <h4>Armazem</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.idArmazem)
+<div class="form-horizontal divMeio">
+    <h4>Armazem</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.idArmazem)
 
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.nome_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-           <label class="control-label col-md-2" for="nome_armazem">Nome</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nome_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nome_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.logradouro_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <label class="control-label col-md-2" for="logradouro_armazem">Logradouro</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.logradouro_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.logradouro_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @* @Html.LabelFor(model => model.numlogradouro_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <label class="control-label col-md-2" for="numlogradouro_armazem">Numero</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.numlogradouro_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.numlogradouro_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @*  @Html.LabelFor(model => model.largura_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <label class="control-label col-md-2" for="largura_armazem">Largura (Metros)</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.largura_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.largura_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @* @Html.LabelFor(model => model.altura_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <label class="control-label col-md-2" for="altura_armazem">Altura (Metros)</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.altura_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.altura_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @*@Html.LabelFor(model => model.profundidade_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <label class="control-label col-md-2" for="profundidade_armazem">Profundidade (Metros)</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.profundidade_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.profundidade_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @* @Html.LabelFor(model => model.telefone_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <label class="control-label col-md-2" for="telefone_armazem">Telefone</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.telefone_armazem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.telefone_armazem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.nome_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="nome_armazem">Nome</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nome_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nome_armazem, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.logradouro_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="logradouro_armazem">Logradouro</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.logradouro_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.logradouro_armazem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.numlogradouro_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="numlogradouro_armazem">Numero</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.numlogradouro_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.numlogradouro_armazem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*  @Html.LabelFor(model => model.largura_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="largura_armazem">Largura (Metros)</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.largura_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.largura_armazem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.altura_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="altura_armazem">Altura (Metros)</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.altura_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.altura_armazem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.profundidade_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="profundidade_armazem">Profundidade (Metros)</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.profundidade_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.profundidade_armazem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.telefone_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="telefone_armazem">Telefone</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.telefone_armazem, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.telefone_armazem, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.telefone_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="CEP">Telefone</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.telefone_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="Municipio">Telefone</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Municipio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Municipio, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.telefone_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="UF">Telefone</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UF, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UF, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @* @Html.LabelFor(model => model.telefone_armazem, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="pais">Telefone</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pais, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pais, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvar" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>

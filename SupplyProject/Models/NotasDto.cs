@@ -7,6 +7,7 @@ namespace SupplyProject.Models
 {
     public class NotasDto
     {
+        public int Id { get; set; }
         public double Average { get; set; }
     }
 }
